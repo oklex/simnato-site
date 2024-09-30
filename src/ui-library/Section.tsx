@@ -1,6 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 import { MODES, PALETTE, GRADIENTS } from '../theme';
+import { Container } from './Container';
 
 type SectionProps = {
 	children: ReactNode;
@@ -55,19 +56,6 @@ const FullWidthSection = styled.section<Omit<SectionProps, 'children'>>`
 			}
     );
   `}
-`;
-
-// Generic responsive container inside the full-width section
-const Container = styled.div<{ center: boolean }>`
-	max-width: 1200px;
-	padding: 20px 20px;
-	${({ center }) =>
-		center &&
-		css`
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-		`}
 `;
 
 const Section: FC<SectionProps> = ({
