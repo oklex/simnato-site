@@ -1,9 +1,13 @@
+
+export type MODES = 'light' | 'dark' | 'gold' | 'blue';
+
 type ColorGroupType = {
 	dark: string;
 	main: string;
 	light: string;
 	near_white: string;
 };
+
 export const COLORS: Record<string, ColorGroupType> = {
 	blue: {
 		dark: '#0B1957',
