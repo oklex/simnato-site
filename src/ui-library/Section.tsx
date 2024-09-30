@@ -50,8 +50,6 @@ const FullWidthSection = styled.section<{
 // Generic responsive container inside the full-width section
 const Container = styled.div`
 	max-width: 1200px;
-	width: 100%;
-	margin: 0 auto;
 	padding: 20px 20px;
 `;
 
@@ -61,7 +59,7 @@ const Section: FC<SectionProps> = ({
 	gradient = undefined,
 }) => {
 	return (
-		<FullWidthSection mode={mode} gradient={gradient}>
+		<FullWidthSection id="section" mode={mode} gradient={gradient}>
 			<Container>{children}</Container>
 		</FullWidthSection>
 	);
