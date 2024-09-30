@@ -17,7 +17,7 @@ const FullWidthSection = styled.section<Omit<SectionProps, 'children'>>`
 	${({ height }) =>
 		height &&
 		css`
-			height: ${height};
+			min-height: ${height};
 		`}
 	${({ maxHeight }) =>
 		maxHeight &&
