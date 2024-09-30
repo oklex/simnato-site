@@ -3,6 +3,7 @@ import Section from '../ui-library/Section';
 import GoldBrandLogo from '../assets/goldLogo';
 import Header from '../ui-library/Header';
 import Spacer from '../ui-library/Spacer';
+import { RegistrationNav } from './RegistrationNav';
 
 export const HomepageHero = (): ReactElement => {
 	return (
@@ -16,6 +17,7 @@ export const HomepageHero = (): ReactElement => {
 				<Header margin='-15px 0 auto' level={6} sizeRemOverride={2.3} mode="light" center>
 					Model UN Crisis Conference
 				</Header>
+				<RegistrationNav/>
 			</Section>
 		</div>
 	);
