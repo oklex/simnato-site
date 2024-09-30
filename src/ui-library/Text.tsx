@@ -44,9 +44,9 @@ const StyledText = styled.p<{
 			case 'sm':
 				return '0.875rem'; // Small size
 			case 'md':
-				return '1rem'; // Medium size (default)
+				return '1.2rem'; // Medium size (default)
 			case 'lg':
-				return '1.5rem'; // Large size
+				return '1.8rem'; // Large size
 			default:
 				return '1rem'; // Fallback to medium size
 		}
