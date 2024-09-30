@@ -10,7 +10,7 @@ export const HomepageHero = (): ReactElement => {
 	return (
 		<div id="homepage-hero">
 			<StyledSection mode="dark" gradient="vertical">
-				<GoldBrandLogo scale="300px" center padding="150px 0px 50px" />
+				<GoldBrandLogo scale="18rem" center padding="150px 25px 25px" />
 				<Header level={1} mode="light">
 					Dark Mode with <StyledText bold>Vertical Gradient</StyledText>
 				</Header>
