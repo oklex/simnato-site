@@ -2,13 +2,13 @@ import React, { FC } from "react";
 import styled, { css } from "styled-components";
 
 interface ResizableSVGProps {
-  scale?: string | number;
+  scale: string | number;
   center?: boolean;
   padding?: string;
 }
 
 export const GoldBrandLogo: FC<ResizableSVGProps> = ({
-  scale = "100%",
+  scale = "100px",
   center,
   padding,
 }) => {
@@ -61,3 +61,5 @@ const Wrapper = styled.div<{ center?: boolean; padding?: string }>`
       padding: ${padding};
     `}
 `;
+
+export default GoldBrandLogo
