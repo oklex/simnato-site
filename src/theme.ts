@@ -27,7 +27,7 @@ export const PALETTE: Record<string, ColorGroupType> = {
 	},
 	gold: {
 		dark: '#9F7622',
-		main: '#D4C5A6',
+		main: '#B19967',
 		light: '#D4C5A6',
 		near_white: '#F2EBDD',
 	},
