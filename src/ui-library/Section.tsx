@@ -1,19 +1,29 @@
 import React, { FC, ReactNode } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { MODES, PALETTE, GRADIENTS } from '../theme';
 
 type SectionProps = {
 	children: ReactNode;
+	height?: string;
+	maxHeight?: string;
 	mode?: MODES;
 	gradient?: 'vertical' | 'horizontal' | undefined;
+	center?: boolean;
 };
 
 // Full-width section that stretches edge to edge of the screen
-const FullWidthSection = styled.section<{
-	mode: MODES;
-	gradient?: 'vertical' | 'horizontal' | undefined;
-}>`
+const FullWidthSection = styled.section<Omit<SectionProps, 'children'>>`
 	width: 100%;
+	${({ height }) =>
+		height &&
+		css`
+			height: ${height};
+		`}
+	${({ maxHeight }) =>
+		maxHeight &&
+		css`
+			max-height: ${maxHeight};
+		`}
 	background-color: ${(props) => {
 		switch (props.mode) {
 			case 'light':
@@ -48,19 +58,35 @@ const FullWidthSection = styled.section<{
 `;
 
 // Generic responsive container inside the full-width section
-const Container = styled.div`
+const Container = styled.div<{ center: boolean }>`
 	max-width: 1200px;
 	padding: 20px 20px;
+	${({ center }) =>
+		center &&
+		css`
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		`}
 `;
 
 const Section: FC<SectionProps> = ({
 	children,
 	mode = 'light',
 	gradient = undefined,
+	height = 'auto',
+	maxHeight = undefined,
+	center = false,
 }) => {
 	return (
-		<FullWidthSection id="section" mode={mode} gradient={gradient}>
-			<Container>{children}</Container>
+		<FullWidthSection
+			id="section"
+			mode={mode}
+			gradient={gradient}
+			height={height}
+			maxHeight={maxHeight}
+		>
+			<Container center={center}>{children}</Container>
 		</FullWidthSection>
 	);
 };
