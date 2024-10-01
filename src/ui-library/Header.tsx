@@ -99,7 +99,7 @@ const StyledHeader = styled.div<{
   margin: ${(props) => props.margin || '0'};
 `;
 
-const Header: FC<HeaderProps> = ({
+export const Header: FC<HeaderProps> = ({
   children,
   mode = 'light',
   level = 1,
@@ -125,4 +125,3 @@ const Header: FC<HeaderProps> = ({
   );
 };
 
-export default Header;

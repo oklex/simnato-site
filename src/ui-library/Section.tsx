@@ -58,7 +58,7 @@ const FullWidthSection = styled.section<Omit<SectionProps, 'children'>>`
   `}
 `;
 
-const Section: FC<SectionProps> = ({
+export const Section: FC<SectionProps> = ({
 	children,
 	mode = 'light',
 	gradient = undefined,
@@ -78,5 +78,3 @@ const Section: FC<SectionProps> = ({
 		</FullWidthSection>
 	);
 };
-
-export default Section;
