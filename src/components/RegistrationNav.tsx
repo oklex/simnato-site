@@ -11,7 +11,7 @@ export const RegistrationNav = (): ReactElement => {
       <StyledNav>
         <NavContent>
           <TextLogo height="1.5rem" />
-          <Text mode="gold" bold uppercase spaced>
+          <Text mode="gold" size="md" bold uppercase spaced>
             register
           </Text>
         </NavContent>
