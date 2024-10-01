@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
-import React, { FC, ReactNode } from 'react';
-import styled from 'styled-components';
-import { PALETTE, MODES } from '../theme';
+import React, { FC, ReactNode } from "react";
+import styled from "styled-components";
+import { PALETTE, MODES } from "../theme";
 
 type HeaderProps = {
   children: ReactNode;
@@ -9,9 +9,10 @@ type HeaderProps = {
   level?: number;
   sizeRemOverride?: number;
   bold?: boolean;
-  align?: 'left' | 'center' | 'right';
+  align?: "left" | "center" | "right";
   center?: boolean;
   margin?: string;
+  uppercase?: boolean;
 };
 
 // Utility function to determine the heading level (h1, h2, etc.)
@@ -26,17 +27,18 @@ const StyledHeader = styled.div<{
   center: boolean;
   level: number;
   margin?: string;
+  uppercase?: boolean;
 }>`
-  font-family: 'Philosopher';
+  font-family: "Philosopher";
   color: ${(props) => {
     switch (props.mode) {
-      case 'light':
+      case "light":
         return PALETTE.mono.near_white; // White text
-      case 'dark':
+      case "dark":
         return PALETTE.blue.dark; // Dark blue text
-      case 'gold':
+      case "gold":
         return PALETTE.gold.main; // Gold text
-      case 'blue':
+      case "blue":
         return PALETTE.blue.main; // Blue text
       default:
         return PALETTE.mono.main; // Default color
@@ -94,19 +96,21 @@ const StyledHeader = styled.div<{
       : `${baseFontSize * 1.2}rem`; // Default line-height based on font size
   }};
 
-  font-weight: ${(props) => (props.bold ? 'bold' : 'normal')};
-  text-align: ${(props) => (props.center ? 'center' : 'left')};
-  margin: ${(props) => props.margin || '0'};
+  font-weight: ${(props) => (props.bold ? "bold" : "normal")};
+  text-align: ${(props) => (props.center ? "center" : "left")};
+  margin: ${(props) => props.margin || "0"};
+  text-transform: ${(props) => (props.uppercase ? "uppercase" : "none")};
 `;
 
 export const Header: FC<HeaderProps> = ({
   children,
-  mode = 'light',
+  mode = "light",
   level = 1,
   sizeRemOverride,
   bold = false,
   center = false,
-  margin = '0',
+  margin = "0",
+  uppercase,
 }) => {
   const HeadingTag = getHeadingTag(level); // Determine the heading tag (h1, h2, etc.)
 
@@ -119,9 +123,9 @@ export const Header: FC<HeaderProps> = ({
       center={center}
       level={level}
       margin={margin}
+      uppercase={uppercase}
     >
       {children}
     </StyledHeader>
   );
 };
-

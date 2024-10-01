@@ -1,6 +1,6 @@
 import React from "react";
 import { FC, ReactNode } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { MODES, PALETTE } from "../theme";
 
 type TextProps = {
@@ -12,6 +12,8 @@ type TextProps = {
   italic?: boolean;
   align?: "left" | "center" | "right";
   center?: boolean;
+  uppercase?: boolean;
+  spaced?: boolean;
 };
 
 // Styled component for dynamic text
@@ -22,6 +24,8 @@ const StyledText = styled.p<{
   bold: boolean;
   italic: boolean;
   center: boolean;
+  uppercase?: boolean;
+  spaced?: boolean;
 }>`
   font-family: "Plus Jakarta Sans", sans-serif !important;
   color: ${(props) => {
@@ -51,12 +55,37 @@ const StyledText = styled.p<{
         return "1rem"; // Fallback to medium size
     }
   }};
+  ${({ bold }) =>
+    bold &&
+    css`
+      font-weight: bold;
+    `}
+  ${({ italic }) =>
+    italic &&
+    css`
+      font-style: italic;
+    `}
+${({ center }) =>
+    center &&
+    css`
+      text-align: center;
+    `}
+${({ margin }) =>
+    margin &&
+    css`
+      margin: ${margin};
+    `}
+${({ uppercase }) =>
+    uppercase &&
+    css`
+      text-transform: uppercase;
+    `}
 
-  font-weight: ${(props) => (props.bold ? "bold" : "normal")};
-  font-style: ${(props) => (props.italic ? "italic" : "normal")};
-  text-align: ${(props) => (props.center ? "center" : "left")};
-  margin: ${(props) =>
-    props.margin || "0"}; // Apply margin if provided, otherwise no margin
+  ${({ spaced }) =>
+    spaced &&
+    css`
+      letter-spacing: 0.3em;
+    `}
 `;
 
 export const Text: FC<TextProps> = ({
@@ -67,6 +96,8 @@ export const Text: FC<TextProps> = ({
   bold = false,
   italic = false,
   center = false,
+  uppercase,
+  spaced,
 }) => {
   return (
     <StyledText
@@ -76,6 +107,8 @@ export const Text: FC<TextProps> = ({
       bold={bold}
       italic={italic}
       center={center}
+      uppercase={uppercase}
+      spaced={spaced}
     >
       {children}
     </StyledText>

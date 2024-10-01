@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { PALETTE } from "../theme";
 
 type MODES = "light" | "dark" | "gold" | "blue";
@@ -11,6 +11,8 @@ type StyledTextProps = {
   italic?: boolean;
   underline?: boolean;
   highlight?: boolean;
+  uppercase?: boolean;
+  spaced?: boolean;
 };
 
 // Styled component for the <span>
@@ -20,6 +22,8 @@ const StyledSpan = styled.span<{
   italic?: boolean;
   underline?: boolean;
   highlight?: boolean;
+  uppercase?: boolean;
+  spaced?: boolean;
 }>`
   ${(props) =>
     props.mode &&
@@ -43,6 +47,12 @@ const StyledSpan = styled.span<{
   font-style: ${(props) => (props.italic ? "italic" : "normal")};
   text-decoration: ${(props) => (props.underline ? "underline" : "none")};
   background-color: ${(props) => (props.highlight ? "yellow" : "transparent")};
+  text-transform: ${(props) => (props.uppercase ? "uppercase" : "none")};
+  ${({ spaced }) =>
+    spaced &&
+    css`
+      letter-spacing: 0.3em;
+    `}
 `;
 
 export const StyledText: FC<StyledTextProps> = ({
@@ -52,6 +62,8 @@ export const StyledText: FC<StyledTextProps> = ({
   italic,
   underline,
   highlight,
+  uppercase,
+  spaced,
 }) => {
   return (
     <StyledSpan
@@ -60,6 +72,8 @@ export const StyledText: FC<StyledTextProps> = ({
       italic={italic}
       underline={underline}
       highlight={highlight}
+      uppercase={uppercase}
+      spaced={spaced}
     >
       {children}
     </StyledSpan>
