@@ -65,12 +65,7 @@ const StyledNav = styled.button`
 		transition: 400ms;
 	}
 
-	&:hover {
-		background: linear-gradient(
-			to right,
-			${PALETTE.gold.main} 0%,
-			${rgba(PALETTE.gold.light, 0.1)} 50%,
-			${PALETTE.gold.main} 100%
-		);
+	&:hover::before {
+		opacity: 80%;
 	}
 `;
