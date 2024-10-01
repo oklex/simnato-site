@@ -29,7 +29,7 @@ export const RegistrationInfoSlice = (): ReactElement => {
               (overnight $230)
             </StyledText>
           </Cell>
-          <Cell widthPercentage={20}>see more</Cell>
+          <Cell widthPercentage={20} align="center">see more</Cell>
         </InnerContainer>
 
         <InnerContainer>
@@ -45,7 +45,7 @@ export const RegistrationInfoSlice = (): ReactElement => {
               (overnight tba)
             </StyledText>
           </Cell>
-          <Cell widthPercentage={20}>see more</Cell>
+          <Cell widthPercentage={20} align="center">see more</Cell>
         </InnerContainer>
       </OuterContainer>
     </div>

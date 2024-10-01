@@ -13,7 +13,7 @@ export const HomepageHero = (): ReactElement => {
         <Text>EST. 2024</Text>
       </CornerLabel>
       <Section center height="100vh" mode="dark" gradient={360}>
-        <Spacer height={"25vh"} />
+        <Spacer height={"18vh"} />
         <GoldBrandLogo scale="16rem" center padding="25px 25px 15px" />
         <Header level={1} sizeRemOverride={5.5} mode="gold" center bold>
           Simulation NATO
@@ -27,6 +27,7 @@ export const HomepageHero = (): ReactElement => {
         >
           Model UN Crisis Conference
         </Header>
+        <Spacer height={"5vh"} />
         <RegistrationInfo>
           <RegistrationInfoSlice />
           <RegistrationNav />
