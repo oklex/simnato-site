@@ -1,8 +1,8 @@
 import React, { ReactElement } from "react";
+import styled from "styled-components";
 import GoldBrandLogo from "../assets/goldLogo";
 import { Header, Spacer, Text, Section } from "../ui-library";
 import { RegistrationNav } from "./RegistrationNav";
-import styled from "styled-components";
 import { PALETTE } from "../theme";
 import { RegistrationInfoSlice } from "./registrationInfoSlice";
 import useScreenSize from "../stores/useScreenSize";
