@@ -1,20 +1,24 @@
 import React, { ReactElement } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { rgba } from "polished";
 import { PALETTE } from "../theme";
 import TextLogo from "../assets/textLogo";
-import { Text } from "../ui-library";
+import { Container, Text } from "../ui-library";
 import { useRouter } from "next/router";
 
-export const RegistrationNav = (): ReactElement => {
+export const RegistrationNav = ({
+  fixed,
+}: {
+  fixed?: boolean;
+}): ReactElement => {
   const router = useRouter();
 
   const navigateToPage = () => {
     router.push("/registration");
   };
 
-  return (
-    <NavigationWrapper id="registration-nav">
+  const showNav = () => (
+    <NavigationWrapper id="registration-nav" fixed>
       <StyledNav onClick={() => navigateToPage()}>
         <NavContent>
           <TextLogo height="1.5rem" />
@@ -25,6 +29,8 @@ export const RegistrationNav = (): ReactElement => {
       </StyledNav>
     </NavigationWrapper>
   );
+
+  return showNav();
 };
 
 const NavContent = styled.div`
@@ -33,20 +39,32 @@ const NavContent = styled.div`
   justify-content: space-between;
 `;
 
-const NavigationWrapper = styled.div`
+const NavigationWrapper = styled.div<{
+  fixed?: boolean;
+}>`
+  width: 100%;
   display: flex;
   justify-content: center;
-  // I think this should work
-  position: sticky;
-  top: 25px;
-  // matches container
-  max-width: 1200px;
-  /* padding: 20px 20px; */
+
+  ${({ fixed }) =>
+    fixed &&
+    css`
+      position: fixed;
+      z-index: 99;
+      top: 20px;
+    `}
 `;
 
 const StyledNav = styled.button`
-  padding: 0.8rem 1rem;
-  width: 100%;
+  padding: 0.7rem 1rem;
+
+  width: calc(100% - 50px);
+
+  /* Larger screens, subtract 440px, but max out at 1200px */
+  @media (min-width: 769px) {
+    max-width: calc(100vw - 440px);
+    max-width: 1000px; /* Ensure it doesn't exceed 1200px */
+  }
 
   border: none;
   outline: none;
@@ -61,7 +79,6 @@ const StyledNav = styled.button`
   transition: 200ms;
   align-items: center;
 
-  cursor: pointer;
   overflow: hidden;
 
   &::before {
@@ -79,5 +96,10 @@ const StyledNav = styled.button`
 
   &:hover::before {
     opacity: 80%;
+  }
+
+  & > * {
+    align-items: center;
+    align-self: center;
   }
 `;
