@@ -44,3 +44,11 @@ export const COLORS: Record<string, string> = {
 	darkText: '#0B1957',
 	lightText: '#F1F1F1',
 };
+
+export const FONT_SIZES = {
+	xs: '0.6rem',
+	sm: '0.85rem',
+	md: '1rem',
+	lg: '1.8rem',
+  };
+export type FontSizeType = keyof typeof FONT_SIZES

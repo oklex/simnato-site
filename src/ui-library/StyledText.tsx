@@ -1,10 +1,10 @@
 import React, { FC, ReactNode } from "react";
 import styled, { css } from "styled-components";
-import { PALETTE } from "../theme";
+import { FONT_SIZES, FontSizeType, PALETTE } from "../theme";
 
 type MODES = "light" | "dark" | "gold" | "blue";
 
-type StyledTextProps = {
+export type StyledTextProps = {
   children: ReactNode;
   mode?: MODES;
   bold?: boolean;
@@ -13,6 +13,9 @@ type StyledTextProps = {
   highlight?: boolean;
   uppercase?: boolean;
   spaced?: boolean;
+  subtle?: boolean; // New subtle prop
+  size?: FontSizeType
+  horizontalPadding?: string;
 };
 
 // Styled component for the <span>
@@ -24,11 +27,20 @@ const StyledSpan = styled.span<{
   highlight?: boolean;
   uppercase?: boolean;
   spaced?: boolean;
+  subtle?: boolean;
+  size?: FontSizeType
+  horizontalPadding?: string;
 }>`
+${({ size }) => {
+  if (!size) return '';
+  return css`
+    font-size: ${FONT_SIZES[size]};
+  `;
+}};
+
   ${(props) =>
     props.mode &&
-    `
-    color: ${(() => {
+    `color: ${(() => {
       switch (props.mode) {
         case "light":
           return PALETTE.mono.near_white;
@@ -41,8 +53,8 @@ const StyledSpan = styled.span<{
         default:
           return PALETTE.mono.main;
       }
-    })()};
-  `}
+    })()};`}
+
   font-weight: ${(props) => (props.bold ? "bold" : "normal")};
   font-style: ${(props) => (props.italic ? "italic" : "normal")};
   text-decoration: ${(props) => (props.underline ? "underline" : "none")};
@@ -53,29 +65,20 @@ const StyledSpan = styled.span<{
     css`
       letter-spacing: 0.3em;
     `}
+  ${({ subtle }) =>
+    subtle &&
+    css`
+      opacity: 0.8;
+    `}
+
+  ${({ horizontalPadding }) =>
+    horizontalPadding &&
+    css`
+      padding-left: ${horizontalPadding};
+      padding-right: ${horizontalPadding};
+    `}
 `;
 
-export const StyledText: FC<StyledTextProps> = ({
-  children,
-  mode,
-  bold,
-  italic,
-  underline,
-  highlight,
-  uppercase,
-  spaced,
-}) => {
-  return (
-    <StyledSpan
-      mode={mode}
-      bold={bold}
-      italic={italic}
-      underline={underline}
-      highlight={highlight}
-      uppercase={uppercase}
-      spaced={spaced}
-    >
-      {children}
-    </StyledSpan>
-  );
+export const StyledText: FC<StyledTextProps> = ({ children, ...rest }) => {
+  return <StyledSpan {...rest}>{children}</StyledSpan>;
 };
