@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from "react";
 import styled, { css } from "styled-components";
-import { PALETTE } from "../theme";
+import { FONT_SIZES, FontSizeType, PALETTE } from "../theme";
 
 type MODES = "light" | "dark" | "gold" | "blue";
 
@@ -14,7 +14,7 @@ export type StyledTextProps = {
   uppercase?: boolean;
   spaced?: boolean;
   subtle?: boolean; // New subtle prop
-  size?: "xs" | "sm" | "md" | "lg";
+  size?: FontSizeType
   horizontalPadding?: string;
 };
 
@@ -28,32 +28,15 @@ const StyledSpan = styled.span<{
   uppercase?: boolean;
   spaced?: boolean;
   subtle?: boolean;
-  size?: "xs" | "sm" | "md" | "lg";
+  size?: FontSizeType
   horizontalPadding?: string;
 }>`
-  ${({ size }) => {
-    if (!size) return "";
-    switch (size) {
-      case "xs":
-        return css`
-          font-size: 0.6rem;
-        `;
-      case "sm":
-        return css`
-          font-size: 0.875rem;
-        `;
-      case "md":
-        return css`
-          font-size: 1.2rem;
-        `;
-      case "lg":
-        return css`
-          font-size: 1.8rem;
-        `;
-      default:
-        return css``;
-    }
-  }};
+${({ size }) => {
+  if (!size) return '';
+  return css`
+    font-size: ${FONT_SIZES[size]};
+  `;
+}};
 
   ${(props) =>
     props.mode &&

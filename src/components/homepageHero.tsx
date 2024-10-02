@@ -1,14 +1,14 @@
 import React, { ReactElement } from "react";
+import styled from "styled-components";
 import GoldBrandLogo from "../assets/goldLogo";
 import { Header, Spacer, Text, Section } from "../ui-library";
 import { RegistrationNav } from "./RegistrationNav";
-import styled from "styled-components";
 import { PALETTE } from "../theme";
 import { RegistrationInfoSlice } from "./registrationInfoSlice";
 import useScreenSize from "../stores/useScreenSize";
 
 export const HomepageHero = (): ReactElement => {
-  const { width, height, isMobile } = useScreenSize();
+  // const { width, height, isMobile } = useScreenSize();
   // need to add mobile prop variations, and components
 
   return (
@@ -33,8 +33,8 @@ export const HomepageHero = (): ReactElement => {
         </Header>
         <Spacer height={"5vh"} />
         <RegistrationInfo>
-          <RegistrationInfoSlice />
           <RegistrationNav />
+          <RegistrationInfoSlice />
         </RegistrationInfo>
       </Section>
     </div>

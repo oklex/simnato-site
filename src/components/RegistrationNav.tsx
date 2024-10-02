@@ -34,7 +34,7 @@ const NavigationWrapper = styled.div`
   top: 25px;
   // matches container
   max-width: 1200px;
-  padding: 20px 15px;
+  /* padding: 20px 20px; */
 `;
 
 const StyledNav = styled.button`
