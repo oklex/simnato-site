@@ -4,11 +4,18 @@ import { rgba } from "polished";
 import { PALETTE } from "../theme";
 import TextLogo from "../assets/textLogo";
 import { Text } from "../ui-library";
+import { useRouter } from "next/router";
 
 export const RegistrationNav = (): ReactElement => {
+  const router = useRouter();
+
+  const navigateToPage = () => {
+    router.push("/registration");
+  };
+
   return (
     <NavigationWrapper id="registration-nav">
-      <StyledNav>
+      <StyledNav onClick={() => navigateToPage()}>
         <NavContent>
           <TextLogo height="1.5rem" />
           <Text mode="gold" size="md" bold uppercase spaced>
