@@ -1,5 +1,12 @@
 import React from "react";
-import { Container, Header, Section, StyledText, Text } from "../ui-library";
+import {
+  Container,
+  Header,
+  Section,
+  Spacer,
+  StyledText,
+  Text,
+} from "../ui-library";
 import styled from "styled-components";
 
 export default function RegistrationPage() {
@@ -9,14 +16,18 @@ export default function RegistrationPage() {
         <Container center>
           <HeaderContainer>
             <Header level={2}>
-              <StyledText bold>
+              <StyledText bold mode="gold">
                 Priority Registration
+              </StyledText>{" "}
+              <StyledText subtle>
+                available
+                <br />
+                exclusively for registered clubs
               </StyledText>
-              <br />
-              exclusively for registered clubs
             </Header>
           </HeaderContainer>
-          <Text>Hello world</Text>
+          <Spacer />
+          <Text subtle>Opens Oct. 29 — until Dec. 1st</Text>
         </Container>
       </Section>
     </div>
