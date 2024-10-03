@@ -50,5 +50,13 @@ export const FONT_SIZES = {
 	sm: '0.85rem',
 	md: '1rem',
 	lg: '1.8rem',
-  };
-export type FontSizeType = keyof typeof FONT_SIZES
+};
+export type FontSizeType = keyof typeof FONT_SIZES;
+
+export const BREAKPOINTS = {
+	xs: '320px',
+	sm: '576px',
+	md: '720px',
+	desktop: '992px',
+	desktopLg: '1200px',
+};
