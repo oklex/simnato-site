@@ -10,6 +10,7 @@ export default function Home() {
 			<RegistrationInfo>
 				<RegistrationInfoSlice />
 			</RegistrationInfo>
+			
 		</div>
 	);
 }
