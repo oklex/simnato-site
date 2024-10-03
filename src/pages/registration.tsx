@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import {
 	Accordion,
 	AccordionItemType,
@@ -13,11 +13,18 @@ import {
 import styled from 'styled-components';
 import StarMarker from '../assets/starMarkers';
 import { PALETTE } from '../theme';
+import { useRouter } from 'next/router';
 
-export default function RegistrationPage() {
+export const RegistrationPage = (): ReactElement => {
+	const router = useRouter();
+	const { query } = router;
+	const accordionKey = query['ackey']
+		? query['ackey'].toLocaleString().toLocaleLowerCase()
+		: undefined;
+
 	const AccordionItems: AccordionItemType[] = [
 		{
-			key: 'club-registration',
+			key: 'club',
 			label: (
 				<Div flex width="100%" justifyContent="between">
 					<div>
@@ -34,7 +41,7 @@ export default function RegistrationPage() {
 			content: <Text mode="dark">lorem ipsum</Text>,
 		},
 		{
-			key: 'club-registration',
+			key: 'priority',
 			label: (
 				<Div flex width="100%" justifyContent="between">
 					<div>
@@ -49,7 +56,7 @@ export default function RegistrationPage() {
 			content: <Text mode="dark">lorem ipsum</Text>,
 		},
 		{
-			key: 'club-registration',
+			key: 'independent',
 			label: (
 				<Div flex width="100%" justifyContent="between">
 					<div>
@@ -93,44 +100,16 @@ export default function RegistrationPage() {
 			<Spacer height={'100px'} />
 
 			<Container center>
-				<Accordion mode="dark" background="glassy" content={AccordionItems} />
+				<Accordion
+					mode="dark"
+					background="glassy"
+					content={AccordionItems}
+					initialOpenedKey={accordionKey}
+				/>
 			</Container>
-			{/* <Container center>
-        <InfoRow>
-          <DottedLine>
-            <Header level={6} mode="dark">
-              <StyledText bold>Club Registration</StyledText>{" "}
-              <StyledText size="md" subtle>
-                (sponsor teachers optional)
-              </StyledText>
-            </Header>
-          </DottedLine>
-          <Text mode="dark">Opening Soon</Text>
-        </InfoRow>
-        <Spacer height={"1rem"} />
-        <InfoRow>
-          <DottedLine>
-            <Header level={6} mode="dark">
-              <StyledText bold>Priority Registration</StyledText> for registered
-              clubs
-            </Header>
-          </DottedLine>
-          <Text mode="dark"> Oct. 28th</Text>
-        </InfoRow>
-        <Spacer height={"1rem"} />
-        <InfoRow>
-          <DottedLine>
-            <Header level={6} mode="dark">
-              <StyledText bold>Independent Registration</StyledText> for any and
-              all delegates
-            </Header>
-          </DottedLine>
-          <Text mode="dark"> Dec. 1st</Text>
-        </InfoRow>
-      </Container> */}
 		</div>
 	);
-}
+};
 
 const SubContainer = styled.div`
 	height: 100%;
@@ -167,3 +146,5 @@ const DottedLine = styled.div`
 		white-space: nowrap; /* Prevents text from wrapping */
 	}
 `;
+
+export default RegistrationPage;

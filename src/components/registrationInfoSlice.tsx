@@ -16,7 +16,7 @@ export const RegistrationInfoSlice = (): ReactElement => {
 						</Header>
 						<Div flex gap="0.5rem">
 							<Text mode="dark">free</Text>
-							<Link href="/registration">see more</Link>
+							<Link href="/registration?ackey=club">see more</Link>
 						</Div>
 					</Div>
 					<Div margin="1rem 0rem">
@@ -30,7 +30,7 @@ export const RegistrationInfoSlice = (): ReactElement => {
 									(overnight $230)
 								</StyledText>
 							</Text>
-							<Link href="/registration">see more</Link>
+							<Link href="/registration?ackey=priority">see more</Link>
 						</Div>
 					</Div>
 					<Div margin="1rem 0rem">
@@ -44,7 +44,7 @@ export const RegistrationInfoSlice = (): ReactElement => {
 									(overnight tba)
 								</StyledText>
 							</Text>
-							<Link href="/registration">see more</Link>
+							<Link href="/registration?ackey=independent">see more</Link>
 						</Div>
 					</Div>
 				</Container>
@@ -84,7 +84,7 @@ export const RegistrationInfoSlice = (): ReactElement => {
 						</Text>
 					</Cell>
 					<Cell widthPercentage={20} align="center">
-						<Link href="/registration">see more</Link>
+						<Link href="/registration?ackey=priority">see more</Link>
 					</Cell>
 				</InnerContainer>
 
@@ -106,7 +106,7 @@ export const RegistrationInfoSlice = (): ReactElement => {
 						</Text>
 					</Cell>
 					<Cell widthPercentage={20} align="center">
-						<Link href="/registration">see more</Link>
+						<Link href="/registration?ackey=independent">see more</Link>
 					</Cell>
 				</InnerContainer>
 			</OuterContainer>
