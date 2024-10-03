@@ -17,7 +17,7 @@ export default function RegistrationPage() {
         <Container center>
           <HeaderContainer>
             <StarMarker type="gold" />
-            <Header level={2}>
+            <Header level={2} mode='dark'>
               <StyledText bold mode="gold">
                 Priority Registration
               </StyledText>{" "}
@@ -29,7 +29,7 @@ export default function RegistrationPage() {
             </Header>
           </HeaderContainer>
           <Spacer />
-          <Text subtle>Opens Oct. 29 — until Dec. 1st</Text>
+          <Text subtle mode='dark'>Opens Oct. 29 — until Dec. 1st</Text>
         </Container>
       </Section>
     </div>

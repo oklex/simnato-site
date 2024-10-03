@@ -3,26 +3,33 @@ import styled, { css } from "styled-components";
 import { rgba } from "polished";
 import { PALETTE } from "../theme";
 import TextLogo from "../assets/textLogo";
-import { Container, Text } from "../ui-library";
+import { Text } from "../ui-library";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-export const RegistrationNav = ({
-  fixed,
-}: {
-  fixed?: boolean;
-}): ReactElement => {
+export const RegistrationNav = (): ReactElement => {
   const router = useRouter();
+  const currentPath = router.pathname;
+  const onLightBackground = currentPath !== "/";
 
   const showNav = () => (
-    <NavigationWrapper id="registration-nav" fixed>
-      <StyledNav>
+    <NavigationWrapper id="registration-nav">
+      <StyledNav shouldBeTransparent={onLightBackground}>
         <NavContent>
           <Link href="/">
-            <TextLogo height="1.5rem" />
+            <TextLogo
+              height="1.4rem"
+              color={onLightBackground ? "black" : "white"}
+            />
           </Link>
           <Link href="/registration">
-            <Text mode="gold" size="md" bold uppercase spaced>
+            <Text
+              mode={onLightBackground ? "dark" : "gold"}
+              size="md"
+              bold={!onLightBackground}
+              uppercase
+              spaced
+            >
               register
             </Text>
           </Link>
@@ -40,31 +47,24 @@ const NavContent = styled.div`
   justify-content: space-between;
 `;
 
-const NavigationWrapper = styled.div<{
-  fixed?: boolean;
-}>`
+const NavigationWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
 
-  ${({ fixed }) =>
-    fixed &&
-    css`
-      position: fixed;
-      z-index: 99;
-      top: 20px;
-    `}
+  position: fixed;
+  z-index: 99;
+  top: 30px;
 `;
 
-const StyledNav = styled.button`
-  padding: 0.7rem 1rem;
-
+const StyledNav = styled.button<{ shouldBeTransparent: boolean }>`
+  padding: 0.6rem 1rem;
   width: calc(100% - 50px);
 
   /* Larger screens, subtract 440px, but max out at 1200px */
   @media (min-width: 769px) {
     max-width: calc(100vw - 440px);
-    max-width: 1000px; /* Ensure it doesn't exceed 1200px */
+    max-width: 950px; /* Ensure it doesn't exceed 1200px */
   }
 
   border: none;
@@ -89,9 +89,15 @@ const StyledNav = styled.button`
     top: 1px;
     bottom: 1px;
     border-radius: 20px;
-    background-color: #313979;
+    background-color: ${({ shouldBeTransparent: lightBackground }) =>
+      lightBackground === true ? "#D4C5A6" : "#313979"};
     z-index: -1;
     transition: 400ms;
+    ${({ shouldBeTransparent }) =>
+      shouldBeTransparent &&
+      css`
+        opacity: 60%;
+      `}
   }
 
   &:hover::before {
