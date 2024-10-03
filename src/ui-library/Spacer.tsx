@@ -23,7 +23,7 @@ const StyledSpacer = styled.div<{
 
 export const Spacer: React.FC<SpacerProps> = ({
   size,
-  height,
+  height = '1rem',
   width,
   inline = false,
 }) => {

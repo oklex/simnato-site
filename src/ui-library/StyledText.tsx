@@ -14,7 +14,7 @@ export type StyledTextProps = {
   uppercase?: boolean;
   spaced?: boolean;
   subtle?: boolean; // New subtle prop
-  size?: FontSizeType
+  size?: FontSizeType;
   horizontalPadding?: string;
 };
 
@@ -28,34 +28,53 @@ const StyledSpan = styled.span<{
   uppercase?: boolean;
   spaced?: boolean;
   subtle?: boolean;
-  size?: FontSizeType
+  size?: FontSizeType;
   horizontalPadding?: string;
 }>`
-${({ size }) => {
-  if (!size) return '';
-  return css`
-    font-size: ${FONT_SIZES[size]};
-  `;
-}};
+  ${({ size }) => {
+    if (!size) return "";
+    return css`
+      font-size: ${FONT_SIZES[size]};
+    `;
+  }};
+  ${({ mode }) => {
+    switch (mode) {
+      case "light":
+        return css`
+          color: ${PALETTE.mono.near_white};
+        `; // White text
+      case "dark":
+        return css`
+          color: ${PALETTE.blue.dark};
+        `; // Dark blue text
+      case "gold":
+        return css`
+          background: linear-gradient(
+            0deg,
+            #9f7622 0%,
+            #d4c5a6 36%,
+            #f2ebdd 50%,
+            #d4c5a6 64%,
+            #9f7622 100%
+          );
+          background-size: 300% 300%;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        `; // Gold text
+      case "blue":
+        return css`
+          color: ${PALETTE.blue.main};
+        `; // Blue text
+      default:
+        return "";
+    }
+  }};
 
-  ${(props) =>
-    props.mode &&
-    `color: ${(() => {
-      switch (props.mode) {
-        case "light":
-          return PALETTE.mono.near_white;
-        case "dark":
-          return PALETTE.blue.dark;
-        case "gold":
-          return PALETTE.gold.main;
-        case "blue":
-          return PALETTE.blue.main;
-        default:
-          return PALETTE.mono.main;
-      }
-    })()};`}
-
-  font-weight: ${(props) => (props.bold ? "bold" : "normal")};
+  ${({ bold }) =>
+    bold &&
+    css`
+      font-weight: 700;
+    `};
   font-style: ${(props) => (props.italic ? "italic" : "normal")};
   text-decoration: ${(props) => (props.underline ? "underline" : "none")};
   background-color: ${(props) => (props.highlight ? "yellow" : "transparent")};

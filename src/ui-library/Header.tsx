@@ -30,8 +30,8 @@ const StyledHeader = styled.div<{
   uppercase?: boolean;
 }>`
   font-family: "Philosopher";
-  ${(props) => {
-    switch (props.mode) {
+  ${({ mode }) => {
+    switch (mode) {
       case "light":
         return css`
           color: ${PALETTE.mono.near_white};
@@ -42,19 +42,26 @@ const StyledHeader = styled.div<{
         `; // Dark blue text
       case "gold":
         return css`
-          color: ${PALETTE.gold.main};
+          background: linear-gradient(
+            0deg,
+            #9f7622 0%,
+            #d4c5a6 36%,
+            #f2ebdd 50%,
+            #d4c5a6 64%,
+            #9f7622 100%
+          );
+          background-size: 300% 300%;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
         `; // Gold text
       case "blue":
         return css`
           color: ${PALETTE.blue.main};
         `; // Blue text
       default:
-        return css`
-          color: ${PALETTE.mono.main};
-        `; // Default color
+        return "";
     }
   }};
-
   // Calculate font size and line-height based on level, with optional override
   font-size: ${(props) => {
     const baseFontSize = (() => {
@@ -106,7 +113,7 @@ const StyledHeader = styled.div<{
       : `${baseFontSize * 1.2}rem`; // Default line-height based on font size
   }};
 
-  font-weight: ${(props) => (props.bold ? 700 : "normal")};
+  font-weight: ${({ bold }) => (bold ? 700 : "normal")};
   text-align: ${(props) => (props.center ? "center" : "left")};
   margin: ${(props) => props.margin || "0"};
   text-transform: ${(props) => (props.uppercase ? "uppercase" : "none")};
