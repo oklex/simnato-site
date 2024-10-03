@@ -10,42 +10,42 @@ export const RegistrationInfoSlice = (): ReactElement => {
 		return (
 			<div id="registration-info">
 				<Container maxWidth={400}>
-					<Div margin="1rem 0rem">
-						<Header level={5} mode="dark">
-							Club Registration
-						</Header>
-						<Div flex gap="0.5rem">
+					<Div flex justifyContent="between" margin="1rem 0rem">
+						<Div gap="0.9rem">
+							<Header level={5} mode="dark">
+								Club Registration
+							</Header>
 							<Text mode="dark">free</Text>
-							<Link href="/registration?ackey=club">see more</Link>
 						</Div>
+						<Link href="/registration?ackey=club">see more</Link>
 					</Div>
-					<Div margin="1rem 0rem">
-						<Header level={5} mode="dark">
-							Priority Registration
-						</Header>
-						<Div flex gap="0.5rem">
+					<Div flex justifyContent="between" margin="1rem 0rem">
+						<Div gap="0.9rem">
+							<Header level={5} mode="dark">
+								Priority Registration
+							</Header>
 							<Text mode="dark">
 								$125{'  '}
 								<StyledText subtle size="sm" horizontalPadding="0.5rem">
 									(overnight $230)
 								</StyledText>
 							</Text>
-							<Link href="/registration?ackey=priority">see more</Link>
 						</Div>
+						<Link href="/registration?ackey=priority">see more</Link>
 					</Div>
-					<Div margin="1rem 0rem">
-						<Header level={5} mode="dark">
-							Independent Registration
-						</Header>
-						<Div flex gap="0.5rem">
+					<Div flex justifyContent="between" margin="1rem 0rem">
+						<Div gap="0.5rem">
+							<Header level={5} mode="dark">
+								Independent Registration
+							</Header>
 							<Text mode="dark">
 								tba
 								<StyledText subtle size="sm" horizontalPadding="0.5rem">
 									(overnight tba)
 								</StyledText>
 							</Text>
-							<Link href="/registration?ackey=independent">see more</Link>
 						</Div>
+						<Link href="/registration?ackey=independent">see more</Link>
 					</Div>
 				</Container>
 			</div>
