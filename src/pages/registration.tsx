@@ -14,8 +14,10 @@ import styled from 'styled-components';
 import StarMarker from '../assets/starMarkers';
 import { PALETTE } from '../theme';
 import { useRouter } from 'next/router';
+import useScreenSize from '../stores/useScreenSize';
 
 export const RegistrationPage = (): ReactElement => {
+	const { width, height, isMobile } = useScreenSize();
 	const router = useRouter();
 	const { query } = router;
 	const accordionKey = query['ackey']
@@ -26,7 +28,12 @@ export const RegistrationPage = (): ReactElement => {
 		{
 			key: 'club',
 			label: (
-				<Div flex width="100%" justifyContent="between">
+				<Div
+					flex
+					flexDirection={isMobile ? 'col' : 'row'}
+					width="100%"
+					justifyContent="between"
+				>
 					<div>
 						<Header level={6} mode="dark">
 							<StyledText bold>Club Registration</StyledText>{' '}
@@ -43,7 +50,12 @@ export const RegistrationPage = (): ReactElement => {
 		{
 			key: 'priority',
 			label: (
-				<Div flex width="100%" justifyContent="between">
+				<Div
+					flex
+					flexDirection={isMobile ? 'col' : 'row'}
+					width="100%"
+					justifyContent="between"
+				>
 					<div>
 						<Header level={6} mode="dark">
 							<StyledText bold>Priority Registration</StyledText>{' '}
@@ -58,7 +70,12 @@ export const RegistrationPage = (): ReactElement => {
 		{
 			key: 'independent',
 			label: (
-				<Div flex width="100%" justifyContent="between">
+				<Div
+					flex
+					flexDirection={isMobile ? 'col' : 'row'}
+					width="100%"
+					justifyContent="between"
+				>
 					<div>
 						<Header level={6} mode="dark">
 							<StyledText bold>Independent Registration</StyledText>{' '}
