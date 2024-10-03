@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import React, { FC, ReactNode } from "react";
-import styled from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { PALETTE, MODES } from "../theme";
 
 type HeaderProps = {
@@ -30,18 +30,28 @@ const StyledHeader = styled.div<{
   uppercase?: boolean;
 }>`
   font-family: "Philosopher";
-  color: ${(props) => {
+  ${(props) => {
     switch (props.mode) {
       case "light":
-        return PALETTE.mono.near_white; // White text
+        return css`
+          color: ${PALETTE.mono.near_white};
+        `; // White text
       case "dark":
-        return PALETTE.blue.dark; // Dark blue text
+        return css`
+          color: ${PALETTE.blue.dark};
+        `; // Dark blue text
       case "gold":
-        return PALETTE.gold.main; // Gold text
+        return css`
+          color: ${PALETTE.gold.main};
+        `; // Gold text
       case "blue":
-        return PALETTE.blue.main; // Blue text
+        return css`
+          color: ${PALETTE.blue.main};
+        `; // Blue text
       default:
-        return PALETTE.mono.main; // Default color
+        return css`
+          color: ${PALETTE.mono.main};
+        `; // Default color
     }
   }};
 
@@ -96,7 +106,7 @@ const StyledHeader = styled.div<{
       : `${baseFontSize * 1.2}rem`; // Default line-height based on font size
   }};
 
-  font-weight: ${(props) => (props.bold ? "bold" : "normal")};
+  font-weight: ${(props) => (props.bold ? 700 : "normal")};
   text-align: ${(props) => (props.center ? "center" : "left")};
   margin: ${(props) => props.margin || "0"};
   text-transform: ${(props) => (props.uppercase ? "uppercase" : "none")};

@@ -5,6 +5,7 @@ import { PALETTE } from "../theme";
 import TextLogo from "../assets/textLogo";
 import { Container, Text } from "../ui-library";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export const RegistrationNav = ({
   fixed,
@@ -13,18 +14,18 @@ export const RegistrationNav = ({
 }): ReactElement => {
   const router = useRouter();
 
-  const navigateToPage = () => {
-    router.push("/registration");
-  };
-
   const showNav = () => (
     <NavigationWrapper id="registration-nav" fixed>
-      <StyledNav onClick={() => navigateToPage()}>
+      <StyledNav>
         <NavContent>
-          <TextLogo height="1.5rem" />
-          <Text mode="gold" size="md" bold uppercase spaced>
-            register
-          </Text>
+          <Link href="/">
+            <TextLogo height="1.5rem" />
+          </Link>
+          <Link href="/registration">
+            <Text mode="gold" size="md" bold uppercase spaced>
+              register
+            </Text>
+          </Link>
         </NavContent>
       </StyledNav>
     </NavigationWrapper>

@@ -78,7 +78,7 @@ export const Section: FC<SectionProps> = ({
       height={height}
       maxHeight={maxHeight}
     >
-      <Container center={center}>{children}</Container>
+      {children}
     </FullWidthSection>
   );
 };
