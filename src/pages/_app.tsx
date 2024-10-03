@@ -1,4 +1,3 @@
-import { relative } from "path";
 import { RegistrationNav } from "../components/RegistrationNav";
 import "../index.css";
 
