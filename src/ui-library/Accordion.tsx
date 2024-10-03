@@ -19,6 +19,15 @@ type AccordionProps = {
 	content: AccordionItemType[];
 };
 
+const ChevronIcon = styled.div<{ open: boolean }>`
+	display: inline-block;
+	margin-left: 10px;
+	transition: transform 0.2s ease;
+	transform: rotate(${({ open }) => (open ? '180deg' : '0deg')});
+	font-size: 1.1rem;
+	opacity: ${({ open }) => (open ? 1 : 0.5)};
+`;
+
 // Styled component for AccordionWrapper
 const AccordionWrapper = styled.div<{
 	background: 'glassy' | 'transparent';
@@ -59,6 +68,7 @@ const AccordionButton = styled(DisclosureButton)<{ mode: MODES }>`
 	color: inherit;
 	padding: 20px;
 	width: 100%;
+	display: flex;
 	${({ mode }) => {
 		switch (mode) {
 			case 'light':
@@ -126,8 +136,15 @@ export const Accordion = ({
 					as="div"
 					defaultOpen={item.key === initialOpenedKey} // Open the selected item initially
 				>
-					<AccordionButton mode={mode}>{item.label}</AccordionButton>
-					<AccordionPanel mode={mode}>{item.content}</AccordionPanel>
+					{({ open }) => (
+						<>
+							<AccordionButton mode={mode}>
+								{item.label}
+								<ChevronIcon open={open}>▼</ChevronIcon>
+							</AccordionButton>
+							<AccordionPanel mode={mode}>{item.content}</AccordionPanel>{' '}
+						</>
+					)}
 				</Disclosure>
 			))}
 		</AccordionWrapper>
