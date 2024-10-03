@@ -45,7 +45,7 @@ const StyledSpan = styled.span<{
         `; // White text
       case "dark":
         return css`
-          color: ${PALETTE.blue.dark};
+          color: ${PALETTE.mono.dark};
         `; // Dark blue text
       case "gold":
         return css`

@@ -12,7 +12,34 @@ type SectionProps = {
   center?: boolean;
 };
 
+export const Section: FC<SectionProps> = ({
+  children,
+  mode = "light",
+  gradient = undefined,
+  height = "auto",
+  maxHeight = undefined,
+  center = false,
+}) => {
+  return (
+    <OutterWrapper>
+      <FullWidthSection
+        id="section"
+        gradient={gradient}
+        height={height}
+        maxHeight={maxHeight}
+      >
+        {children}
+      </FullWidthSection>
+    </OutterWrapper>
+  );
+};
+
+const OutterWrapper = styled.div`
+  padding: 0.5rem;
+`;
+
 const FullWidthSection = styled.section<Omit<SectionProps, "children">>`
+  border-radius: 20px;
   ${({ height }) =>
     height &&
     css`
@@ -23,21 +50,6 @@ const FullWidthSection = styled.section<Omit<SectionProps, "children">>`
     css`
       max-height: ${maxHeight};
     `}
-	background-color: ${(props) => {
-    switch (props.mode) {
-      case "light":
-        return PALETTE.mono.near_white;
-      case "dark":
-        return PALETTE.blue.dark;
-      case "gold":
-        return PALETTE.gold.main;
-      case "blue":
-        return PALETTE.blue.main;
-      default:
-        return PALETTE.mono.main;
-    }
-  }};
-
   ${(props) =>
     props.gradient &&
     `
@@ -61,24 +73,3 @@ const FullWidthSection = styled.section<Omit<SectionProps, "children">>`
     );
   `}
 `;
-
-export const Section: FC<SectionProps> = ({
-  children,
-  mode = "light",
-  gradient = undefined,
-  height = "auto",
-  maxHeight = undefined,
-  center = false,
-}) => {
-  return (
-    <FullWidthSection
-      id="section"
-      mode={mode}
-      gradient={gradient}
-      height={height}
-      maxHeight={maxHeight}
-    >
-      {children}
-    </FullWidthSection>
-  );
-};

@@ -16,7 +16,7 @@ export const HomepageHero = (): ReactElement => {
       <CornerLabel>
         <Text>EST. 2024</Text>
       </CornerLabel>
-      <Section center height="calc(100vh - 30px)" mode="dark" gradient={360}>
+      <Section center height="calc(100vh - 25px)" mode="dark" gradient={360}>
         <Spacer height={"18vh"} />
         <GoldBrandLogo scale="16rem" center padding="25px 25px 15px" />
         <Header level={1} sizeRemOverride={5.5} mode="gold" center bold>
@@ -45,12 +45,12 @@ export const HomepageHero = (): ReactElement => {
 
 const CornerLabel = styled.div`
   position: absolute;
-  top: 30px;
-  left: 30px;
+  top: 45px;
+  left: 45px;
 
   & > * {
     color: ${PALETTE.blue.light};
-    letter-spacing: 1.46em;
+    letter-spacing: 1em;
     font-size: 0.6rem;
   }
 `;
