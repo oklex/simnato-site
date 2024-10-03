@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import { StyledText, StyledTextProps } from "./StyledText"; // Import the existing StyledText
 import { FONT_SIZES, FontSizeType } from "../theme";
 
-type TextProps = StyledTextProps & {
+export type TextProps = StyledTextProps & {
   size?: FontSizeType
   margin?: string;
   align?: "left" | "center" | "right";

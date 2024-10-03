@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 import styled from "styled-components";
-import { StyledText, Text } from "../ui-library";
+import { Link, StyledText, Text } from "../ui-library";
 
 export const RegistrationInfoSlice = (): ReactElement => {
   return (
@@ -29,7 +29,9 @@ export const RegistrationInfoSlice = (): ReactElement => {
               (overnight $230)
             </StyledText>
           </Cell>
-          <Cell widthPercentage={20} align="center">see more</Cell>
+          <Cell widthPercentage={20} align="center">
+            <Link href="/registration">see more</Link>
+          </Cell>
         </InnerContainer>
 
         <InnerContainer>
@@ -45,7 +47,9 @@ export const RegistrationInfoSlice = (): ReactElement => {
               (overnight tba)
             </StyledText>
           </Cell>
-          <Cell widthPercentage={20} align="center">see more</Cell>
+          <Cell widthPercentage={20} align="center">
+            <Link href="/registration">see more</Link>
+          </Cell>
         </InnerContainer>
       </OuterContainer>
     </div>
