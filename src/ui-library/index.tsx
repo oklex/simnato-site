@@ -1,3 +1,5 @@
+export { Accordion } from './Accordion';
+export type { AccordionItemType } from './Accordion';
 export { Button } from './Button';
 export { Container } from './Container';
 export { Div } from './Generics';
