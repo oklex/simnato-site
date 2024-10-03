@@ -1,14 +1,64 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
-import { Link, StyledText, Text } from '../ui-library';
+import { Container, Div, Header, Link, StyledText, Text } from '../ui-library';
+import useScreenSize from '../stores/useScreenSize';
 
 export const RegistrationInfoSlice = (): ReactElement => {
+	const { width, height, isMobile } = useScreenSize();
+
+	if (isMobile)
+		return (
+			<div id="registration-info">
+				<Container maxWidth={400}>
+					<Div margin="1rem 0rem">
+						<Header level={5} mode="dark">
+							Club Registration
+						</Header>
+						<Div flex gap="0.5rem">
+							<Text mode="dark">free</Text>
+							<Link href="/registration">see more</Link>
+						</Div>
+					</Div>
+					<Div margin="1rem 0rem">
+						<Header level={5} mode="dark">
+							Priority Registration
+						</Header>
+						<Div flex gap="0.5rem">
+							<Text mode="dark">
+								$125{'  '}
+								<StyledText subtle size="sm" horizontalPadding="0.5rem">
+									(overnight $230)
+								</StyledText>
+							</Text>
+							<Link href="/registration">see more</Link>
+						</Div>
+					</Div>
+					<Div margin="1rem 0rem">
+						<Header level={5} mode="dark">
+							Independent Registration
+						</Header>
+						<Div flex gap="0.5rem">
+							<Text mode="dark">
+								tba
+								<StyledText subtle size="sm" horizontalPadding="0.5rem">
+									(overnight tba)
+								</StyledText>
+							</Text>
+							<Link href="/registration">see more</Link>
+						</Div>
+					</Div>
+				</Container>
+			</div>
+		);
+
 	return (
 		<div id="registration-info">
 			<OuterContainer>
 				<InnerContainer>
 					<Cell align="right" widthPercentage={20}>
-						<Text mode="dark">club registration</Text>
+						<Header level={6} mode="dark">
+							Club Registration
+						</Header>
 					</Cell>
 					<Cell align="left" padding="0 0 0 10%">
 						<Text mode="dark">free</Text>
@@ -18,7 +68,9 @@ export const RegistrationInfoSlice = (): ReactElement => {
 
 				<InnerContainer>
 					<Cell align="right" widthPercentage={20}>
-						<Text mode="dark">priority registration</Text>
+						<Header level={6} mode="dark">
+							Priority Registration
+						</Header>
 						<Text mode="dark" size="sm" subtle>
 							Oct. 28 - Dec 1st
 						</Text>
@@ -38,7 +90,9 @@ export const RegistrationInfoSlice = (): ReactElement => {
 
 				<InnerContainer>
 					<Cell align="right" widthPercentage={20}>
-						<Text mode="dark">late registration</Text>
+						<Header level={6} mode="dark">
+							Independent Registration
+						</Header>
 						<Text mode="dark" size="sm" subtle>
 							Dec. 2nd - tba
 						</Text>
