@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode, useState } from 'react';
+import { ReactElement, ReactNode } from 'react';
 import {
 	Disclosure,
 	DisclosureButton,
@@ -117,24 +117,17 @@ export const Accordion = ({
 	background = 'transparent',
 	content,
 }: AccordionProps): ReactElement => {
-	const [openKey, setOpenKey] = useState<string | null>(
-		initialOpenedKey ?? null
-	);
-
-	const handleToggle = (key: string) => {
-		setOpenKey(openKey === key ? null : key);
-	};
-
 	return (
 		<AccordionWrapper background={background} mode={mode}>
 			{content.map((item) => (
-				<Disclosure key={item.key} as="div">
-					<AccordionButton mode={mode} onClick={() => handleToggle(item.key)}>
-						{item.label}
-					</AccordionButton>
-					{openKey === item.key && (
-						<AccordionPanel mode={mode}>{item.content}</AccordionPanel>
-					)}
+				<Disclosure
+					id={item.key}
+					key={item.key}
+					as="div"
+					defaultOpen={item.key === initialOpenedKey} // Open the selected item initially
+				>
+					<AccordionButton mode={mode}>{item.label}</AccordionButton>
+					<AccordionPanel mode={mode}>{item.content}</AccordionPanel>
 				</Disclosure>
 			))}
 		</AccordionWrapper>
