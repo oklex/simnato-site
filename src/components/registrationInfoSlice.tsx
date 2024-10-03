@@ -20,7 +20,7 @@ export const RegistrationInfoSlice = (): ReactElement => {
           <Cell align="right" widthPercentage={20}>
             <Text mode="light">priority registration</Text>
             <Text mode="light" size="sm" subtle>
-              Oct. 29 - Dec 1st
+              Oct. 28 - Dec 1st
             </Text>
           </Cell>
           <Cell align="left" padding="0 0 0 10%">
