@@ -76,7 +76,6 @@ const StyledNav = styled.button`
     ${PALETTE.gold.main},
     ${rgba(PALETTE.gold.light, 0.1)}
   );
-  transition: 200ms;
   align-items: center;
 
   overflow: hidden;
