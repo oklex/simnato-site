@@ -16,7 +16,7 @@ export const HomepageHero = (): ReactElement => {
 				<Text>EST. 2024</Text>
 			</CornerLabel>
 			<Section center mode="dark" gradient={360}>
-				<Spacer height={isMobile ? '10vh' :'15vh'} />
+				<Spacer height={isMobile ? '8vh' :'15vh'} />
 				<GoldBrandLogo scale="16rem" center padding="25px 25px 15px" />
 				<Spacer height={isMobile ? '25px' : 0} />
 				<Header
