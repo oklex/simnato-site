@@ -4,9 +4,9 @@ import styled, { css } from 'styled-components';
 import { MODES, PALETTE } from '../theme';
 
 type ButtonProps = {
-	children: React.ReactNode;
+	children?: React.ReactNode;
 	mode: MODES;
-	variant: 'primary' | 'outline' | 'light';
+	variant?: 'primary' | 'outline' | 'light' | 'text';
 	href?: string;
 	onClick?: (e: any) => void;
 };
@@ -22,7 +22,7 @@ export const Button: React.FC<ButtonProps> = ({
 		return (
 			<Link href={href} passHref>
 				<StyledButton mode={mode} variant={variant} as="a">
-					{children}
+					{children ?? ''}
 				</StyledButton>
 			</Link>
 		);
@@ -30,14 +30,14 @@ export const Button: React.FC<ButtonProps> = ({
 
 	return (
 		<StyledButton mode={mode} variant={variant} onClick={onClick}>
-			{children}
+			{children && children}
 		</StyledButton>
 	);
 };
 
 const StyledButton = styled.button<{
 	mode: MODES;
-	variant: 'primary' | 'outline' | 'light';
+	variant: 'primary' | 'outline' | 'light' | 'text';
 }>`
 	padding: 0.5rem 1.2rem;
 	border-radius: 5px;
@@ -96,6 +96,22 @@ const StyledButton = styled.button<{
 							? PALETTE.gold.main
 							: PALETTE.blue.main};
 						color: ${PALETTE.mono.near_white};
+					}
+				`;
+			case 'text':
+				return css`
+					background-color: transparent;
+					color: ${props.mode === 'light' || props.mode === 'gold'
+						? PALETTE.gold.main
+						: PALETTE.blue.main};
+					border: none;
+					padding: 0; /* No padding for text buttons */
+
+					&:hover {
+						color: ${props.mode === 'light' || props.mode === 'gold'
+							? PALETTE.gold.dark
+							: PALETTE.blue.dark};
+						text-decoration: underline; /* Text button hover effect */
 					}
 				`;
 		}

@@ -8,7 +8,7 @@ const BrandingPage = () => {
 			<h1>Button Variations</h1>
 			<Section>
 				<h2>Primary Buttons</h2>
-				<Button mode="light" variant="primary">
+				<Button mode="light" variant="primary" >
 					Primary Light
 				</Button>
 				<Button mode="dark" variant="primary">
@@ -40,7 +40,7 @@ const BrandingPage = () => {
 
 			<Section>
 				<h2>Light Buttons</h2>
-				<Button mode="light" variant="light">
+				<Button mode="light" variant="light"> 
 					Light Light
 				</Button>
 				<Button mode="dark" variant="light">
@@ -50,6 +50,21 @@ const BrandingPage = () => {
 					Light Gold
 				</Button>
 				<Button mode="blue" variant="light">
+					Light Blue
+				</Button>
+			</Section>
+			<Section>
+				<h2>Light Buttons</h2>
+				<Button mode="light" variant="text" >
+					Light Light
+				</Button>
+				<Button mode="dark" variant="text" >
+					Light Dark
+				</Button>
+				<Button mode="gold" variant="text" >  
+					Light Gold
+				</Button>
+				<Button mode="blue" variant="text" >
 					Light Blue
 				</Button>
 			</Section>
