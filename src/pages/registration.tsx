@@ -8,6 +8,7 @@ import {
   Text,
 } from "../ui-library";
 import styled from "styled-components";
+import StarMarker from "../assets/starMarkers";
 
 export default function RegistrationPage() {
   return (
@@ -15,6 +16,7 @@ export default function RegistrationPage() {
       <Section mode="dark" height={"calc(100vh - 30px)"}>
         <Container center>
           <HeaderContainer>
+            <StarMarker type="gold" />
             <Header level={2}>
               <StyledText bold mode="gold">
                 Priority Registration
