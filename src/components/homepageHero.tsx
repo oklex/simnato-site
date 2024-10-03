@@ -16,7 +16,7 @@ export const HomepageHero = (): ReactElement => {
 				<Text>EST. 2024</Text>
 			</CornerLabel>
 			<Section center mode="dark" gradient={360}>
-				<Spacer height={'15vh'} />
+				<Spacer height={isMobile ? '10vh' :'15vh'} />
 				<GoldBrandLogo scale="16rem" center padding="25px 25px 15px" />
 				<Spacer height={isMobile ? '25px' : 0} />
 				<Header
@@ -41,7 +41,7 @@ export const HomepageHero = (): ReactElement => {
 				<Text subtle align="center">
 					Jan 24 - 26 | Richmond, BC
 				</Text>
-				<Spacer height={'15vh'} />
+				<Spacer height={isMobile ? '5vh' : '15vh'} />
 			</Section>
 		</div>
 	);
