@@ -9,7 +9,6 @@ import useScreenSize from '../stores/useScreenSize';
 
 export const HomepageHero = (): ReactElement => {
 	const { width, height, isMobile } = useScreenSize();
-	// need to add mobile prop variations, and components
 
 	return (
 		<div id="homepage-hero" style={{ position: 'relative' }}>
