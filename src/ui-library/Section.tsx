@@ -65,7 +65,7 @@ const FullWidthSection = styled.section<Omit<SectionProps, "children">>`
         props.mode === "light"
           ? GRADIENTS.light
           : props.mode === "dark"
-          ? GRADIENTS.main
+          ? GRADIENTS.dark
           : props.mode === "gold"
           ? GRADIENTS.near_white
           : GRADIENTS.main
