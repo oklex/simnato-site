@@ -1,4 +1,4 @@
-export type MODES = "light" | "dark" | "gold" | "blue";
+export type MODES = "light" | "dark" | "silver" | "gold" | "blue";
 
 type ColorGroupType = {
   dark: string;
@@ -24,8 +24,8 @@ export const PALETTE: Record<string, ColorGroupType> = {
   },
   silver: {
     dark: "#999999",
-    main: "#EEF0F5",
-    light: "#F5F5F5",
+    main: "#DFE1E6",
+    light: "#EEF0F5",
     near_white: "#FFFFFF",
   },
   gold: {

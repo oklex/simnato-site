@@ -40,6 +40,10 @@ const StyledHeader = styled.div<{
         return css`
           color: ${PALETTE.mono.dark};
         `; // Dark blue text
+      case "silver":
+        return css`
+          color: ${PALETTE.silver.main};
+        `;
       case "gold":
         return css`
           background: linear-gradient(

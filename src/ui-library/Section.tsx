@@ -24,7 +24,6 @@ export const Section: FC<SectionProps> = ({
     <OutterWrapper>
       <FullWidthSection
         id="section"
-        mode={mode}
         gradient={gradient}
         height={height}
         maxHeight={maxHeight}
@@ -52,30 +51,25 @@ const FullWidthSection = styled.section<Omit<SectionProps, "children">>`
       max-height: ${maxHeight};
     `}
   ${(props) =>
-    !!props.gradient
-      ? css`
-          background: linear-gradient(
-            ${typeof props.gradient === "number"
-              ? `${props.gradient}deg`
-              : props.gradient === "vertical"
-              ? "to bottom"
-              : "to right"},
-            ${props.mode === "light"
-              ? GRADIENTS.light
-              : props.mode === "dark"
-              ? GRADIENTS.dark
-              : props.mode === "gold"
-              ? GRADIENTS.near_white
-              : GRADIENTS.main}
-          );
-        `
-      : css`
-          background-color: ${props.mode === "light"
-            ? PALETTE.mono.light
-            : props.mode === "dark"
-            ? PALETTE.mono.dark
-            : props.mode === "gold"
-            ? PALETTE.gold.light
-            : PALETTE.blue.dark};
-        `}
+    props.gradient &&
+    `
+    background: linear-gradient(
+      ${
+        typeof props.gradient === "number"
+          ? `${props.gradient}deg`
+          : props.gradient === "vertical"
+          ? "to bottom"
+          : "to right"
+      },
+      ${
+        props.mode === "light"
+          ? GRADIENTS.light
+          : props.mode === "dark"
+          ? GRADIENTS.dark
+          : props.mode === "gold"
+          ? GRADIENTS.near_white
+          : GRADIENTS.main
+      }
+    );
+  `}
 `;

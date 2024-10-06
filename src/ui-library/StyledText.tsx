@@ -1,8 +1,6 @@
 import React, { FC, ReactNode } from "react";
 import styled, { css } from "styled-components";
-import { FONT_SIZES, FontSizeType, PALETTE } from "../theme";
-
-type MODES = "light" | "dark" | "gold" | "blue";
+import { FONT_SIZES, FontSizeType, MODES, PALETTE } from "../theme";
 
 export type StyledTextProps = {
   children: ReactNode;
@@ -47,6 +45,10 @@ const StyledSpan = styled.span<{
         return css`
           color: ${PALETTE.mono.dark};
         `; // Dark blue text
+      case "silver":
+        return css`
+          color: ${PALETTE.silver.main};
+        `;
       case "gold":
         return css`
           background: linear-gradient(

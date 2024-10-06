@@ -6,6 +6,7 @@ import { RegistrationNav } from './RegistrationNav';
 import { PALETTE } from '../theme';
 import { RegistrationInfoSlice } from './registrationInfoSlice';
 import useScreenSize from '../stores/useScreenSize';
+import SilverBrandLogo from '../assets/silverLogo';
 
 export const HomepageHero = (): ReactElement => {
 	const { width, height, isMobile } = useScreenSize();
@@ -17,12 +18,12 @@ export const HomepageHero = (): ReactElement => {
 			</CornerLabel>
 			<Section center mode="dark" gradient={360}>
 				<Spacer height={isMobile ? '8vh' :'15vh'} />
-				<GoldBrandLogo scale="16rem" center padding="25px 25px 15px" />
+				<SilverBrandLogo scale="16rem" center padding="25px 25px 15px" />
 				<Spacer height={isMobile ? '25px' : 0} />
 				<Header
 					level={1}
 					sizeRemOverride={isMobile ? 3.2 : 5.5}
-					mode="gold"
+					mode="silver"
 					center
 					bold
 				>
@@ -32,7 +33,7 @@ export const HomepageHero = (): ReactElement => {
 					margin={`${isMobile ? '0px' : '-10px'} 0 auto`}
 					level={6}
 					sizeRemOverride={isMobile ? 1.9 : 2}
-					mode="light"
+					mode="silver"
 					center
 				>
 					Model UN Crisis Conference
