@@ -95,9 +95,9 @@ export const RegistrationPage = (): ReactElement => {
 				<Container center>
 					<SubContainer>
 						<Spacer height={'30vh'} />
-						<StarMarker type="gold" />
+						<StarMarker type="dark" />
 						<Header level={2} mode="dark">
-							<StyledText bold mode="gold">
+							<StyledText bold mode="dark">
 								Priority Registration
 							</StyledText>{' '}
 							<StyledText subtle>

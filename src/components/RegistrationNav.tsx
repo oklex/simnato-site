@@ -24,9 +24,8 @@ export const RegistrationNav = (): ReactElement => {
           </Link>
           <Link href="/registration">
             <Text
-              mode={onLightBackground ? "dark" : "gold"}
+              mode={onLightBackground ? "dark" : "silver"}
               size="md"
-              bold={!onLightBackground}
               uppercase
               spaced
             >
@@ -74,8 +73,13 @@ const StyledNav = styled.button<{ shouldBeTransparent: boolean }>`
   border-radius: 20px;
   background: linear-gradient(
     to right,
-    ${PALETTE.gold.main},
-    ${rgba(PALETTE.gold.light, 0.1)}
+    ${({ shouldBeTransparent }) =>
+      shouldBeTransparent ? PALETTE.silver.main : PALETTE.gold.main},
+    ${({ shouldBeTransparent }) =>
+      rgba(
+        shouldBeTransparent ? PALETTE.blue.dark : PALETTE.gold.light,
+        0.3
+      )}
   );
   align-items: center;
 
@@ -90,9 +94,9 @@ const StyledNav = styled.button<{ shouldBeTransparent: boolean }>`
     bottom: 1px;
     border-radius: 20px;
     background-color: ${({ shouldBeTransparent: lightBackground }) =>
-      lightBackground === true ? "#D4C5A6" : "#313979"};
+      lightBackground === true ? PALETTE.silver.main : "#313979"};
     z-index: -1;
-    transition: 400ms;
+    transition: 200ms;
     ${({ shouldBeTransparent }) =>
       shouldBeTransparent &&
       css`
