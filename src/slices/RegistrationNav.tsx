@@ -9,6 +9,7 @@ import Link from "next/link";
 
 export const RegistrationNav = (): ReactElement => {
   const router = useRouter();
+  // use navTheme provider
   const currentPath = router.pathname;
   const onLightBackground = currentPath !== "/";
 
