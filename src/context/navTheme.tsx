@@ -89,8 +89,9 @@ const NavThemeProvider = ({ children }) => {
 		return positions;
 	};
 
-	const initializeRef = (key: string, ref: Ref<HTMLDivElement>) =>
-		(refsDirectory.current[key] = ref);
+	const initializeRef = (key: string, ref: Ref<HTMLDivElement>) => {
+		refsDirectory.current[key] = ref;
+	};
 
 	return (
 		<NavThemeContext.Provider value={{ theme, initializeRef }}>
