@@ -11,8 +11,6 @@ import { Text } from '@ui-library';
 import { PALETTE } from '../theme';
 
 export const Navigation = ({ sticky }: { sticky?: boolean }): ReactElement => {
-	const router = useRouter();
-	// use navTheme provider
 	const { theme } = useContext(NavThemeContext);
 	const onLightBackground = theme === 'light';
 
