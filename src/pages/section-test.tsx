@@ -10,7 +10,7 @@ const SectionTestPage = (): ReactElement => {
 			</DarkSection>
 			<Filler></Filler>
 			<DarkSection id={'part 2'}>
-				<Filler size={75}></Filler>
+				<Filler size={350}></Filler>
 			</DarkSection>
 			<DarkSection id={'part 3'}>
 				<Filler></Filler>
