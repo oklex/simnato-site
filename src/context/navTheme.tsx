@@ -61,6 +61,7 @@ const NavThemeProvider = ({ children }) => {
 			}
 		};
 
+		handleScroll()
 		window.addEventListener('scroll', handleScroll);
 		return () => {
 			window.removeEventListener('scroll', handleScroll);
