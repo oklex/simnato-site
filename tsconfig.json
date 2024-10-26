@@ -17,7 +17,7 @@
       "@src/*": ["src/*"],
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
-      "@context/*": ["context/*"],
+      "@context/*": ["src/context/*"],
       "@slices/*": ["src/slices/*"],
       "@stores/*": ["src/stores/*"],
       "@ui-library": ["src/ui-library"],
