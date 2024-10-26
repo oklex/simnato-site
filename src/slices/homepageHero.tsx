@@ -1,10 +1,10 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 import GoldBrandLogo from '../assets/goldLogo';
-import { Header, Spacer, Text, Section } from '../ui-library';
-import { RegistrationNav } from './RegistrationNav';
+import { Header, Spacer, Text, Section } from '@ui-library';
+import { RegistrationNav } from '../slices/RegistrationNav';
 import { PALETTE } from '../theme';
-import { RegistrationInfoSlice } from './registrationInfoSlice';
+import { RegistrationInfoSlice } from '../slices/registrationInfoSlice';
 import useScreenSize from '../stores/useScreenSize';
 import SilverBrandLogo from '../assets/silverLogo';
 

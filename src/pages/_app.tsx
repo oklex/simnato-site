@@ -1,4 +1,4 @@
-import { RegistrationNav } from "../components/RegistrationNav";
+import { RegistrationNav } from "../slices/RegistrationNav";
 import "../index.css";
 
 function MyApp({ Component, pageProps }) {

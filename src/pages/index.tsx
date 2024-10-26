@@ -1,7 +1,7 @@
 import React from 'react';
-import { HomepageHero } from '../components/homepageHero';
 import styled from 'styled-components';
-import { RegistrationInfoSlice } from '../components/registrationInfoSlice';
+import { HomepageHero } from '../slices/homepageHero';
+import { RegistrationInfoSlice } from '../slices/registrationInfoSlice';
 
 export default function Home() {
 	return (
