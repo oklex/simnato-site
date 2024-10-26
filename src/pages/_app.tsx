@@ -1,11 +1,14 @@
-import { RegistrationNav } from "../slices/RegistrationNav";
+import { RegistrationNav } from "@slices/RegistrationNav";
+import { NavThemeProvider } from "@context/navTheme";
 import "../index.css";
 
 function MyApp({ Component, pageProps }) {
   return (
     <div style={{ position: "relative" }}>
-      <RegistrationNav />
-      <Component {...pageProps} />
+      <NavThemeProvider>
+        <RegistrationNav />
+        <Component {...pageProps} />
+      </NavThemeProvider>
     </div>
   );
 }

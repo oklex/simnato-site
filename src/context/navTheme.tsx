@@ -1,5 +1,5 @@
-import { stringify } from "querystring";
 import { createContext, Ref, useEffect, useRef } from "react";
+import { useRouter } from "next/router";
 
 interface NavTheme {
   theme: "light" | "dark";
@@ -26,10 +26,22 @@ const NavThemeContext = createContext<NavTheme>(defaultNavTheme);
 import { useState } from "react";
 
 const NavThemeProvider = ({ children }) => {
+  const router = useRouter(); // Use Next.js router
+
   const [theme, setTheme] = useState<ThemeType>("light");
   const [sectionsPosition, setSectionsPosition] =
     useState<SectionsPositionType>({});
   const refsDirectory = useRef<Record<string, Ref<HTMLDivElement>>>({});
+
+  useEffect(() => {
+    const handleRouteChange = () => {
+      setSectionsPosition({});
+      refsDirectory.current = {};
+    };
+
+    router.events.on("routeChangeStart", handleRouteChange);
+    return () => router.events.off("routeChangeStart", handleRouteChange);
+  }, [router]);
 
   useEffect(() => {
     const handleScroll = () => {
