@@ -43,6 +43,7 @@ export const PALETTE: Record<string, ColorGroupType> = {
 };
 
 export const COLORS: Record<string, string> = {
+  background: "#eef0f5",
   baseText: "#787C8A",
   darkText: "#0B1957",
   lightText: "#F1F1F1",

@@ -11,7 +11,7 @@ import styled from "styled-components";
 
 import { NavThemeContext } from "@context/navTheme";
 import { useScrollPosition } from "@stores/useScrollPosition";
-import { GRADIENTS } from "@src/theme";
+import { COLORS, GRADIENTS } from "@src/theme";
 import { Div } from "@src/ui-library";
 
 type DarkSectionType = {
@@ -82,12 +82,10 @@ const MaskBottom = styled.div`
   top: calc(100vh - 20px);
   left: 0px;
   z-index: 9;
-  /* height: 20px; */
 
   max-height: calc(100vh - 1.6rem);
   pointer-events: none;
   overflow-y: hidden;
-  /* background-color: white; */
 `;
 
 const CustomSection = styled.div`
@@ -96,14 +94,12 @@ const CustomSection = styled.div`
 
 const PaddingBar = styled.div`
   height: 20px;
-  background-color: white;
+  background-color: ${COLORS.background};
 `;
 const CornerSvg = ({
   direction,
-  fill,
 }: {
   direction: "top-left" | "top-right" | "bottom-left" | "bottom-right";
-  fill?: string;
 }): ReactElement => {
   const rotation = (() => {
     switch (direction) {
@@ -124,7 +120,7 @@ const CornerSvg = ({
       width={20}
       height={20}
       viewBox="0 0 20 20"
-      fill={fill ?? "#fff"}
+      fill={COLORS.background}
       transform={`rotate(${rotation}, 0, 0)`}
     >
       <path d="M-0.000487161 -0.000976562H19.9995C4.11936 0.0123475 -0.00296934 4.64167 -0.000487161 19.999V-0.000976562Z" />
