@@ -24,26 +24,17 @@ export const DarkSection = ({
   children,
 }: DarkSectionType): ReactElement => {
   const { initializeRef } = useContext(NavThemeContext);
-  const trackRef = useRef<HTMLDivElement | null>(null);
   const paddingTopRef = useRef<HTMLDivElement | null>(null);
   const paddingBottomRef = useRef<HTMLDivElement | null>(null);
   const [trackHeight, setTrackHeight] = useState<number | null>(null);
 
   const trackRefCallback = (instance: HTMLDivElement | null) => {
-    if (instance) {
-      initializeRef(id, { current: instance });
-      trackRef.current = instance;
-    }
+    if (instance) initializeRef(id, { current: instance });
   };
 
   const negativeMargin =
     (paddingTopRef.current?.clientHeight ?? 0) +
     (paddingBottomRef.current?.clientHeight ?? 0);
-
-  useEffect(() => {
-    if (trackRef.current)
-      setTrackHeight(trackRef.current.scrollHeight);
-  }, [children]);
 
   return (
     <TrackWrapper
