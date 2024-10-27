@@ -25,7 +25,8 @@ export const DarkSection = ({
 }: DarkSectionType): ReactElement => {
   const { initializeRef } = useContext(NavThemeContext);
   const trackRef = useRef<HTMLDivElement | null>(null);
-  const [screenWidth, setScreenWidth] = useState<number>();
+  const paddingTopRef = useRef<HTMLDivElement | null>(null);
+  const paddingBottomRef = useRef<HTMLDivElement | null>(null);
   const [trackHeight, setTrackHeight] = useState<number | null>(null);
 
   const trackRefCallback = (instance: HTMLDivElement | null) => {
@@ -35,28 +36,39 @@ export const DarkSection = ({
     }
   };
 
+  const negativeMargin =
+    (paddingTopRef.current?.clientHeight ?? 0) +
+    (paddingBottomRef.current?.clientHeight ?? 0);
+
   useEffect(() => {
-    if (trackRef.current) setTrackHeight(trackRef.current.scrollHeight);
-    setScreenWidth(window.innerWidth);
+    if (trackRef.current)
+      setTrackHeight(trackRef.current.scrollHeight);
   }, [children]);
 
   return (
     <TrackWrapper
-      id="track-wrapper"
+      className="track-wrapper"
       ref={trackRefCallback}
       height={trackHeight}
     >
-      <MaskTop id="mask-top">
+      <MaskTop className="mask-top" ref={paddingTopRef}>
         <PaddingBar />
         <Div flex justifyContent="between">
           <CornerSvg direction="top-left" />
           <CornerSvg direction="top-right" />
         </Div>
       </MaskTop>
-      <MaskBottom id="mask-bottom">
+      <MaskBottom className="mask-bottom" ref={paddingBottomRef}>
+        <Div flex justifyContent="between">
+          <CornerSvg direction="bottom-left" />
+          <CornerSvg direction="bottom-right" />
+        </Div>
         <PaddingBar />
       </MaskBottom>
-      <CustomSection>{children}</CustomSection>=
+
+      <CustomSection className="custom-section" negMargin={negativeMargin}>
+        {children}
+      </CustomSection>
     </TrackWrapper>
   );
 };
@@ -79,7 +91,7 @@ const MaskTop = styled.div`
 `;
 const MaskBottom = styled.div`
   position: sticky;
-  top: calc(100vh - 20px);
+  top: calc(100vh - 20px - 1rem);
   left: 0px;
   z-index: 9;
 
@@ -88,12 +100,13 @@ const MaskBottom = styled.div`
   overflow-y: hidden;
 `;
 
-const CustomSection = styled.div`
+const CustomSection = styled.div<{ negMargin: number }>`
   background: linear-gradient(to bottom, ${GRADIENTS.main});
+  margin-top: -${({ negMargin }) => negMargin}px;
 `;
 
 const PaddingBar = styled.div`
-  height: 20px;
+  height: 1rem;
   background-color: ${COLORS.background};
 `;
 const CornerSvg = ({
@@ -101,6 +114,7 @@ const CornerSvg = ({
 }: {
   direction: "top-left" | "top-right" | "bottom-left" | "bottom-right";
 }): ReactElement => {
+  const RADIUS = 20;
   const rotation = (() => {
     switch (direction) {
       case "top-left":
@@ -117,9 +131,9 @@ const CornerSvg = ({
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={20}
-      height={20}
-      viewBox="0 0 20 20"
+      width={RADIUS}
+      height={RADIUS}
+      viewBox={`0 0 ${RADIUS} ${RADIUS}`}
       fill={COLORS.background}
       transform={`rotate(${rotation}, 0, 0)`}
     >
