@@ -12,10 +12,11 @@ import styled from "styled-components";
 import { NavThemeContext } from "@context/navTheme";
 import { useScrollPosition } from "@stores/useScrollPosition";
 import { GRADIENTS } from "@src/theme";
+import { Div } from "@src/ui-library";
 
 type DarkSectionType = {
   id: string;
-  children: ReactNode | ReactNode[] | null;
+  children: ReactNode | null;
 };
 
 export const DarkSection = ({
@@ -23,69 +24,110 @@ export const DarkSection = ({
   children,
 }: DarkSectionType): ReactElement => {
   const { initializeRef } = useContext(NavThemeContext);
-  const ref = useRef<HTMLDivElement | null>(null);
-  const { scrollY } = useScrollPosition();
-  const [scrollOffset, setScrollOffset] = useState<number | null>(null);
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const [screenWidth, setScreenWidth] = useState<number>();
+  const [trackHeight, setTrackHeight] = useState<number | null>(null);
 
-  const refCallback = (instance: HTMLDivElement | null) => {
+  const trackRefCallback = (instance: HTMLDivElement | null) => {
     if (instance) {
       initializeRef(id, { current: instance });
-      ref.current = instance;
+      trackRef.current = instance;
     }
   };
 
   useEffect(() => {
-    if (ref.current) setScrollOffset(ref.current.getBoundingClientRect().top);
-    console.log(
-      id,
-      "dark section context",
-      {
-        innerHeight: window.innerHeight,
-        scrollY: window.scrollY,
-        trackTop: ref.current.getBoundingClientRect().top,
-      },
-      {
-        inverseTop:
-          ref.current.getBoundingClientRect().top > 0
-            ? ref.current.getBoundingClientRect().top
-            : 0,
-        // inverseBot: window.scrollY
-      }
-    );
-  }, [ref, scrollY]);
+    if (trackRef.current) setTrackHeight(trackRef.current.scrollHeight);
+    setScreenWidth(window.innerWidth);
+  }, [children]);
 
   return (
-    <TrackWrapper id="track-wrapper" ref={refCallback}>
-      <MaskWrapper>
-        <CustomSection>{children}</CustomSection>
-      </MaskWrapper>
+    <TrackWrapper
+      id="track-wrapper"
+      ref={trackRefCallback}
+      height={trackHeight}
+    >
+      <MaskTop id="mask-top">
+        <PaddingBar />
+        <Div flex justifyContent="between">
+          <CornerSvg direction="top-left" />
+          <CornerSvg direction="top-right" />
+        </Div>
+      </MaskTop>
+      <MaskBottom id="mask-bottom">
+        <PaddingBar />
+      </MaskBottom>
+      <CustomSection>{children}</CustomSection>=
     </TrackWrapper>
   );
 };
 
 // the track contains the full height of the content
-const TrackWrapper = styled.div`
+const TrackWrapper = styled.div<{ height: number }>`
+  height: ${({ height }) => `${height}px`};
   display: relative;
 `;
 
-const MaskWrapper = styled.div`
+const MaskTop = styled.div`
   position: sticky;
   top: 0px;
   left: 0px;
+  z-index: 9;
 
   max-height: calc(100vh - 1.6rem);
   pointer-events: none;
   overflow-y: hidden;
-  border-radius: 20px;
+`;
+const MaskBottom = styled.div`
+  position: sticky;
+  top: calc(100vh - 20px);
+  left: 0px;
+  z-index: 9;
+  /* height: 20px; */
+
+  max-height: calc(100vh - 1.6rem);
+  pointer-events: none;
+  overflow-y: hidden;
+  /* background-color: white; */
 `;
 
 const CustomSection = styled.div`
-  padding: 0.8rem 0.9rem;
-  border-radius: 20px;
-
   background: linear-gradient(to bottom, ${GRADIENTS.main});
 `;
 
-const Mask = styled.div<{ "-invHeight": number }>`
-  overflow-y: hidden;
+const PaddingBar = styled.div`
+  height: 20px;
+  background-color: white;
 `;
+const CornerSvg = ({
+  direction,
+  fill,
+}: {
+  direction: "top-left" | "top-right" | "bottom-left" | "bottom-right";
+  fill?: string;
+}): ReactElement => {
+  const rotation = (() => {
+    switch (direction) {
+      case "top-left":
+        return 0;
+      case "top-right":
+        return 90;
+      case "bottom-left":
+        return -90;
+      case "bottom-right":
+        return -180;
+    }
+  })();
+
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={20}
+      height={20}
+      viewBox="0 0 20 20"
+      fill={fill ?? "#fff"}
+      transform={`rotate(${rotation}, 0, 0)`}
+    >
+      <path d="M-0.000487161 -0.000976562H19.9995C4.11936 0.0123475 -0.00296934 4.64167 -0.000487161 19.999V-0.000976562Z" />
+    </svg>
+  );
+};
