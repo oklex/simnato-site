@@ -7,6 +7,7 @@ import { PALETTE } from '../theme';
 import { RegistrationInfoSlice } from '../slices/registrationInfoSlice';
 import useScreenSize from '../stores/useScreenSize';
 import SilverBrandLogo from '../assets/silverLogo';
+import { DarkSection } from '@src/components/DarkSection';
 
 export const HomepageHero = (): ReactElement => {
 	const { width, height, isMobile } = useScreenSize();
@@ -16,8 +17,8 @@ export const HomepageHero = (): ReactElement => {
 			<CornerLabel>
 				<Text>EST. 2024</Text>
 			</CornerLabel>
-			<Section center mode="dark" gradient={360}>
-				<Spacer height={isMobile ? '8vh' :'15vh'} />
+			<DarkSection id="hero">
+				<Spacer height={isMobile ? '8vh' : '15vh'} />
 				<SilverBrandLogo scale="16rem" center padding="25px 25px 15px" />
 				<Spacer height={isMobile ? '25px' : 0} />
 				<Header
@@ -43,7 +44,7 @@ export const HomepageHero = (): ReactElement => {
 					Jan 24 - 26 | Richmond, BC
 				</Text>
 				<Spacer height={isMobile ? '5vh' : '15vh'} />
-			</Section>
+			</DarkSection>
 		</div>
 	);
 };
