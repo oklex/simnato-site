@@ -63,6 +63,8 @@ export const DarkSection = ({
 // the track contains the full height of the content
 const TrackWrapper = styled.div`
 	margin-bottom: -1px;
+	padding-left: 9px;
+	padding-right: 9px;
 	display: relative;
 `;
 
@@ -78,7 +80,6 @@ const MaskTop = styled.div`
 `;
 const MaskBottom = styled.div`
 	position: sticky;
-	/* height: 0px; // counter with neg margin */
 	top: calc(100vh - ${RADIUS * 2}px);
 	left: 0px;
 	z-index: 9;

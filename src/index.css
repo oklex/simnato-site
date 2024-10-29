@@ -66,8 +66,6 @@ html {
 }
 /* Enable overlay scrollbar */
 html {
-	padding-left: 9px;
-	padding-right: 9px;
 	scrollbar-gutter: stable both-edges; /* Ensures overlay scrollbar without content shifting */
 }
 
