@@ -10,7 +10,6 @@ import {
 import styled, { css } from 'styled-components';
 
 import { NavThemeContext } from '@context/navTheme';
-import { useScrollPosition } from '@stores/useScrollPosition';
 import { COLORS, GRADIENTS } from '@src/theme';
 import { Div } from '@src/ui-library';
 
@@ -28,7 +27,6 @@ export const DarkSection = ({
 	const { initializeRef } = useContext(NavThemeContext);
 	const paddingTopRef = useRef<HTMLDivElement | null>(null);
 	const paddingBottomRef = useRef<HTMLDivElement | null>(null);
-	const [trackHeight, setTrackHeight] = useState<number | null>(null);
 
 	const trackRefCallback = (instance: HTMLDivElement | null) => {
 		if (instance) initializeRef(id, { current: instance });
@@ -39,11 +37,7 @@ export const DarkSection = ({
 		(paddingBottomRef.current?.clientHeight ?? 0);
 
 	return (
-		<TrackWrapper
-			className="track-wrapper"
-			ref={trackRefCallback}
-			height={trackHeight}
-		>
+		<TrackWrapper className="track-wrapper" ref={trackRefCallback}>
 			<MaskTop className="mask-top" ref={paddingTopRef}>
 				<PaddingBar vertical="top" />
 				<Div flex justifyContent="between">
@@ -67,8 +61,7 @@ export const DarkSection = ({
 };
 
 // the track contains the full height of the content
-const TrackWrapper = styled.div<{ height: number }>`
-	height: ${({ height }) => `${height - RADIUS}px`};
+const TrackWrapper = styled.div`
 	margin-bottom: -1px;
 	display: relative;
 `;
@@ -79,18 +72,18 @@ const MaskTop = styled.div`
 	left: 0px;
 	z-index: 9;
 
-	max-height: calc(100vh - 26px);
+	max-height: calc(100vh - ${RADIUS * 2});
 	pointer-events: none;
 	overflow-y: hidden;
 `;
 const MaskBottom = styled.div`
 	position: sticky;
 	/* height: 0px; // counter with neg margin */
-	top: calc(100vh - 20px - 16px);
+	top: calc(100vh - ${RADIUS * 2}px);
 	left: 0px;
 	z-index: 9;
 
-	max-height: calc(100vh - 26px);
+	max-height: calc(100vh - ${RADIUS * 2}px);
 	pointer-events: none;
 	overflow-y: hidden;
 `;
@@ -106,7 +99,7 @@ const CustomSection = styled.div<{ negMargin: number }>`
 `;
 
 const PaddingBar = styled.div<{ vertical: 'top' | 'bottom' }>`
-	height: ${RADIUS}px; // the sweet spot is 25px
+	height: ${RADIUS}px;
 
 	${({ vertical }) =>
 		vertical === 'top'
