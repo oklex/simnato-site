@@ -10,6 +10,8 @@ import { Text } from '@ui-library';
 
 import { PALETTE } from '../theme';
 
+const RADIUS = 12
+
 export const Navigation = ({ sticky }: { sticky?: boolean }): ReactElement => {
 	const { theme } = useContext(NavThemeContext);
 	const onLightBackground = theme === 'light';
@@ -73,7 +75,7 @@ const StyledNav = styled.button<{ shouldBeTransparent: boolean }>`
 	outline: none;
 	position: relative;
 	z-index: 1;
-	border-radius: 20px;
+	border-radius: ${RADIUS}px;
 	background: linear-gradient(
 		to right,
 		${({ shouldBeTransparent }) =>
@@ -92,7 +94,7 @@ const StyledNav = styled.button<{ shouldBeTransparent: boolean }>`
 		right: 1px;
 		top: 1px;
 		bottom: 1px;
-		border-radius: 20px;
+		border-radius: ${RADIUS}px;
 		background-color: ${({ shouldBeTransparent: lightBackground }) =>
 			lightBackground === true ? PALETTE.silver.main : '#313979'};
 		z-index: -1;
