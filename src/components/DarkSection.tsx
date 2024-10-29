@@ -93,6 +93,7 @@ const CustomSection = styled.div<{ negMargin: number }>`
 	border-bottom: solid 1px ${COLORS.background};
 	margin-left: 1px;
 	margin-right: 1px;
+	padding: ${RADIUS * 2}px ${RADIUS}px;
 	overflow: hidden;
 `;
 
