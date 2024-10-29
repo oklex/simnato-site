@@ -1,7 +1,6 @@
 import React, { ReactElement, useContext } from 'react';
 import styled, { css } from 'styled-components';
 import { rgba } from 'polished';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 import { NavThemeContext } from '@src/context/navTheme';

@@ -1,11 +1,8 @@
 import {
 	ReactElement,
 	ReactNode,
-	Ref,
 	useContext,
-	useEffect,
 	useRef,
-	useState,
 } from 'react';
 import styled, { css } from 'styled-components';
 
