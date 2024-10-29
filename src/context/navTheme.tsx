@@ -34,12 +34,6 @@ const NavThemeProvider = ({ children }) => {
 		const handleRouteChange = () => {
 			refsDirectory.current = {};
 		};
-
-		router.events.on('routeChangeStart', handleRouteChange);
-		return () => router.events.off('routeChangeStart', handleRouteChange);
-	}, [router]);
-
-	useEffect(() => {
 		const handleScroll = () => {
 			const scrollY = window.scrollY;
 			const navbarHeight = 50; // Example navbar height in pixels
@@ -61,12 +55,15 @@ const NavThemeProvider = ({ children }) => {
 			}
 		};
 
-		handleScroll()
+		handleScroll();
 		window.addEventListener('scroll', handleScroll);
+		router.events.on('routeChangeStart', handleRouteChange);
+
 		return () => {
 			window.removeEventListener('scroll', handleScroll);
+			router.events.off('routeChangeStart', handleRouteChange);
 		};
-	}, []);
+	}, [router]);
 
 	const calculate = (): SectionsPositionType => {
 		const refKeys = Object.keys(refsDirectory.current);
