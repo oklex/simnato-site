@@ -14,6 +14,8 @@ import { useScrollPosition } from '@stores/useScrollPosition';
 import { COLORS, GRADIENTS } from '@src/theme';
 import { Div } from '@src/ui-library';
 
+const RADIUS = 14;
+
 type DarkSectionType = {
 	id: string;
 	children: ReactNode | null;
@@ -66,7 +68,7 @@ export const DarkSection = ({
 
 // the track contains the full height of the content
 const TrackWrapper = styled.div<{ height: number }>`
-	height: ${({ height }) => `${height}px`};
+	height: ${({ height }) => `${height - RADIUS}px`};
 	margin-bottom: -1px;
 	display: relative;
 `;
@@ -77,17 +79,18 @@ const MaskTop = styled.div`
 	left: 0px;
 	z-index: 9;
 
-	max-height: calc(100vh - 1.6rem);
+	max-height: calc(100vh - 26px);
 	pointer-events: none;
 	overflow-y: hidden;
 `;
 const MaskBottom = styled.div`
 	position: sticky;
-	top: calc(100vh - 20px - 1rem);
+	/* height: 0px; // counter with neg margin */
+	top: calc(100vh - 20px - 16px);
 	left: 0px;
 	z-index: 9;
 
-	max-height: calc(100vh - 1.6rem);
+	max-height: calc(100vh - 26px);
 	pointer-events: none;
 	overflow-y: hidden;
 `;
@@ -103,7 +106,8 @@ const CustomSection = styled.div<{ negMargin: number }>`
 `;
 
 const PaddingBar = styled.div<{ vertical: 'top' | 'bottom' }>`
-	height: 1rem;
+	height: ${RADIUS}px; // the sweet spot is 25px
+
 	${({ vertical }) =>
 		vertical === 'top'
 			? css`
@@ -122,7 +126,6 @@ const CornerSvg = ({
 }: {
 	direction: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
 }): ReactElement => {
-	const RADIUS = 20;
 	const rotation = (() => {
 		switch (direction) {
 			case 'top-left':
@@ -149,8 +152,8 @@ const CornerSvg = ({
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
-			width={RADIUS + 5}
-			height={RADIUS + 5}
+			width={RADIUS}
+			height={RADIUS}
 			viewBox={`0 0 ${RADIUS} ${RADIUS}`}
 			fill={COLORS.background}
 			transform={`rotate(${rotation}, 0, 0)`}
