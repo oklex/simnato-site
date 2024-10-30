@@ -1,13 +1,29 @@
 import { ReactElement } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
-import { DarkSection } from '@components/DarkSection';
-import { Text } from '@ui-library';
+import { GRADIENTS } from '@src/theme';
+import { DarkSection, RADIUS } from '@components/DarkSection';
+import { Div, Text } from '@ui-library';
 
 const SectionTestPage = (): ReactElement => {
+
+	
+
 	return (
 		<div id="section-test-page">
-			<DarkSection id={'hero'}>
+			<Div relative>
+				<DarkSection id={'hero'}>
+					<AnimatedMask>
+						<MaskBackground></MaskBackground>
+					</AnimatedMask>
+					<SwapContent>
+						{/* <Div flex>
+							<Text>swap content</Text>
+						</Div> */}
+					</SwapContent>
+				</DarkSection>
+			</Div>
+			<DarkSection id={'chunk'}>
 				<Filler />
 				<Filler>
 					<Text>lorem ipsum</Text>
@@ -26,9 +42,6 @@ const SectionTestPage = (): ReactElement => {
 			<DarkSection id={'part 2'}>
 				<Filler size={350}></Filler>
 			</DarkSection>
-			{/* <DarkSection id={'part 3'}>
-				<Filler></Filler>
-			</DarkSection> */}
 			<Filler size={350}></Filler>
 		</div>
 	);
@@ -38,4 +51,46 @@ export default SectionTestPage;
 
 const Filler = styled.div<{ size?: number }>`
 	min-height: ${({ size }) => `${size ?? 30}vh`};
+`;
+
+const SwapContent = styled.div`
+	height: 400px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+`;
+
+// should match actual darkSection
+const growPadding = keyframes`
+  from {
+    padding: 0px;
+	width: 100%;
+  }
+  to {
+    padding: 15px 9px;
+	width: calc(100% - 18px);
+  }
+`;
+const growContent = keyframes`
+  from {
+	height: 100vh;
+    border-radius: 0px;
+  }
+  to {
+	height: calc(400px + 14px + 14px); // 14 pix is the content padding on OG dark section
+    border-radius: ${RADIUS}px;
+  }
+`;
+const AnimatedMask = styled.div`
+	position: absolute;
+	top: 0;
+	left: 0%;
+	width: calc(100% - 18px);
+	z-index: 99;
+	animation: ${growPadding} 1s forwards ease-in;
+`;
+const MaskBackground = styled.div`
+	border: red solid 1px;
+	background: linear-gradient(to bottom, ${GRADIENTS.main});
+	animation: ${growContent} 1s forwards ease-in;
 `;

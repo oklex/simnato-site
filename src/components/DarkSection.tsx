@@ -10,7 +10,7 @@ import { NavThemeContext } from '@context/navTheme';
 import { COLORS, GRADIENTS } from '@src/theme';
 import { Div } from '@src/ui-library';
 
-const RADIUS = 14;
+export const RADIUS = 14;
 
 type DarkSectionType = {
 	id: string;
