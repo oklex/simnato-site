@@ -1,25 +1,47 @@
-import { ReactElement } from 'react';
-import styled, { keyframes } from 'styled-components';
+import { ReactElement, useEffect, useState } from 'react';
+import styled, { css, keyframes } from 'styled-components';
+import { useTimeout } from '@mantine/hooks';
 
 import { GRADIENTS } from '@src/theme';
 import { DarkSection, RADIUS } from '@components/DarkSection';
 import { Div, Text } from '@ui-library';
 
 const SectionTestPage = (): ReactElement => {
+	const [hideOverlayTitle, setHideOverlayTitle] = useState(false); // use context in reality
+	const { start } = useTimeout(() => {
+		console.log('ending timeout');
+		setHideOverlayTitle(true);
+	}, 1_500);
 
-	
+	useEffect(() => {
+		start();
+		console.log('start timer');
+	}, []);
+
+	/**
+	 * issues with the overlay methodology:
+	 * - navigation pop-in is kinda brutal, the navigation position might need to be handled differently on this page
+	 * - the height doesn't quite seem to match, this will need to be adjusted at some point
+	 * -
+	 */
 
 	return (
 		<div id="section-test-page">
 			<Div relative>
 				<DarkSection id={'hero'}>
-					<AnimatedMask>
-						<MaskBackground></MaskBackground>
+					<AnimatedMask hide={hideOverlayTitle}>
+						<MaskBackground>
+							<SwapContent className="swap-content">
+								<Div flex>
+									<Text>swap content</Text>
+								</Div>
+							</SwapContent>
+						</MaskBackground>
 					</AnimatedMask>
-					<SwapContent>
-						{/* <Div flex>
+					<SwapContent className="swap-content">
+						<Div flex>
 							<Text>swap content</Text>
-						</Div> */}
+						</Div>
 					</SwapContent>
 				</DarkSection>
 			</Div>
@@ -77,11 +99,17 @@ const growContent = keyframes`
     border-radius: 0px;
   }
   to {
-	height: calc(400px + 14px + 14px); // 14 pix is the content padding on OG dark section
-    border-radius: ${RADIUS}px;
+	height: calc(400px + ${RADIUS * 2}px - 1px); // padding - neg margins
+    border-radius: ${RADIUS - 1}px; // slight svg offset
   }
 `;
-const AnimatedMask = styled.div`
+const AnimatedMask = styled.div<{ hide?: boolean }>`
+	${({ hide }) =>
+		hide &&
+		css`
+			display: none;
+		`};
+	border: red solid 1px;
 	position: absolute;
 	top: 0;
 	left: 0%;
@@ -93,4 +121,11 @@ const MaskBackground = styled.div`
 	border: red solid 1px;
 	background: linear-gradient(to bottom, ${GRADIENTS.main});
 	animation: ${growContent} 1s forwards ease-in;
+	padding: 0px ${RADIUS}px;
+
+	& > *:first-child {
+		padding-top: ${RADIUS}px;
+		padding-bottom: ${RADIUS}px;
+	}
 `;
+// ${RADIUS * 2}px
