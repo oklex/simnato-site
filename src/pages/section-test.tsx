@@ -22,7 +22,7 @@ const SectionTestPage = (): ReactElement => {
 	 * issues with the overlay methodology:
 	 * - navigation pop-in is kinda brutal, the navigation position might need to be handled differently on this page
 	 * - the height doesn't quite seem to match, this will need to be adjusted at some point
-	 * -
+	 * - after this intro, I could set-up the horizontal animation
 	 */
 
 	return (
