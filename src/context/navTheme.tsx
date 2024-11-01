@@ -24,7 +24,6 @@ const NavThemeContext = createContext<NavTheme>(defaultNavTheme);
 
 const NavThemeProvider = ({ children }) => {
 	const router = useRouter(); // Use Next.js router
-	const [hasCustomPageNav, setHasCustomPageNav] = useState(false);
 	const [theme, setTheme] = useState<ThemeType>('light');
 	const themeRef = useRef('light');
 	const refsDirectory = useRef<Record<string, Ref<HTMLDivElement>>>({});
@@ -32,8 +31,6 @@ const NavThemeProvider = ({ children }) => {
 	useEffect(() => {
 		const handleRouteChange = () => {
 			refsDirectory.current = {};
-			const shouldPageHaveCustomNave = router.pathname === '/';
-			setHasCustomPageNav(shouldPageHaveCustomNave);
 		};
 		const handleScroll = () => {
 			const scrollY = window.scrollY;
@@ -100,7 +97,7 @@ const NavThemeProvider = ({ children }) => {
 				initializeRef,
 			}}
 		>
-			{!hasCustomPageNav && <Navigation />}
+			<Navigation />
 			{children}
 		</NavThemeContext.Provider>
 	);
