@@ -55,7 +55,7 @@ const NavigationWrapper = styled.div<{ sticky: boolean }>`
 	justify-content: center;
 
 	position: ${({ sticky }) => (sticky ? 'sticky' : 'fixed')};
-	z-index: 99;
+	z-index: 999;
 	left: 0;
 	top: 30px;
 `;
