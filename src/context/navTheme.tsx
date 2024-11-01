@@ -1,9 +1,11 @@
-import { createContext, Ref, useEffect, useRef } from 'react';
+import { createContext, Ref, useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
+import { Navigation } from '@src/components/Navigation';
 
 interface NavTheme {
 	theme: 'light' | 'dark';
 	initializeRef: (key: string, ref: Ref<HTMLDivElement>) => void;
+	disablePageNav: () => void;
 }
 type ThemeType = Pick<NavTheme, 'theme'>['theme'];
 type SectionsPositionType = Record<
@@ -17,15 +19,14 @@ type SectionsPositionType = Record<
 const defaultNavTheme: NavTheme = {
 	theme: 'light',
 	initializeRef: () => {},
+	disablePageNav: () => {},
 };
 
 const NavThemeContext = createContext<NavTheme>(defaultNavTheme);
 
-import { useState } from 'react';
-
 const NavThemeProvider = ({ children }) => {
 	const router = useRouter(); // Use Next.js router
-
+	const [hasCustomPageNav, setHasCustomPageNav] = useState(false);
 	const [theme, setTheme] = useState<ThemeType>('light');
 	const themeRef = useRef('light');
 	const refsDirectory = useRef<Record<string, Ref<HTMLDivElement>>>({});
@@ -33,6 +34,8 @@ const NavThemeProvider = ({ children }) => {
 	useEffect(() => {
 		const handleRouteChange = () => {
 			refsDirectory.current = {};
+			const shouldPageHaveCustomNave = router.pathname === '/';
+			setHasCustomPageNav(shouldPageHaveCustomNave);
 		};
 		const handleScroll = () => {
 			const scrollY = window.scrollY;
@@ -57,6 +60,7 @@ const NavThemeProvider = ({ children }) => {
 
 		handleScroll();
 		window.addEventListener('scroll', handleScroll);
+		handleRouteChange();
 		router.events.on('routeChangeStart', handleRouteChange);
 
 		return () => {
@@ -92,7 +96,14 @@ const NavThemeProvider = ({ children }) => {
 	};
 
 	return (
-		<NavThemeContext.Provider value={{ theme, initializeRef }}>
+		<NavThemeContext.Provider
+			value={{
+				theme,
+				initializeRef,
+				disablePageNav: () => setHasCustomPageNav(true),
+			}}
+		>
+			{!hasCustomPageNav && <Navigation />}
 			{children}
 		</NavThemeContext.Provider>
 	);

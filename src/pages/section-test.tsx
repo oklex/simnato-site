@@ -1,10 +1,11 @@
-import { ReactElement, useEffect, useState } from 'react';
+import { ReactElement, useEffect, useState, useContext } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import { useTimeout } from '@mantine/hooks';
 
 import { GRADIENTS } from '@src/theme';
 import { DarkSection, RADIUS } from '@components/DarkSection';
 import { Div, Text } from '@ui-library';
+import { NavThemeContext } from '@src/context/navTheme';
 
 const SectionTestPage = (): ReactElement => {
 	const [hideOverlayTitle, setHideOverlayTitle] = useState(false); // use context in reality
