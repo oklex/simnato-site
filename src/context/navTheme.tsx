@@ -5,7 +5,6 @@ import { Navigation } from '@src/components/Navigation';
 interface NavTheme {
 	theme: 'light' | 'dark';
 	initializeRef: (key: string, ref: Ref<HTMLDivElement>) => void;
-	disablePageNav: () => void;
 }
 type ThemeType = Pick<NavTheme, 'theme'>['theme'];
 type SectionsPositionType = Record<
@@ -19,7 +18,6 @@ type SectionsPositionType = Record<
 const defaultNavTheme: NavTheme = {
 	theme: 'light',
 	initializeRef: () => {},
-	disablePageNav: () => {},
 };
 
 const NavThemeContext = createContext<NavTheme>(defaultNavTheme);
@@ -100,7 +98,6 @@ const NavThemeProvider = ({ children }) => {
 			value={{
 				theme,
 				initializeRef,
-				disablePageNav: () => setHasCustomPageNav(true),
 			}}
 		>
 			{!hasCustomPageNav && <Navigation />}
