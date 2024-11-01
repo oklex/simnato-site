@@ -15,32 +15,20 @@ export const HomepageHero = (): ReactElement => {
 				<Text>EST. 2024</Text>
 			</CornerLabel>
 			<DarkSection id="hero">
-				<Spacer height={isMobile ? '8vh' : '15vh'} />
-				<SilverBrandLogo scale="16rem" center padding="25px 25px 15px" />
-				<Spacer height={isMobile ? '25px' : 0} />
-				<Header
-					level={1}
-					sizeRemOverride={isMobile ? 3.2 : 5.5}
-					mode="silver"
-					center
-					bold
-				>
+				<Spacer height={isMobile ? '5vh' : '5vh'} />
+				<SilverBrandLogo scale="13rem" center padding="25px 25px 15px" />
+				<Spacer height={isMobile ? '5px' : 0} />
+				<Header level={1} mode="silver" center bold>
 					Simulation NATO
 				</Header>
-				<Header
-					margin={`${isMobile ? '0px' : '-10px'} 0 auto`}
-					level={6}
-					sizeRemOverride={isMobile ? 1.9 : 2}
-					mode="silver"
-					center
-				>
+				<Header level={4} mode="silver" center>
 					Model UN Crisis Conference
 				</Header>
-				<Spacer height={isMobile ? '15px' : 0} />
+				<Spacer height="15px" />
 				<Text subtle align="center">
-					Jan 24 - 26 | Richmond, BC
+					March, 2025 | Richmond, BC
 				</Text>
-				<Spacer height={isMobile ? '5vh' : '15vh'} />
+				<Spacer height={isMobile ? '5vh' : '5vh'} />
 			</DarkSection>
 		</div>
 	);
