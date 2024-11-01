@@ -10,7 +10,7 @@ export const HomepageHero = (): ReactElement => {
 	const { width, height, isMobile } = useScreenSize();
 
 	return (
-		<div id="homepage-hero" style={{ position: 'relative' }}>
+		<HeroSection id="homepage-hero">
 			<CornerLabel>
 				<Text>EST. 2024</Text>
 			</CornerLabel>
@@ -30,9 +30,13 @@ export const HomepageHero = (): ReactElement => {
 				</Text>
 				<Spacer height={isMobile ? '5vh' : '5vh'} />
 			</DarkSection>
-		</div>
+		</HeroSection>
 	);
 };
+
+const HeroSection = styled.div`
+	position: relative;
+`;
 
 const CornerLabel = styled.div`
 	position: absolute;
