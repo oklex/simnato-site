@@ -11,7 +11,7 @@ const SectionTestPage = (): ReactElement => {
 	const { start } = useTimeout(() => {
 		console.log('ending timeout');
 		setHideOverlayTitle(true);
-	}, 1_500);
+	}, 1_000);
 
 	useEffect(() => {
 		start();
@@ -75,8 +75,10 @@ const Filler = styled.div<{ size?: number }>`
 	min-height: ${({ size }) => `${size ?? 30}vh`};
 `;
 
+const SWAP_CONTENT_HEIGHT = '93vh';
+
 const SwapContent = styled.div`
-	height: 400px;
+	height: ${SWAP_CONTENT_HEIGHT};
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -99,7 +101,9 @@ const growContent = keyframes`
     border-radius: 0px;
   }
   to {
-	height: calc(400px + ${RADIUS * 2}px - 1px); // padding - neg margins
+	height: calc(${SWAP_CONTENT_HEIGHT} + ${
+	RADIUS * 2
+}px - 1px); // padding - neg margins
     border-radius: ${RADIUS - 1}px; // slight svg offset
   }
 `;
@@ -109,7 +113,6 @@ const AnimatedMask = styled.div<{ hide?: boolean }>`
 		css`
 			display: none;
 		`};
-	border: red solid 1px;
 	position: absolute;
 	top: 0;
 	left: 0%;
@@ -118,7 +121,6 @@ const AnimatedMask = styled.div<{ hide?: boolean }>`
 	animation: ${growPadding} 1s forwards ease-in;
 `;
 const MaskBackground = styled.div`
-	border: red solid 1px;
 	background: linear-gradient(to bottom, ${GRADIENTS.main});
 	animation: ${growContent} 1s forwards ease-in;
 	padding: 0px ${RADIUS}px;
@@ -128,4 +130,3 @@ const MaskBackground = styled.div`
 		padding-bottom: ${RADIUS}px;
 	}
 `;
-// ${RADIUS * 2}px
