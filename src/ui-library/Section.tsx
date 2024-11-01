@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from "react";
 import styled, { css } from "styled-components";
 import { MODES, PALETTE, GRADIENTS } from "../theme";
-import { Container } from "./Container";
+import { GenericContainer } from "./Container";
 
 type SectionProps = {
   children: ReactNode;

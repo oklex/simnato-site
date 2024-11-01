@@ -37,31 +37,31 @@ html {
 /* For smaller screens, reduce rem value */
 @media (max-width: 1200px) {
 	html {
-		font-size: 15px; /* 1rem = 15px */
+		font-size: 15px; 
 	}
 }
 
 @media (max-width: 992px) {
 	html {
-		font-size: 15px; /* 1rem = 14px */
+		font-size: 14.5px; 
 	}
 }
 
 @media (max-width: 768px) {
 	html {
-		font-size: 14px; /* 1rem = 13px */
+		font-size: 14px; 
 	}
 }
 
 @media (max-width: 576px) {
 	html {
-		font-size: 13px; /* 1rem = 12px */
+		font-size: 13.5px;
 	}
 }
 
 @media (max-width: 400px) {
 	html {
-		font-size: 12px; /* 1rem = 10px */
+		font-size: 13px; 
 	}
 }
 /* Enable overlay scrollbar */
