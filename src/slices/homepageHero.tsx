@@ -19,10 +19,10 @@ export const HomepageHero = (): ReactElement => {
 				<SilverBrandLogo scale="13rem" center padding="25px 25px 15px" />
 				<Spacer height={isMobile ? '5px' : 0} />
 				<Header level={1} mode="silver" center bold>
-					Simulation NATO
+					{isMobile ? 'SimNATO' : 'Simulation NATO'}
 				</Header>
-				<Header level={4} mode="silver" center>
-					Model UN Crisis Conference
+				<Header level={isMobile ? 5 : 4} mode="silver" center>
+					{isMobile ? 'MUN Crisis Conference' : 'Model UN Crisis Conference'}
 				</Header>
 				<Spacer height="15px" />
 				<Text subtle align="center">
