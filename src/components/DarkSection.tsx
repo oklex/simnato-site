@@ -1,9 +1,4 @@
-import {
-	ReactElement,
-	ReactNode,
-	useContext,
-	useRef,
-} from 'react';
+import { ReactElement, ReactNode, useContext, useRef } from 'react';
 import styled, { css } from 'styled-components';
 
 import { NavThemeContext } from '@context/navTheme';
@@ -12,13 +7,16 @@ import { Div } from '@src/ui-library';
 
 export const RADIUS = 14;
 
+type GradientDirectionsType = 'to bottom' | 'to right' | 'to left';
 type DarkSectionType = {
 	id: string;
+	gradientDirection?: GradientDirectionsType;
 	children: ReactNode | null;
 };
 
 export const DarkSection = ({
 	id,
+	gradientDirection,
 	children,
 }: DarkSectionType): ReactElement => {
 	const { initializeRef } = useContext(NavThemeContext);
@@ -50,7 +48,11 @@ export const DarkSection = ({
 				<PaddingBar vertical="bottom" />
 			</MaskBottom>
 
-			<CustomSection className="custom-section" negMargin={negativeMargin}>
+			<CustomSection
+				className="custom-section"
+				gradientDirection={gradientDirection}
+				negMargin={negativeMargin}
+			>
 				{children}
 			</CustomSection>
 		</TrackWrapper>
@@ -86,8 +88,14 @@ const MaskBottom = styled.div`
 	overflow-y: hidden;
 `;
 
-const CustomSection = styled.div<{ negMargin: number }>`
-	background: linear-gradient(to bottom, ${GRADIENTS.main});
+const CustomSection = styled.div<{
+	negMargin: number;
+	gradientDirection?: GradientDirectionsType;
+}>`
+	background: linear-gradient(
+		${({ gradientDirection }) => gradientDirection ?? 'to bottom'},
+		${GRADIENTS.main}
+	);
 	margin-top: -${({ negMargin }) => negMargin}px;
 	border-top: solid 1px ${COLORS.background};
 	border-bottom: solid 1px ${COLORS.background};

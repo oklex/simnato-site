@@ -6,7 +6,7 @@ import { Div, Header, NarrowContainer, Text } from '@ui-library';
 
 export const CommitteesPreview = (): ReactElement => {
 	return (
-		<DarkSection id="committees-preview">
+		<DarkSection id="committees-preview" gradientDirection="to left">
 			<Div flex justifyContent="center">
 				<StarMarker type="blue" />
 			</Div>
@@ -23,4 +23,3 @@ export const CommitteesPreview = (): ReactElement => {
 		</DarkSection>
 	);
 };
-
