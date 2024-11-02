@@ -5,7 +5,7 @@ import { NavThemeContext } from '@context/navTheme';
 import { COLORS, GRADIENTS } from '@src/theme';
 import { Div } from '@src/ui-library';
 
-export const RADIUS = 14;
+export const RADIUS = 16;
 
 type GradientDirectionsType = 'to bottom' | 'to right' | 'to left';
 type DarkSectionType = {
@@ -72,20 +72,22 @@ const MaskTop = styled.div`
 	top: 0px;
 	left: 0px;
 	z-index: 9;
+	width: 100%;
 
 	max-height: calc(100vh - ${RADIUS * 2});
 	pointer-events: none;
-	overflow-y: hidden;
+	overflow: hidden;
 `;
 const MaskBottom = styled.div`
 	position: sticky;
 	top: calc(100vh - ${RADIUS * 2}px);
 	left: 0px;
 	z-index: 9;
+	width: 100%;
 
 	max-height: calc(100vh - ${RADIUS * 2}px);
 	pointer-events: none;
-	overflow-y: hidden;
+	overflow: hidden;
 `;
 
 const CustomSection = styled.div<{
