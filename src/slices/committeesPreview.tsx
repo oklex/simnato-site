@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { ReactElement, useEffect } from "react";
 import styled from "styled-components";
 
 import StarMarker from "@src/assets/starMarkers";
@@ -13,16 +13,20 @@ import {
 } from "@ui-library";
 import { BREAKPOINTS, PALETTE } from "@src/theme";
 import useScreenSize from "@src/stores/useScreenSize";
-import { GlobeBackground } from "@src/components/GlobeBackground";
+import { renderWorldInContainer } from "@components/GlobeBackground";
 
 export const CommitteesPreview = (): ReactElement => {
   const { isTablet } = useScreenSize();
 
+  useEffect(() => {
+    renderWorldInContainer("globeViz"); // Render World into the element with id "globeViz"
+  }, []);
+
   return (
     <DarkSection id="committees-preview" gradientDirection="to left">
-      <GlobeBackground />
+      <div id="globeViz" />
       <SubContent>
-        <Spacer height={isTablet ? "50px" : "100px"} />
+        <Spacer height={isTablet ? "100px" : "150px"} />
         <Div flex justifyContent="center">
           <StarMarker type="blue" />
         </Div>
@@ -68,7 +72,7 @@ export const CommitteesPreview = (): ReactElement => {
             </CommitteeBox>
           </SixColumnGrid>
         </Container>
-        <Spacer height={"50px"} />
+        <Spacer height={"200px"} />
         <Container>
           {/* <Text>lorem ipsum</Text>
           <Text>
