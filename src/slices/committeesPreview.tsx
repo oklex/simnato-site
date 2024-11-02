@@ -12,10 +12,14 @@ import {
 	Text,
 } from '@ui-library';
 import { BREAKPOINTS, PALETTE } from '@src/theme';
+import useScreenSize from '@src/stores/useScreenSize';
 
 export const CommitteesPreview = (): ReactElement => {
+	const { isTablet } = useScreenSize();
+
 	return (
 		<DarkSection id="committees-preview" gradientDirection="to left">
+			<Spacer height={isTablet ? '50px' : '100px'} />
 			<Div flex justifyContent="center">
 				<StarMarker type="blue" />
 			</Div>
@@ -23,7 +27,7 @@ export const CommitteesPreview = (): ReactElement => {
 				The different faces of NATO
 			</Header>
 			<NarrowContainer size="sm">
-				<Text align='center'>
+				<Text align="center">
 					Reflecting the inner-workings of real-life NATO, our four committees
 					all carry a unique set of power and limitations, guided by the NATO
 					constitution and it’s member nations’ intention -- friendly or not.

@@ -34,7 +34,7 @@ const NavThemeProvider = ({ children }) => {
 		};
 		const handleScroll = () => {
 			const scrollY = window.scrollY;
-			const navbarHeight = 50; // Example navbar height in pixels
+			const navbarHeight = 70; // Example navbar height in pixels
 			const sectionsPosition = calculate();
 			let newTheme: ThemeType = 'light';
 
