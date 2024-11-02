@@ -3,8 +3,15 @@ import styled from 'styled-components';
 
 import StarMarker from '@src/assets/starMarkers';
 import { DarkSection } from '@src/components/DarkSection';
-import { Div, Header, NarrowContainer, Text } from '@ui-library';
-import { BREAKPOINTS } from '@src/theme';
+import {
+	Container,
+	Div,
+	Header,
+	NarrowContainer,
+	Spacer,
+	Text,
+} from '@ui-library';
+import { BREAKPOINTS, PALETTE } from '@src/theme';
 
 export const CommitteesPreview = (): ReactElement => {
 	return (
@@ -16,19 +23,45 @@ export const CommitteesPreview = (): ReactElement => {
 				The different faces of NATO
 			</Header>
 			<NarrowContainer size="sm">
-				<Text>
+				<Text align='center'>
 					Reflecting the inner-workings of real-life NATO, our four committees
 					all carry a unique set of power and limitations, guided by the NATO
 					constitution and it’s member nations’ intention -- friendly or not.
 				</Text>
 			</NarrowContainer>
-			<SixColumnGrid>
-				<CommitteeBox />
-				<CommitteeBox />
-				<CommitteeBox />
-				<CommitteeBox />
-				<CommitteeBox />
-			</SixColumnGrid>
+			<Spacer height={'40px'} />
+			<Container>
+				<SixColumnGrid>
+					<CommitteeBox>
+						<Header center level={5} mode="light">
+							North Atlantic Council
+						</Header>
+					</CommitteeBox>
+					<CommitteeBox>
+						<Header center level={5} mode="light">
+							Military Committee
+						</Header>
+					</CommitteeBox>
+					<CommitteeBox>
+						<Header center level={5} mode="light">
+							Intelligence & Espionage
+						</Header>
+					</CommitteeBox>
+					<CommitteeBox>
+						<Text align="center">NATO Partners</Text>
+						<Header center level={5} mode="light">
+							European Partners
+						</Header>
+					</CommitteeBox>
+					<CommitteeBox>
+						<Text align="center">NATO Partners</Text>
+						<Header center level={5} mode="light">
+							Asian Partners
+						</Header>
+					</CommitteeBox>
+				</SixColumnGrid>
+			</Container>
+			<Spacer height={'50px'} />
 		</DarkSection>
 	);
 };
@@ -71,9 +104,35 @@ const SixColumnGrid = styled.div`
 `;
 
 const CommitteeBox = styled.div`
-	border: black solid 1px;
+	border: ${PALETTE.blue.dark} solid 1px;
 	min-height: 35px;
 	grid-column: span 2;
+	background-color: ${PALETTE.blue.main};
 
-	background-color: black;
+	transition: background-color 0.1s ease-out;
+	padding: 1rem 0.1rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	&:hover {
+		background-color: ${PALETTE.mono.dark};
+		h4,
+		h5,
+		h6,
+		p {
+			background: linear-gradient(
+				0deg,
+				#9f7622 0%,
+				#d4c5a6 36%,
+				#f2ebdd 50%,
+				#d4c5a6 64%,
+				#9f7622 100%
+			);
+			background-size: 300% 300%;
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+	}
+	border-radius: 15px;
 `;
