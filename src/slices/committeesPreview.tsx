@@ -70,7 +70,7 @@ export const CommitteesPreview = (): ReactElement => {
         </Container>
         <Spacer height={"50px"} />
         <Container>
-          <Text>lorem ipsum</Text>
+          {/* <Text>lorem ipsum</Text>
           <Text>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -79,7 +79,7 @@ export const CommitteesPreview = (): ReactElement => {
             reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
             culpa qui officia deserunt mollit anim id est laborum.
-          </Text>
+          </Text> */}
         </Container>
       </SubContent>
     </DarkSection>
