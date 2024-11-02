@@ -6,6 +6,7 @@ function MyApp({ Component, pageProps }) {
 	return (
 		<div style={{ position: 'relative' }}>
 			<NavThemeProvider>
+				<Navigation/>
 				<Component {...pageProps} />
 			</NavThemeProvider>
 		</div>
