@@ -9,6 +9,7 @@ import {
 	StyledText,
 	Text,
 	Div,
+	NarrowContainer,
 } from '../ui-library';
 import styled from 'styled-components';
 import StarMarker from '../assets/starMarkers';
@@ -59,24 +60,90 @@ export const RegistrationPage = (): ReactElement => {
 			</Section>
 			<Spacer height={'100px'} />
 
-			<ViewPortSection id="registration-how-to" mode='light'>
-				<Div>
-					<Spacer height={'50px'} />
-					<Header center level={3}>
-						How it works
-					</Header>
-					<Spacer height={'50px'} />
-				</Div>
-			</ViewPortSection>
+			<NarrowContainer>
+				<ViewPortSection id="registration-how-to" mode="light">
+					<Div>
+						<Spacer height={'2rem'} />
+						<Header center level={3} mode="dark">
+							How it works
+						</Header>
+						<Spacer height={'1.5rem'} />
+					</Div>
+					<Accordion
+						background="transparent"
+						mode="dark"
+						content={[
+							{
+								key: 'key',
+								label: (
+									<Div width="100%">
+										<Header level={6} mode="dark">
+											How is this different from regular MUN registration?
+										</Header>
+									</Div>
+								),
+								content: (
+									<>
+										<Text mode="dark">
+											As a specialized experience, not all delegates will be a
+											good fit. As a result, staff reserve the right to either
+											reject or put your application on hold to be considered at
+											a later date.
+										</Text>
+										<br />
+										<Text mode="dark">
+											In addition, country choices will not be available for
+											some committees, as the staff will reserve the right to
+											assign a country that fits your profile.
+										</Text>
+									</>
+								),
+							},
+						]}
+					></Accordion>
+					<Spacer />
 
-			<Container center>
+					<Accordion
+						background="transparent"
+						mode="dark"
+						content={[
+							{
+								key: 'key',
+								label: (
+									<Div width="100%">
+										<Header level={6} mode="dark">
+											When do we hear back on our application status?
+										</Header>
+									</Div>
+								),
+								content: (
+									<>
+										<Text mode="dark">
+											Offers will be sent out at the end of the referral period,
+											and then at the end of each month afterwards.Please allow
+											at least 3-4 weeks to review your application
+										</Text>
+										<br />
+										<Text mode="dark">
+											Once sent an offer, you will have 72 hours to accept your
+											role and pay.
+										</Text>
+									</>
+								),
+							},
+						]}
+					></Accordion>
+				</ViewPortSection>
+			</NarrowContainer>
+
+			{/* <NarrowContainer>
 				<Accordion
 					mode="dark"
 					background="glassy"
 					content={GetAccordionItems(isMobile)}
 					initialOpenedKey={accordionKey}
 				/>
-			</Container>
+			</NarrowContainer> */}
 		</div>
 	);
 };
