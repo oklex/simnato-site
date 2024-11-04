@@ -3,7 +3,7 @@ import styled, { css, keyframes } from 'styled-components';
 import { useTimeout } from '@mantine/hooks';
 
 import { GRADIENTS } from '@src/theme';
-import { DarkSection, RADIUS } from '@components/DarkSection';
+import { ViewPortSection, RADIUS } from '@src/components/ViewPortSection';
 import { Div, Text } from '@ui-library';
 import { NavThemeContext } from '@src/context/navTheme';
 
@@ -29,7 +29,7 @@ const SectionTestPage = (): ReactElement => {
 	return (
 		<div id="section-test-page">
 			<Div relative>
-				<DarkSection id={'hero'}>
+				<ViewPortSection id={'hero'}>
 					<AnimatedMask hide={hideOverlayTitle}>
 						<MaskBackground>
 							<SwapContent className="swap-content">
@@ -44,9 +44,9 @@ const SectionTestPage = (): ReactElement => {
 							<Text>swap content</Text>
 						</Div>
 					</SwapContent>
-				</DarkSection>
+				</ViewPortSection>
 			</Div>
-			<DarkSection id={'chunk'}>
+			<ViewPortSection id={'chunk'}>
 				<Filler />
 				<Filler>
 					<Text>lorem ipsum</Text>
@@ -60,11 +60,11 @@ const SectionTestPage = (): ReactElement => {
 						culpa qui officia deserunt mollit anim id est laborum.
 					</Text>
 				</Filler>
-			</DarkSection>
+			</ViewPortSection>
 			<Filler></Filler>
-			<DarkSection id={'part 2'}>
+			<ViewPortSection id={'part 2'}>
 				<Filler size={350}></Filler>
-			</DarkSection>
+			</ViewPortSection>
 			<Filler size={350}></Filler>
 		</div>
 	);

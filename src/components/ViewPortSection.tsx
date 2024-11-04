@@ -2,7 +2,7 @@ import { ReactElement, ReactNode, useContext, useRef } from 'react';
 import styled, { css } from 'styled-components';
 
 import { NavThemeContext } from '@context/navTheme';
-import { COLORS, GRADIENTS } from '@src/theme';
+import { COLORS, GRADIENTS, PALETTE } from '@src/theme';
 import { Div } from '@src/ui-library';
 
 export const RADIUS = 16;
@@ -12,12 +12,14 @@ type DarkSectionType = {
 	id: string;
 	gradientDirection?: GradientDirectionsType;
 	children: ReactNode | null;
+	mode?: 'dark' | 'light';
 };
 
-export const DarkSection = ({
+export const ViewPortSection = ({
 	id,
 	gradientDirection,
 	children,
+	mode = 'dark',
 }: DarkSectionType): ReactElement => {
 	const { initializeRef } = useContext(NavThemeContext);
 	const paddingTopRef = useRef<HTMLDivElement | null>(null);
@@ -52,6 +54,7 @@ export const DarkSection = ({
 				className="custom-section"
 				gradientDirection={gradientDirection}
 				negMargin={negativeMargin}
+				mode={mode}
 			>
 				{children}
 			</CustomSection>
@@ -93,10 +96,11 @@ const MaskBottom = styled.div`
 const CustomSection = styled.div<{
 	negMargin: number;
 	gradientDirection?: GradientDirectionsType;
+	mode?: 'dark' | 'light';
 }>`
 	background: linear-gradient(
 		${({ gradientDirection }) => gradientDirection ?? 'to bottom'},
-		${GRADIENTS.main}
+		${({ mode }) => (mode === 'light' ? GRADIENTS.silver : GRADIENTS.main)}
 	);
 	margin-top: -${({ negMargin }) => negMargin}px;
 	border-top: solid 1px ${COLORS.background};

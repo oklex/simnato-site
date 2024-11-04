@@ -2,7 +2,7 @@ import { ReactElement, useEffect } from 'react';
 import styled from 'styled-components';
 
 import StarMarker from '@src/assets/starMarkers';
-import { DarkSection } from '@src/components/DarkSection';
+import { ViewPortSection } from '@src/components/ViewPortSection';
 import {
 	Button,
 	Container,
@@ -24,7 +24,7 @@ export const CommitteesPreview = (): ReactElement => {
 	// }, []);
 
 	return (
-		<DarkSection id="committees-preview" gradientDirection="to left">
+		<ViewPortSection id="committees-preview" gradientDirection="to left">
 			<div id="globeViz" />
 			<SubContent>
 				<Spacer height={isTablet ? '100px' : '150px'} />
@@ -86,7 +86,7 @@ export const CommitteesPreview = (): ReactElement => {
 					</Div>
 				</Container>
 			</SubContent>
-		</DarkSection>
+		</ViewPortSection>
 	);
 };
 
