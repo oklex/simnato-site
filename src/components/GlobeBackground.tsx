@@ -53,9 +53,9 @@ const World = ({ containerId }) => {
     // Set auto-rotate and initial view once the globe is ready
     if (globeEl.current) {
       console.log("globeEl.current", globeEl.current);
-      globeEl.current.controls().autoRotate = true;
-      globeEl.current.controls().autoRotateSpeed = 0.3;
-      globeEl.current.pointOfView({ altitude: 4 }, 5000);
+      // globeEl.current.controls().autoRotate = true;
+      // globeEl.current.controls().autoRotateSpeed = 0.3;
+      // globeEl.current.pointOfView({ altitude: 4 }, 5000);
     }
   }, [countries]);
 
