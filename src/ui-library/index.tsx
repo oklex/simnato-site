@@ -4,6 +4,7 @@ export { Button } from './Button';
 export { GenericContainer as Container, NarrowContainer } from './Container';
 export { Div } from './Generics';
 export { Header } from './Header';
+export { Icon } from './Icon';
 export { LinkText as Link } from './Link';
 export { Section } from './Section';
 export { Spacer } from './Spacer';
