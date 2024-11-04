@@ -102,7 +102,6 @@ export const RegistrationPage = (): ReactElement => {
 						]}
 					></Accordion>
 					<Spacer />
-
 					<Accordion
 						background="transparent"
 						mode="dark"
@@ -127,6 +126,42 @@ export const RegistrationPage = (): ReactElement => {
 										<Text mode="dark">
 											Once sent an offer, you will have 72 hours to accept your
 											role and pay.
+										</Text>
+									</>
+								),
+							},
+						]}
+					></Accordion>
+					<Spacer />
+					<Accordion
+						background="transparent"
+						mode="dark"
+						content={[
+							{
+								key: 'key',
+								label: (
+									<Div width="100%">
+										<Header level={6} mode="dark">
+											I think I'm ready but I don't have much experience?
+										</Header>
+									</Div>
+								),
+								content: (
+									<>
+										<Text mode="dark">
+											Number of conferences, is not the same as skill! If you
+											have the experience and awards to suggest your competency,
+											that's great. If not, we are open to learning more about
+											you.
+										</Text>
+										<br />
+										<Text mode="dark">
+											Look out for fields on the applicaiton form where we ask
+											about other relevant experience for individual skillsets.
+											Elaborate as much you think you need to in these fields.
+											Finally, if you know any of the staff, ask them for
+											feedback and see if they are willing to give you a
+											referral.
 										</Text>
 									</>
 								),
