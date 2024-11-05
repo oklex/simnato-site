@@ -5,8 +5,9 @@ import '../index.css';
 function MyApp({ Component, pageProps }) {
 	return (
 		<div style={{ position: 'relative' }}>
+			<div id="portal-root" />
 			<NavThemeProvider>
-				<Navigation/>
+				<Navigation />
 				<Component {...pageProps} />
 			</NavThemeProvider>
 		</div>
