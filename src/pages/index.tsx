@@ -9,7 +9,6 @@ import {
 	Spacer,
 	Text,
 	NarrowContainer,
-	Modal,
 } from '@src/ui-library';
 import { StaffInfo } from '@src/slices/staffInfo';
 import { CommitteesPreview } from '@src/slices/committeesPreview';
@@ -19,9 +18,6 @@ export default function Home() {
 
 	return (
 		<div>
-			<Modal active={showModal} onClose={() => setShowModal(false)}>
-				<Header level={3}>header</Header>
-			</Modal>
 			<HomepageHero />
 			<Spacer height="50px" />
 			<NarrowContainer>
