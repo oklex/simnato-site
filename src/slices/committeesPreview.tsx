@@ -14,14 +14,9 @@ import {
 } from '@ui-library';
 import { BREAKPOINTS, PALETTE } from '@src/theme';
 import useScreenSize from '@src/stores/useScreenSize';
-import { renderWorldInContainer } from '@components/GlobeBackground';
 
 export const CommitteesPreview = (): ReactElement => {
 	const { isTablet } = useScreenSize();
-
-	// useEffect(() => {
-	//   renderWorldInContainer("globeViz"); // Render World into the element with id "globeViz"
-	// }, []);
 
 	return (
 		<ViewPortSection id="committees-preview" gradientDirection="to left">
