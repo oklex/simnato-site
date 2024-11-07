@@ -16,9 +16,7 @@ export const NACpage = (): ReactElement => {
 			</NarrowContainer>
 			<Spacer />
 			<NarrowContainer>
-				<ViewPortSection id="info-box" mode="mono">
 					<Text mode="dark">overview</Text>
-				</ViewPortSection>
 			</NarrowContainer>
 		</div>
 	);
