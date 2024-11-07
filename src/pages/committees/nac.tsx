@@ -8,11 +8,11 @@ export const NACpage = (): ReactElement => {
 	return (
 		<div>
 			<NarrowContainer>
-				<Spacer height={'20vh'} />
+				<Spacer height={'15vh'} />
 				<Header center level={1} mode="dark">
 					North Atlantic Council
 				</Header>
-				<Spacer height={'20vh'} />
+				<Spacer />
 			</NarrowContainer>
 			<Spacer />
 			<NarrowContainer>
