@@ -15,14 +15,9 @@ import { StaffInfo } from '@src/slices/staffInfo';
 import { CommitteesPreview } from '@src/slices/committeesPreview';
 
 export default function Home() {
-	const [showModal, setShowModal] = useState(true);
-
 	return (
 		<div>
 			<HomepageHero />
-			<Modal active={showModal} onClose={() => setShowModal(false)}>
-				<Text>hello world</Text>
-			</Modal>
 			<Spacer height="50px" />
 			<NarrowContainer>
 				<Header mode="dark" level={6}>
