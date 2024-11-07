@@ -26,7 +26,7 @@ export const ViewPortSection = ({
 	const paddingBottomRef = useRef<HTMLDivElement | null>(null);
 
 	const trackRefCallback = (instance: HTMLDivElement | null) => {
-		if (instance) initializeRef(id, { current: instance });
+		if (instance && mode === 'dark') initializeRef(id, { current: instance });
 	};
 
 	const negativeMargin =
