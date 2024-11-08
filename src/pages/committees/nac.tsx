@@ -2,7 +2,15 @@ import { ReactElement } from 'react';
 import styled from 'styled-components';
 
 import { ViewPortSection } from '@components/ViewPortSection';
-import { Container, Header, NarrowContainer, Spacer, Text } from '@ui-library';
+import {
+	Container,
+	Div,
+	Header,
+	NarrowContainer,
+	Spacer,
+	Text,
+} from '@ui-library';
+import HaloUnderline from '@assets/haloUnderline';
 
 export const NACpage = (): ReactElement => {
 	return (
@@ -12,11 +20,14 @@ export const NACpage = (): ReactElement => {
 				<Header center level={1} mode="dark">
 					North Atlantic Council
 				</Header>
+				<Div flex justifyContent="center">
+					<HaloUnderline width="26rem" />
+				</Div>
 				<Spacer />
 			</NarrowContainer>
 			<Spacer />
 			<NarrowContainer>
-					<Text mode="dark">overview</Text>
+				<Text mode="dark">overview</Text>
 			</NarrowContainer>
 		</div>
 	);
