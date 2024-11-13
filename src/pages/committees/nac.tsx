@@ -21,7 +21,7 @@ export const NACpage = (): ReactElement => {
 					North Atlantic Council
 				</Header>
 				<Div flex justifyContent="center">
-					<HaloUnderline width="26rem" />
+					<HaloUnderline width="15rem" />
 				</Div>
 				<Spacer />
 			</NarrowContainer>
