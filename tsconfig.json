@@ -15,9 +15,38 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": [
+        "src/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@context/*": [
+        "src/context/*"
+      ],
+      "@slices/*": [
+        "src/slices/*"
+      ],
+      "@stores/*": [
+        "src/stores/*"
+      ],
+      "@ui-library": [
+        "src/ui-library"
+      ],
+      "@ui-library/*": [
+        "src/ui-library/*"
+      ]
+    },
+    "target": "ES2017"
   },
   "include": [
+    "src",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"

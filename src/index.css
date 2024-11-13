@@ -6,7 +6,7 @@
 
 	color-scheme: light dark;
 	color: rgba(255, 255, 255, 0.87);
-	background-color: #EEF0F5;
+	background-color: #eef0f5;
 
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
@@ -25,7 +25,7 @@ a:hover {
 
 body {
 	margin: 0;
-	min-width: 100vw;
+	min-width: 100%;
 	min-height: 100vh;
 }
 
@@ -37,30 +37,55 @@ html {
 /* For smaller screens, reduce rem value */
 @media (max-width: 1200px) {
 	html {
-		font-size: 15px; /* 1rem = 15px */
+		font-size: 15px; 
 	}
 }
 
 @media (max-width: 992px) {
 	html {
-		font-size: 15px; /* 1rem = 14px */
+		font-size: 14.5px; 
 	}
 }
 
 @media (max-width: 768px) {
 	html {
-		font-size: 14px; /* 1rem = 13px */
+		font-size: 14px; 
 	}
 }
 
 @media (max-width: 576px) {
 	html {
-		font-size: 13px; /* 1rem = 12px */
+		font-size: 13.5px;
 	}
 }
 
 @media (max-width: 400px) {
 	html {
-		font-size: 12px; /* 1rem = 10px */
+		font-size: 13px; 
 	}
+}
+/* Enable overlay scrollbar */
+html {
+	scrollbar-gutter: stable both-edges; /* Ensures overlay scrollbar without content shifting */
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+	width: 10px; /* Width of the scrollbar */
+	position: absolute;
+}
+
+::-webkit-scrollbar-track {
+	background: lightgray;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: rgba(0, 0, 0, 0.5); /* Scrollbar thumb color */
+	border-radius: 5px; /* Rounded corners */
+	border: 2px solid transparent; /* Spacing around the thumb */
+	background-clip: padding-box; /* Ensures the thumb doesn't bleed over the border */
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: rgba(0, 0, 0, 0.7); /* Darker on hover */
 }
