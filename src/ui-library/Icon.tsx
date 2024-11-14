@@ -30,7 +30,7 @@ import { OpenBook } from '@styled-icons/entypo/OpenBook';
 
 import { Guide } from '@styled-icons/remix-line/Guide';
 
-import { PALETTE, MODES } from '@src/theme';
+import { PALETTE, MODES, FontSizeType, FONT_SIZES } from '@src/theme';
 
 export const ICONS = {
 	'chevron-up': ChevronUp,
@@ -64,10 +64,10 @@ type IconStyleWrapperProps = {
 	className?: string;
 	onClick?: (event: MouseEvent | KeyboardEvent<HTMLElement>) => unknown;
 	role?: 'button';
-	large?: true;
+	size?: FontSizeType;
 	spaceAfter?: true | string;
 
-	mode: MODES;
+	mode: 'light' | 'dark';
 };
 
 const IconStyleWrapper = styled.span<IconStyleWrapperProps>`
@@ -76,8 +76,14 @@ const IconStyleWrapper = styled.span<IconStyleWrapperProps>`
 	vertical-align: middle;
 	${({ role }) => role === 'button' && 'cursor: pointer;'}
 
-	line-height: ${({ large }) => (large ? '25px' : '2rem')};
-	width: ${({ large }) => (large ? '25px' : '2rem')};
+	line-height: ${({ size }) =>
+		size
+			? `calc(${FONT_SIZES[size]} ${size === 'lg' ? ' - ' : ' + 8px'})`
+			: '2rem'};
+	width: ${({ size }) =>
+		size
+			? `calc(${FONT_SIZES[size]} ${size === 'lg' ? '' : ' + 8px'})`
+			: '2rem'};
 
 	${({ onClick }) =>
 		onClick &&
@@ -90,8 +96,7 @@ const IconStyleWrapper = styled.span<IconStyleWrapperProps>`
 			? 'margin-right: 1rem;'
 			: `margin-right: ${spaceAfter};`}
 
-color: ${({ mode }) =>
-		PALETTE[mode]?.main || PALETTE.mono.main}; /* Fallback to mono.main */
+color: ${({ mode }) => PALETTE.mono[mode]}; /* Fallback to mono.main */
 
 	svg {
 		display: block;
@@ -110,7 +115,7 @@ const InnerIcon: FC<IconProps> = ({
 	title,
 	role,
 	spaceAfter,
-	large,
+	size = 'lg',
 	mode,
 }: IconProps) => {
 	const IconElement = ICONS[icon] as StyledIcon;
@@ -118,7 +123,7 @@ const InnerIcon: FC<IconProps> = ({
 	return (
 		<IconStyleWrapper
 			className={className}
-			large={large}
+			size={size}
 			onClick={onClick}
 			onKeyPress={onClick}
 			role={role}
