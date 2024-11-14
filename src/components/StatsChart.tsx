@@ -56,6 +56,7 @@ const statDescription = {
 
 export const StatsChart = ({ committeeStats }: StatsProps): ReactElement => {
   const { knowledge, speeches, pacing, moderation } = committeeStats;
+  const { isMobile } = useScreenSize();
 
   const ref1_top = createRef<SVGCircleElement>();
   const ref2_right = createRef<SVGCircleElement>();
@@ -152,26 +153,26 @@ export const StatsChart = ({ committeeStats }: StatsProps): ReactElement => {
   return (
     <StatsContainer>
       <StatsLabel position="top">
-        <Text align="center" size="sm">
+        <Text align="center" size={isMobile ? "md" : "sm"}>
           knowledge
           {/* {` ${knowledge} / 5`} */}
         </Text>
       </StatsLabel>
-      <StatsLabel position="right">
-        <Text align="center" size="sm">
+      <StatsLabel position="right" isMobile={isMobile}>
+        <Text align="center" size={isMobile ? "md" : "sm"}>
           speeches
           {/* <br />
           {`${speeches} / 5`} */}
         </Text>
       </StatsLabel>
       <StatsLabel position="bottom">
-        <Text align="center" size="sm">
+        <Text align="center" size={isMobile ? "md" : "sm"}>
           pacing
           {/* {` ${pacing} / 5`} */}
         </Text>
       </StatsLabel>
-      <StatsLabel position="left">
-        <Text align="center" size="sm">
+      <StatsLabel position="left" isMobile={isMobile}>
+        <Text align="center" size={isMobile ? "md" : "sm"}>
           moderation
           {/* <br /> */}
           {/* {`${moderation} / 5`} */}
@@ -261,22 +262,22 @@ export const StatsChart = ({ committeeStats }: StatsProps): ReactElement => {
       </SvgWrapper>
       <ContextDescription>
         {ref1_hover && (
-          <Text align="center" size="sm">
+          <Text align="center" size={isMobile ? "md" : "sm"}>
             {ref1_text}
           </Text>
         )}
         {ref2_hover && (
-          <Text align="center" size="sm">
+          <Text align="center" size={isMobile ? "md" : "sm"}>
             {ref2_text}
           </Text>
         )}
         {ref3_hover && (
-          <Text align="center" size="sm">
+          <Text align="center" size={isMobile ? "md" : "sm"}>
             {ref3_text}
           </Text>
         )}
         {ref4_hover && (
-          <Text align="center" size="sm">
+          <Text align="center" size={isMobile ? "md" : "sm"}>
             {ref4_text}
           </Text>
         )}
@@ -289,30 +290,35 @@ const StatsContainer = styled(Div)`
   position: relative;
   display: flex;
   justify-content: center;
-  margin-bottom: 30px;
+  margin: 10px auto 30px;
 
   @media (max-width: ${BREAKPOINTS.sm}) {
     transform: scale(0.8);
+    max-width: 300px;
   }
   @media (min-width: ${BREAKPOINTS.sm}) and (max-width: ${BREAKPOINTS.md}) {
-    transform: scale(0.6);
+    transform: scale(0.8);
+  }
+  @media (min-width: ${BREAKPOINTS.md}) {
+    max-width: ${VIEWBOX_DIMENSION + 65}px;
   }
 `;
 
 const StatsLabel = styled.div<{
   position: "top" | "right" | "bottom" | "left";
+  isMobile?: boolean;
 }>`
   position: absolute;
 
-  ${({ position }) => {
+  ${({ position, isMobile }) => {
     if (position === "top")
       return css`
         top: -15px;
       `;
     if (position === "right")
       return css`
-        top: 50%;
-        right: -15px;
+        top: 47%;
+        right: ${isMobile ? "-70px" : "-15px"};
         transform: rotate(90deg); /* Rotates text by 45 degrees */
       `;
     if (position === "bottom")
@@ -322,8 +328,8 @@ const StatsLabel = styled.div<{
       `;
     if (position === "left")
       return css`
-        top: 50%;
-        left: -15px;
+        top: 47%;
+        left: ${isMobile ? "-70px" : "-15px"};
         transform: rotate(-90deg); /* Rotates text by 45 degrees */
       `;
   }}

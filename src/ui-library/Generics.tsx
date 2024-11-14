@@ -140,10 +140,16 @@ export const GridSection = styled.div<{ columns: number; gap?: string }>`
 
   @media (max-width: ${BREAKPOINTS.sm}) {
     grid-template-columns: 1fr;
+    & > * {
+      width: 100%;
+    }
   }
 
   @media (min-width: ${BREAKPOINTS.sm}) and (max-width: ${BREAKPOINTS.md}) {
     grid-template-columns: repeat(2, 1fr);
+    & > * {
+		width: 100%;
+    }
   }
 
   @media (min-width: ${BREAKPOINTS.md}) {
