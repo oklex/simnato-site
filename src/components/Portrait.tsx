@@ -4,7 +4,7 @@ import Link from "next/link";
 import styled, { css, keyframes } from "styled-components";
 
 import { Header, Text, StyledText, Div } from "@ui-library";
-import { COLORS, GRADIENTS } from "@src/theme";
+import { COLORS, GRADIENTS, PALETTE } from "@src/theme";
 import { popOut, popIn } from "@src/keyframeAnimations";
 
 type PortraitProps = {
@@ -90,7 +90,9 @@ export const Portrait = ({
         {subtitle && (
           <Div flex justifyContent="center">
             <Text align="center" mode={mode}>
-              <StyledText size='sm' subtle>{subtitle}</StyledText>
+              <StyledText size="sm" subtle>
+                {subtitle}
+              </StyledText>
             </Text>
           </Div>
         )}
@@ -114,9 +116,33 @@ const PortraitContainer = styled.div<PortraitStylingProps>`
 const PortraitWrapper = styled.div<{ clickable: boolean }>`
   border-radius: 12px;
   position: relative;
-  /* padding: 0.2rem; */
+  overflow: hidden;
   margin-left: auto;
   margin-right: auto;
+
+  /* Add the blue overlay */
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 102, 255, 0.3); /* Light blue overlay */
+    mix-blend-mode: color;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+  }
+
+  /* Hover to remove grayscale and blue tint */
+  &:hover img {
+    filter: none;
+  }
+
+  /* Hover to remove the blue overlay */
+  &:hover::after {
+    opacity: 0;
+  }
 
   ${({ clickable }) =>
     clickable &&
