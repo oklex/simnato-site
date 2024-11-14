@@ -1,14 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Section, Button } from '../ui-library';
+import { Banner } from '@src/components/Banner';
 
 const BrandingPage = () => {
 	return (
 		<PageWrapper>
+			<Banner type="neutral">neutral banner</Banner>
+			<Banner type="warning">warning banner</Banner>
+			<Banner type="notice">notice banner</Banner>
+			<Banner type="important">important banner</Banner>
 			<h1>Button Variations</h1>
 			<Section>
 				<h2>Primary Buttons</h2>
-				<Button mode="light" variant="primary" >
+				<Button mode="light" variant="primary">
 					Primary Light
 				</Button>
 				<Button mode="dark" variant="primary">
@@ -40,7 +45,7 @@ const BrandingPage = () => {
 
 			<Section>
 				<h2>Light Buttons</h2>
-				<Button mode="light" variant="light"> 
+				<Button mode="light" variant="light">
 					Light Light
 				</Button>
 				<Button mode="dark" variant="light">
@@ -55,16 +60,16 @@ const BrandingPage = () => {
 			</Section>
 			<Section>
 				<h2>Light Buttons</h2>
-				<Button mode="light" variant="text" >
+				<Button mode="light" variant="text">
 					Light Light
 				</Button>
-				<Button mode="dark" variant="text" >
+				<Button mode="dark" variant="text">
 					Light Dark
 				</Button>
-				<Button mode="gold" variant="text" >  
+				<Button mode="gold" variant="text">
 					Light Gold
 				</Button>
-				<Button mode="blue" variant="text" >
+				<Button mode="blue" variant="text">
 					Light Blue
 				</Button>
 			</Section>
