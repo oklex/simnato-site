@@ -1,9 +1,10 @@
-import { useHover } from "@src/stores/useHover";
-import useScreenSize from "@src/stores/useScreenSize";
-import { BREAKPOINTS } from "@src/theme";
-import { Div, Text } from "@src/ui-library";
 import { createRef, ReactElement } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+import { useHover } from "@stores/useHover";
+import useScreenSize from "@stores/useScreenSize";
+import { BREAKPOINTS } from "@src/theme";
+import { Div, Text } from "@ui-library";
 
 type Score = 1 | 2 | 3 | 4 | 5;
 type Coordinate = string;
@@ -71,8 +72,8 @@ export const StatsChart = ({ committeeStats }: StatsProps): ReactElement => {
   const ref3_text = statDescription.pacing[pacing];
   const ref4_text = statDescription.moderation[moderation];
 
+  const mid = BASE_VIEWBOX_SIZE / 2 + VIEWBOX_PADDING;
   const polygonCoordinates = (() => {
-    const mid = BASE_VIEWBOX_SIZE / 2 + VIEWBOX_PADDING;
     const addFromCenter = (score: Score) => mid + DISTANCE_INCREMENT * score;
     const subtractFromCenter = (score: Score) =>
       mid - DISTANCE_INCREMENT * score;
@@ -136,12 +137,46 @@ export const StatsChart = ({ committeeStats }: StatsProps): ReactElement => {
           className={CLASSNAME}
           ref={ref}
         />
+        <circle
+          cx={cx}
+          cy={cy}
+          r="30"
+          fill="transparent"
+          className={CLASSNAME}
+          ref={ref}
+        />
       </>
     );
   };
 
   return (
     <StatsContainer>
+      <StatsLabel position="top">
+        <Text align="center" size="sm">
+          knowledge
+          {/* {` ${knowledge} / 5`} */}
+        </Text>
+      </StatsLabel>
+      <StatsLabel position="right">
+        <Text align="center" size="sm">
+          speeches
+          {/* <br />
+          {`${speeches} / 5`} */}
+        </Text>
+      </StatsLabel>
+      <StatsLabel position="bottom">
+        <Text align="center" size="sm">
+          pacing
+          {/* {` ${pacing} / 5`} */}
+        </Text>
+      </StatsLabel>
+      <StatsLabel position="left">
+        <Text align="center" size="sm">
+          moderation
+          {/* <br /> */}
+          {/* {`${moderation} / 5`} */}
+        </Text>
+      </StatsLabel>
       <SvgWrapper>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -225,10 +260,26 @@ export const StatsChart = ({ committeeStats }: StatsProps): ReactElement => {
         </svg>
       </SvgWrapper>
       <ContextDescription>
-        {ref1_hover && <Text align="center">{ref1_text}</Text>}
-        {ref2_hover && <Text align="center">{ref2_text}</Text>}
-        {ref3_hover && <Text align="center">{ref3_text}</Text>}
-        {ref4_hover && <Text align="center">{ref4_text}</Text>}
+        {ref1_hover && (
+          <Text align="center" size="sm">
+            {ref1_text}
+          </Text>
+        )}
+        {ref2_hover && (
+          <Text align="center" size="sm">
+            {ref2_text}
+          </Text>
+        )}
+        {ref3_hover && (
+          <Text align="center" size="sm">
+            {ref3_text}
+          </Text>
+        )}
+        {ref4_hover && (
+          <Text align="center" size="sm">
+            {ref4_text}
+          </Text>
+        )}
       </ContextDescription>
     </StatsContainer>
   );
@@ -238,19 +289,53 @@ const StatsContainer = styled(Div)`
   position: relative;
   display: flex;
   justify-content: center;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 
   @media (max-width: ${BREAKPOINTS.sm}) {
+    transform: scale(0.8);
+  }
+  @media (min-width: ${BREAKPOINTS.sm}) and (max-width: ${BREAKPOINTS.md}) {
     transform: scale(0.6);
-    margin-left: -90px;
   }
 `;
+
+const StatsLabel = styled.div<{
+  position: "top" | "right" | "bottom" | "left";
+}>`
+  position: absolute;
+
+  ${({ position }) => {
+    if (position === "top")
+      return css`
+        top: -15px;
+      `;
+    if (position === "right")
+      return css`
+        top: 50%;
+        right: -15px;
+        transform: rotate(90deg); /* Rotates text by 45 degrees */
+      `;
+    if (position === "bottom")
+      return css`
+        /* padding-left: 105px; */
+        bottom: -5px;
+      `;
+    if (position === "left")
+      return css`
+        top: 50%;
+        left: -15px;
+        transform: rotate(-90deg); /* Rotates text by 45 degrees */
+      `;
+  }}
+`;
+
 const ContextDescription = styled(Div)`
   position: absolute;
   height: 0px;
-  margin-top: -15px;
+  margin-top: -20px;
   bottom: 0;
 `;
+
 const SvgWrapper = styled(Div)`
   .persist {
     opacity: 1;
