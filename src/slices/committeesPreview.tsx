@@ -2,8 +2,9 @@ import { ReactElement, useEffect } from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 
-import StarMarker from '@src/assets/starMarkers';
-import { ViewPortSection } from '@src/components/ViewPortSection';
+import StarMarker from '@assets/starMarkers';
+import MapBackground from '@assets/mapBackground';
+import { ViewPortSection } from '@components/ViewPortSection';
 import {
 	Button,
 	Container,
@@ -14,15 +15,15 @@ import {
 	Text,
 } from '@ui-library';
 import { BREAKPOINTS, PALETTE } from '@src/theme';
-import useScreenSize from '@src/stores/useScreenSize';
+import useScreenSize from '@stores/useScreenSize';
 
 export const CommitteesPreview = (): ReactElement => {
 	const { isTablet } = useScreenSize();
-	const router = useRouter()
+	const router = useRouter();
 
 	const generateOnClick = (link: string) => {
-		return (e: any) => router.push(link)
-	}
+		return (e: any) => router.push(link);
+	};
 
 	return (
 		<ViewPortSection id="committees-preview" gradientDirection="to left">
@@ -45,7 +46,7 @@ export const CommitteesPreview = (): ReactElement => {
 				<Spacer height={'40px'} />
 				<Container>
 					<SixColumnGrid>
-						<CommitteeBox >
+						<CommitteeBox>
 							<Header center level={5} mode="light">
 								North Atlantic Council
 							</Header>
@@ -75,6 +76,9 @@ export const CommitteesPreview = (): ReactElement => {
 					</SixColumnGrid>
 				</Container>
 				<Spacer height={'20vh'} />
+				<MapBackgroundWrapper>
+					<MapBackground width="150vw" />
+				</MapBackgroundWrapper>
 				<Container>
 					<Header level={4} center>
 						Ready for the next level?
@@ -86,6 +90,7 @@ export const CommitteesPreview = (): ReactElement => {
 						</Button>
 					</Div>
 				</Container>
+				<Spacer height={'20vh'} />
 			</SubContent>
 		</ViewPortSection>
 	);
@@ -168,4 +173,13 @@ const SubContent = styled.div`
 	z-index: 1; // Ensures content is above the globe background
 	color: white;
 	padding: 20px;
+`;
+
+const MapBackgroundWrapper = styled.div`
+	position: absolute;
+	z-index: -1;
+	bottom: -25vw;
+	left: -25vw;
+	display: flex;
+	justify-content: center;
 `;
