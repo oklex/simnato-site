@@ -26,7 +26,7 @@ export const StaffInfo = (): ReactElement => {
             experience to create something new.
           </Text>
         </Span2Columns>
-        <Div responsiveness="desktop-above">
+        <Div responsiveness="mobile-hide">
           <Span2Columns />
         </Div>
 
