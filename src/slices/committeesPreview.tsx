@@ -76,9 +76,6 @@ export const CommitteesPreview = (): ReactElement => {
 					</SixColumnGrid>
 				</Container>
 				<Spacer height={'20vh'} />
-				<MapBackgroundWrapper>
-					<MapBackground width="150vw" />
-				</MapBackgroundWrapper>
 				<Container>
 					<Header level={4} center>
 						Ready for the next level?
@@ -91,6 +88,9 @@ export const CommitteesPreview = (): ReactElement => {
 					</Div>
 				</Container>
 				<Spacer height={'20vh'} />
+				<MapBackgroundWrapper>
+					<MapBackground width="150vw" />
+				</MapBackgroundWrapper>
 			</SubContent>
 		</ViewPortSection>
 	);
