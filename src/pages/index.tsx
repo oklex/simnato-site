@@ -55,7 +55,12 @@ export default function Home() {
           </div>
         </SplitScreen>
       </NarrowContainer>
-      <Spacer height={"100px"} />
+      <Div responsiveness="desktop-above">
+        <Spacer height={"100px"} />
+      </Div>
+      <Div responsiveness="desktop-hide">
+        <Spacer height={"50px"} />
+      </Div>
       <StaffInfo />
       <Spacer height={"75px"} />
       <CommitteesPreview />

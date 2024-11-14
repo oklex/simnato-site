@@ -26,7 +26,9 @@ export const StaffInfo = (): ReactElement => {
             experience to create something new.
           </Text>
         </Span2Columns>
-        <Span2Columns />
+        <Div responsiveness="desktop-above">
+          <Span2Columns />
+        </Div>
 
         <Span2Columns>
           <Spacer />
@@ -115,10 +117,6 @@ const StaffGrid = styled.div`
 
   @media (min-width: ${BREAKPOINTS.md}) {
     grid-template-columns: repeat(4, 1fr);
-  }
-
-  & > * {
-    min-height: 200px;
   }
 `;
 
