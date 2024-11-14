@@ -128,7 +128,7 @@ const PortraitWrapper = styled.div<{ clickable: boolean }>`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 102, 255, 0.3); /* Light blue overlay */
+    background-color: rgba(5, 0, 78, 0.3); /* Light blue overlay */
     mix-blend-mode: color;
     pointer-events: none;
     transition: opacity 0.5s ease;
