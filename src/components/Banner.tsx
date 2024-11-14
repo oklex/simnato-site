@@ -17,11 +17,13 @@ export const Banner = ({
 	justifyContent,
 	children,
 }: BannerProps) => {
+	const mode = type === 'neutral' || type === 'notice' ? 'dark' : 'light';
+
 	return (
 		<StyledBanner noMargin={noMargin} color={type}>
-			{/* {type === 'warning' && (
-				<Icon mode="light" icon={type} spaceAfter title={type} />
-			)} */}
+			{type === 'warning' && (
+				<Icon mode={mode} icon={type} spaceAfter title={type} />
+			)}
 			<Div
 				flex
 				justifyContent={justifyContent ?? 'center'}
@@ -32,12 +34,12 @@ export const Banner = ({
 				{children &&
 					Array.isArray(children) &&
 					children.map((c) => (
-						<Text align="center" size="sm">
+						<Text align="center" mode={mode}>
 							{c}
 						</Text>
 					))}
 				{children && !Array.isArray(children) && (
-					<Text align="center" size="sm">
+					<Text align="center" mode={mode}>
 						{children}
 					</Text>
 				)}
@@ -108,8 +110,4 @@ const StyledBanner = styled.div<{
 			: css`
 					margin: 10px;
 			  `}
-
-	/* @media (min-width: ${BREAKPOINTS.md}) {
-		margin: 3rem 10rem 5rem;
-	} */
 `;
