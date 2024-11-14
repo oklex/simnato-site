@@ -238,7 +238,7 @@ const StatsContainer = styled(Div)`
   position: relative;
   display: flex;
   justify-content: center;
-  margin-bottom: 35px;
+  margin-bottom: 25px;
 
   @media (max-width: ${BREAKPOINTS.sm}) {
     transform: scale(0.6);

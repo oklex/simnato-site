@@ -10,10 +10,19 @@ import {
   Spacer,
   StyledText,
   Text,
+  GridSection,
 } from "@ui-library";
 import { Portrait } from "@components/Portrait";
 import { BREAKPOINTS } from "@src/theme";
 import StarMarker from "@assets/starMarkers";
+import { CommitteeStatsTypes, StatsChart } from "@src/components/StatsChart";
+
+const COMMITTEE_STATS: CommitteeStatsTypes = {
+  knowledge: 5,
+  speeches: 3,
+  pacing: 4,
+  moderation: 1,
+};
 
 export const MCpage = (): ReactElement => {
   return (
@@ -65,26 +74,36 @@ export const MCpage = (): ReactElement => {
           <Portrait fullName="Mary Lu" position="Co-Director" width="medium" />
         </Div>
       </Letter>
+      <Spacer />
+      <NarrowContainer>
+        <ViewPortSection id="committee-info">
+          <GridSection columns={2}>
+            <Div padding="15px">
+              <Header level={6}>About</Header>
+              <Header level={3}>The Military Committee</Header>
+              <Spacer/>
+              <Spacer/>
+              <Text>
+                The NATO Military Committee, established in 1949, holds the
+                highest military authority in NATO, led by the Supreme Allied
+                Commanders of Operations and Transformation. It provides
+                critical recommendations to the North Atlantic Council (NAC) on
+                logistics and strategy. In this fast-paced SimNATO committee,
+                you'll represent one of the Chiefs of Defe
+              </Text>
+            </Div>
+            <Div>
+              <StatsChart committeeStats={COMMITTEE_STATS} />
+            </Div>
+          </GridSection>
+        </ViewPortSection>
+      </NarrowContainer>
     </div>
   );
 };
 
 export default MCpage;
 
-const LetterGrid = styled.div`
-  display: grid;
-  grid-gap: 16px;
-
-  @media (max-width: ${BREAKPOINTS.sm}) {
-    grid-template-columns: 1fr;
-  }
-
-  @media (min-width: ${BREAKPOINTS.sm}) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-`;
-
 const Letter = styled(NarrowContainer)`
-  grid-column: span 2;
   max-width: 720px;
 `;
