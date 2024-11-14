@@ -134,9 +134,9 @@ export const Div = styled.div.attrs<GenericDivProps>(({ id, className }) => ({
   }};
 `;
 
-export const GridSection = styled.div<{ columns: number }>`
+export const GridSection = styled.div<{ columns: number; gap?: string }>`
   display: grid;
-  grid-gap: 16px;
+  grid-gap: ${({ gap }) => gap ?? "16px"};
 
   @media (max-width: ${BREAKPOINTS.sm}) {
     grid-template-columns: 1fr;
