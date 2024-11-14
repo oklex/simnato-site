@@ -29,7 +29,7 @@ export const StaffInfo = (): ReactElement => {
         <Span2Columns />
 
         <Span2Columns>
-		<Spacer/>
+          <Spacer />
           <Header mode="dark" level={4}>
             Simulation Architects
           </Header>
@@ -39,11 +39,11 @@ export const StaffInfo = (): ReactElement => {
             simulation dynamics.
           </Text>
         </Span2Columns>
-        <Portrait fullName="Adele Agenes" position="architect" width="medium" />
-        <Portrait fullName="Celina Qu" position="architect" width="medium" />
+        <Portrait fullName="Adele Agenes" position="Architect" width="medium" />
+        <Portrait fullName="Celina Qu" position="Architect" width="medium" />
 
         <Div>
-		<Spacer/>
+          <Spacer />
           <Header mode="dark" level={4}>
             Committee Staff
           </Header>
@@ -53,19 +53,46 @@ export const StaffInfo = (): ReactElement => {
             committee.
           </Text>
         </Div>
-        <Portrait fullName="Rachel Yu" position="director" width="medium" />
-        <Portrait fullName="Marek Cai" position="director" width="medium" />
-        <Portrait fullName="Mary Lu" position="director" width="medium" />
-        <Portrait fullName="Jessica Wang" position="director" width="medium" />
         <Portrait
-          fullName="Sin Li"
-          position="assistant director"
+          fullName="Rachel Yu"
+          position="Director"
+          subtitle="North Atlantic Council"
           width="medium"
         />
-        <Portrait fullName="Sophie Xu" position="director" width="medium" />
+        <Portrait
+          fullName="Marek Cai"
+          position="Co-Director"
+          subtitle="Military Committee"
+          width="medium"
+        />
+        <Portrait
+          fullName="Mary Lu"
+          position="Co-Director"
+          subtitle="Military Committee"
+          width="medium"
+        />
+        <Portrait
+          fullName="Jessica Wang"
+          position="Director"
+          subtitle="NATO Partners Committee"
+          width="medium"
+        />
+        <Portrait
+          fullName="Sin Li"
+          position="Assistant Director"
+          subtitle="NATO Partners Committee"
+          width="medium"
+        />
+        <Portrait
+          fullName="Sophie Xu"
+          position="Director"
+          subtitle="Espionage & Intelligence"
+          width="medium"
+        />
         <Portrait
           fullName="Caitlin Lim"
-          position="assistant director"
+          position="Assistant Director"
+          subtitle="Espionage & Intelligence"
           width="medium"
         />
         <Portrait fullName="Amber Yang" position={amberRole} width="medium" />

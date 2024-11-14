@@ -78,7 +78,7 @@ export const Portrait = ({
       </Div>
       <Div>
         {fullName && (
-          <Header center level={6} mode={mode}>
+          <Header center level={5} mode={mode}>
             {fullName}
           </Header>
         )}
@@ -90,7 +90,7 @@ export const Portrait = ({
         {subtitle && (
           <Div flex justifyContent="center">
             <Text align="center" mode={mode}>
-              <StyledText subtle>{subtitle}</StyledText>
+              <StyledText size='sm' subtle>{subtitle}</StyledText>
             </Text>
           </Div>
         )}
