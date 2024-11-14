@@ -78,6 +78,7 @@ export const MCpage = (): ReactElement => {
       <Spacer />
       <Container>
         <ViewPortSection id="committee-info">
+          <Spacer/>
           <GridSection columns={2} gap="15px">
             <Div padding="25px">
               <Header level={6}>About</Header>
