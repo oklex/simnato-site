@@ -58,6 +58,7 @@ export const MCpage = (): ReactElement => {
           right individuals for this job, the world is counting on us.
         </Text>
         <Text mode="dark">Godspeed. </Text>
+        <Spacer height={"2rem"} />
 
         <Div
           flex
@@ -77,22 +78,28 @@ export const MCpage = (): ReactElement => {
       <Spacer />
       <NarrowContainer>
         <ViewPortSection id="committee-info">
-          <GridSection columns={2}>
+          <GridSection columns={2} gap='35px'>
             <Div padding="15px">
               <Header level={6}>About</Header>
               <Header level={3}>The Military Committee</Header>
-              <Spacer/>
-              <Spacer/>
-              <Text>
+              <Spacer />
+              <Spacer />
+              <Text size="sm">
                 The NATO Military Committee, established in 1949, holds the
                 highest military authority in NATO, led by the Supreme Allied
                 Commanders of Operations and Transformation. It provides
                 critical recommendations to the North Atlantic Council (NAC) on
                 logistics and strategy. In this fast-paced SimNATO committee,
-                you'll represent one of the Chiefs of Defe
+                you'll represent one of the Chiefs of Defence, navigating
+                tactical decisions unique to this Model UN experience. Complex
+                and demanding, this committee requires intense preparation and
+                collaboration. Key questions include: What are your country’s
+                goals? What resources can it commit? Can NATO’s strategy hold up
+                under global strain? These decisions are vital for the success
+                of the committee and global security.
               </Text>
             </Div>
-            <Div>
+            <Div padding="15px 0px 0px">
               <StatsChart committeeStats={COMMITTEE_STATS} />
             </Div>
           </GridSection>
