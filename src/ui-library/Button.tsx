@@ -47,6 +47,12 @@ const StyledButton = styled.button<{
 	transition: all 0.15s ease-in-out;
 	display: inline-block;
 
+	transform: scale(1);
+
+	&:hover {
+		transform: scale(1.05);
+	}
+
 	${(props) => {
 		switch (props.variant) {
 			case 'primary':
