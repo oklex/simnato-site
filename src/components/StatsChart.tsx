@@ -1,4 +1,6 @@
 import { useHover } from "@src/stores/useHover";
+import useScreenSize from "@src/stores/useScreenSize";
+import { BREAKPOINTS } from "@src/theme";
 import { Div, Text } from "@src/ui-library";
 import { createRef, ReactElement } from "react";
 import styled from "styled-components";
@@ -66,15 +68,14 @@ export const StatsChart = ({ committeeStats }: StatsProps): ReactElement => {
 
   const ref1_text = statDescription.knowledge[knowledge];
   const ref2_text = statDescription.speeches[speeches];
-  const ref3_text = statDescription.pacing[speeches];
-  const ref4_text = statDescription.moderation[speeches];
+  const ref3_text = statDescription.pacing[pacing];
+  const ref4_text = statDescription.moderation[moderation];
 
   const polygonCoordinates = (() => {
     const mid = BASE_VIEWBOX_SIZE / 2 + VIEWBOX_PADDING;
-    const addFromCenter = (score: Score) =>
-        mid + DISTANCE_INCREMENT * score;
+    const addFromCenter = (score: Score) => mid + DISTANCE_INCREMENT * score;
     const subtractFromCenter = (score: Score) =>
-        mid - DISTANCE_INCREMENT * score;
+      mid - DISTANCE_INCREMENT * score;
 
     const top = {
       x: mid,
@@ -140,100 +141,115 @@ export const StatsChart = ({ committeeStats }: StatsProps): ReactElement => {
   };
 
   return (
-    <div>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={`${VIEWBOX_DIMENSION}`}
-        height={`${VIEWBOX_DIMENSION}`}
-        viewBox={`0 0 ${VIEWBOX_DIMENSION} ${VIEWBOX_DIMENSION}`}
-        fill="none"
-      >
-        <line x1="16" y1="190.5" x2="366" y2="190.5" stroke="#28317F" />
-        <line x1="190.5" y1="366" x2="190.5" y2="16" stroke="#28317F" />
-        <rect
-          x="15.7071"
-          y="190.494"
-          width="247"
-          height="247"
-          transform="rotate(-45 15.7071 190.494)"
-          stroke="#28317F"
-          fill-opacity="0.5"
-        />
-        <rect
-          x="48.7071"
-          y="190.747"
-          width="200.875"
-          height="200.875"
-          transform="rotate(-45 48.7071 190.747)"
-          stroke="#28317F"
-          fill-opacity="0.5"
-        />
-        <rect
-          x="83.7071"
-          y="190.627"
-          width="149.793"
-          height="149.793"
-          transform="rotate(-45 83.7071 190.627)"
-          stroke="#28317F"
-          fill-opacity="0.5"
-        />
-        <rect
-          x="121.52"
-          y="191.187"
-          width="98.3906"
-          height="98.3906"
-          transform="rotate(-45 121.52 191.187)"
-          stroke="#28317F"
-          fill-opacity="0.5"
-        />
-        <rect
-          x="154.52"
-          y="191.187"
-          width="51.3259"
-          height="51.3259"
-          transform="rotate(-45 154.52 191.187)"
-          stroke="#28317F"
-          fill-opacity="0.5"
-        />
-        <path
-          d={statVectors}
-          fill="url(#paint0_linear_3524_419)"
-          fill-opacity="0.95"
-          className="no-pointers"
-        />
-        {polygonCoordinates.map((coordinate, index) =>
-          generateInfoCircles(coordinate, true, index)
-        )}
-        <defs>
-          <linearGradient
-            id="paint0_linear_3524_419"
-            x1="260.528"
-            y1="0.160081"
-            x2="260.528"
-            y2="449.794"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stop-color="#B19967" />
-            <stop offset="1" stop-color="#D4C5A6" />
-          </linearGradient>
-          <clipPath id="clip0_460_429">
-            <rect width="350" height="350" fill="white" />
-          </clipPath>
-        </defs>
-      </svg>
+    <StatsContainer>
+      <SvgWrapper>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width={`${VIEWBOX_DIMENSION}`}
+          height={`${VIEWBOX_DIMENSION}`}
+          viewBox={`0 0 ${VIEWBOX_DIMENSION} ${VIEWBOX_DIMENSION}`}
+          fill="none"
+        >
+          <line x1="16" y1="190.5" x2="366" y2="190.5" stroke="#28317F" />
+          <line x1="190.5" y1="366" x2="190.5" y2="16" stroke="#28317F" />
+          <rect
+            x="15.7071"
+            y="190.494"
+            width="247"
+            height="247"
+            transform="rotate(-45 15.7071 190.494)"
+            stroke="#28317F"
+            fill-opacity="0.5"
+          />
+          <rect
+            x="48.7071"
+            y="190.747"
+            width="200.875"
+            height="200.875"
+            transform="rotate(-45 48.7071 190.747)"
+            stroke="#28317F"
+            fill-opacity="0.5"
+          />
+          <rect
+            x="83.7071"
+            y="190.627"
+            width="149.793"
+            height="149.793"
+            transform="rotate(-45 83.7071 190.627)"
+            stroke="#28317F"
+            fill-opacity="0.5"
+          />
+          <rect
+            x="121.52"
+            y="191.187"
+            width="98.3906"
+            height="98.3906"
+            transform="rotate(-45 121.52 191.187)"
+            stroke="#28317F"
+            fill-opacity="0.5"
+          />
+          <rect
+            x="154.52"
+            y="191.187"
+            width="51.3259"
+            height="51.3259"
+            transform="rotate(-45 154.52 191.187)"
+            stroke="#28317F"
+            fill-opacity="0.5"
+          />
+          <path
+            d={statVectors}
+            fill="url(#paint0_linear_3524_419)"
+            fill-opacity="0.95"
+            className="no-pointers"
+          />
+          {polygonCoordinates.map((coordinate, index) =>
+            generateInfoCircles(coordinate, true, index)
+          )}
+          <defs>
+            <linearGradient
+              id="paint0_linear_3524_419"
+              x1="260.528"
+              y1="0.160081"
+              x2="260.528"
+              y2="449.794"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop stop-color="#B19967" />
+              <stop offset="1" stop-color="#D4C5A6" />
+            </linearGradient>
+            <clipPath id="clip0_460_429">
+              <rect width="350" height="350" fill="white" />
+            </clipPath>
+          </defs>
+        </svg>
+      </SvgWrapper>
       <ContextDescription>
         {ref1_hover && <Text align="center">{ref1_text}</Text>}
         {ref2_hover && <Text align="center">{ref2_text}</Text>}
         {ref3_hover && <Text align="center">{ref3_text}</Text>}
         {ref4_hover && <Text align="center">{ref4_text}</Text>}
       </ContextDescription>
-    </div>
+    </StatsContainer>
   );
 };
 
+const StatsContainer = styled(Div)`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 35px;
+
+  @media (max-width: ${BREAKPOINTS.sm}) {
+    transform: scale(0.6);
+    margin-left: -90px;
+  }
+`;
 const ContextDescription = styled(Div)`
+  position: absolute;
   height: 0px;
-  margin-top: -10px;
+  margin-top: -15px;
+  bottom: 0;
 `;
 const SvgWrapper = styled(Div)`
   .persist {
