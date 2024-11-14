@@ -2,7 +2,7 @@ export { Accordion } from './Accordion';
 export type { AccordionItemType } from './Accordion';
 export { Button } from './Button';
 export { GenericContainer as Container, NarrowContainer } from './Container';
-export { Div } from './Generics';
+export { Div , GridSection } from './Generics';
 export { Header } from './Header';
 export { Icon } from './Icon';
 export { LinkText as Link } from './Link';

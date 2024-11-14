@@ -20,3 +20,21 @@ export const slideOut = keyframes`
   from { transform: translateY(0); opacity: 1; }
   to { transform: translateY(20px); opacity: 0; }
 `;
+
+export const popIn = keyframes`
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+`;
+
+export const popOut = keyframes`
+    0% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+`;
