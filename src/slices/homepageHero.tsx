@@ -12,7 +12,7 @@ export const HomepageHero = (): ReactElement => {
 	return (
 		<HeroSection id="homepage-hero">
 			<CornerLabel>
-				<Text>EST. 2024</Text>
+				{/* <Text>EST. 2024</Text> */}
 			</CornerLabel>
 			<ViewPortSection id="hero">
 				<Spacer height={isMobile ? '5vh' : '5vh'} />
