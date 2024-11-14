@@ -29,6 +29,10 @@ const TextComponent = styled.div<TextProps>`
 		`
     margin: ${margin};
   `}
+
+  & + & {
+	margin-top: 15px;
+  }
 `;
 
 export const Text: FC<TextProps> = ({
