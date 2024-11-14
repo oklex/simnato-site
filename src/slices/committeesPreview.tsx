@@ -1,5 +1,6 @@
 import { ReactElement, useEffect } from 'react';
 import styled from 'styled-components';
+import { useRouter } from 'next/router';
 
 import StarMarker from '@src/assets/starMarkers';
 import { ViewPortSection } from '@src/components/ViewPortSection';
@@ -17,6 +18,11 @@ import useScreenSize from '@src/stores/useScreenSize';
 
 export const CommitteesPreview = (): ReactElement => {
 	const { isTablet } = useScreenSize();
+	const router = useRouter()
+
+	const generateOnClick = (link: string) => {
+		return (e: any) => router.push(link)
+	}
 
 	return (
 		<ViewPortSection id="committees-preview" gradientDirection="to left">
@@ -39,12 +45,12 @@ export const CommitteesPreview = (): ReactElement => {
 				<Spacer height={'40px'} />
 				<Container>
 					<SixColumnGrid>
-						<CommitteeBox>
+						<CommitteeBox >
 							<Header center level={5} mode="light">
 								North Atlantic Council
 							</Header>
 						</CommitteeBox>
-						<CommitteeBox>
+						<CommitteeBox onClick={generateOnClick('/committees/mc')}>
 							<Header center level={5} mode="light">
 								Military Committee
 							</Header>
@@ -54,13 +60,13 @@ export const CommitteesPreview = (): ReactElement => {
 								Intelligence & Espionage
 							</Header>
 						</CommitteeBox>
-						<CommitteeBox>
+						<CommitteeBox onClick={generateOnClick('/committees/partners')}>
 							<Text align="center">NATO Partners</Text>
 							<Header center level={5} mode="light">
 								European Partners
 							</Header>
 						</CommitteeBox>
-						<CommitteeBox>
+						<CommitteeBox onClick={generateOnClick('/committees/partners')}>
 							<Text align="center">NATO Partners</Text>
 							<Header center level={5} mode="light">
 								Asian Partners
@@ -123,6 +129,7 @@ const SixColumnGrid = styled.div`
 `;
 
 const CommitteeBox = styled.div`
+	cursor: pointer;
 	border: ${PALETTE.blue.dark} solid 1px;
 	min-height: 35px;
 	grid-column: span 2;
