@@ -75,19 +75,19 @@ export const CommitteesPreview = (): ReactElement => {
 						</CommitteeBox>
 					</SixColumnGrid>
 				</Container>
-				<Spacer height={'20vh'} />
+				<Spacer height={'30vh'} />
 				<Container>
-					<Header level={4} center>
+					<Header level={3} center>
 						Ready for the next level?
 					</Header>
 					<Spacer />
 					<Div flex justifyContent="center">
 						<Button variant="primary" mode="gold">
-							<Header level={6}>Register Now</Header>
+							<Header level={5}>Register Now</Header>
 						</Button>
 					</Div>
 				</Container>
-				<Spacer height={'20vh'} />
+				<Spacer height={'10vh'} />
 				<MapBackgroundWrapper>
 					<MapBackground width="150vw" />
 				</MapBackgroundWrapper>
