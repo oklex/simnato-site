@@ -1,11 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Section, Button } from '../ui-library';
+import { Section, Button, Spacer } from '../ui-library';
 import { Banner } from '@src/components/Banner';
 
 const BrandingPage = () => {
 	return (
 		<PageWrapper>
+			<Spacer/>
+			<Spacer/>
+			<Spacer/>
+			<Spacer/>
 			<Banner type="neutral">neutral banner</Banner>
 			<Banner type="warning">warning banner</Banner>
 			<Banner type="notice">notice banner</Banner>
