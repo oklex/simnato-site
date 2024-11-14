@@ -16,6 +16,7 @@ import { Portrait } from '@components/Portrait';
 import { BREAKPOINTS } from '@src/theme';
 import StarMarker from '@assets/starMarkers';
 import { CommitteeStatsTypes, StatsChart } from '@components/StatsChart';
+import { Banner } from '@components/Banner';
 
 const COMMITTEE_STATS: CommitteeStatsTypes = {
 	knowledge: 4,
@@ -123,6 +124,7 @@ export const PartnersPage = (): ReactElement => {
 						</Div>
 					</GridSection>
 				</ViewPortSection>
+				<Banner type="notice">Topic Research coming soon</Banner>
 			</Container>
 		</div>
 	);

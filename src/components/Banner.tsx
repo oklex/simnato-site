@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 
-import { Icon, Text, Div } from '@ui-library';
+import { Icon, Text, Div, NarrowContainer } from '@ui-library';
 import { PALETTE, GRADIENTS, COLORS, BREAKPOINTS } from '@src/theme';
 
 type BannerProps = {
@@ -20,31 +20,33 @@ export const Banner = ({
 	const mode = type === 'neutral' || type === 'notice' ? 'dark' : 'light';
 
 	return (
-		<StyledBanner noMargin={noMargin} color={type}>
-			{type === 'warning' && (
-				<Icon mode={mode} icon={type} spaceAfter title={type} />
-			)}
-			<Div
-				flex
-				justifyContent={justifyContent ?? 'center'}
-				width="100%"
-				gap="3px"
-				flexDirection="col"
-			>
-				{children &&
-					Array.isArray(children) &&
-					children.map((c) => (
-						<Text align="center" mode={mode}>
-							{c}
-						</Text>
-					))}
-				{children && !Array.isArray(children) && (
-					<Text align="center" mode={mode}>
-						{children}
-					</Text>
+		<NarrowContainer>
+			<StyledBanner noMargin={noMargin} color={type}>
+				{type === 'warning' && (
+					<Icon mode={mode} icon={type} spaceAfter title={type} />
 				)}
-			</Div>
-		</StyledBanner>
+				<Div
+					flex
+					justifyContent={justifyContent ?? 'center'}
+					width="100%"
+					gap="3px"
+					flexDirection="col"
+				>
+					{children &&
+						Array.isArray(children) &&
+						children.map((c) => (
+							<Text align="center" mode={mode}>
+								{c}
+							</Text>
+						))}
+					{children && !Array.isArray(children) && (
+						<Text align="center" mode={mode}>
+							{children}
+						</Text>
+					)}
+				</Div>
+			</StyledBanner>
+		</NarrowContainer>
 	);
 };
 
