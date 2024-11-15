@@ -96,7 +96,7 @@ const ModalBackground = styled.div<{ isClosing: boolean }>`
 	bottom: 0;
 	z-index: 9999;
 	width: 100%;
-	height: 100vh;
+	height: 100dvh;
 	background-color: ${rgba(PALETTE.mono.dark, 0.8)};
 	display: flex;
 	justify-content: center;

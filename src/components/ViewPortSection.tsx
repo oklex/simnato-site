@@ -76,18 +76,18 @@ const MaskTop = styled.div`
 	z-index: 9;
 	width: 100%;
 
-	max-height: calc(100vh - ${RADIUS * 2});
+	max-height: calc(100dvh - ${RADIUS * 2});
 	pointer-events: none;
 	overflow: hidden;
 `;
 const MaskBottom = styled.div`
 	position: sticky;
-	top: calc(100vh - ${RADIUS * 2}px);
+	top: calc(100dvh - ${RADIUS * 2}px);
 	left: 0px;
 	z-index: 9;
 	width: 100%;
 
-	max-height: calc(100vh - ${RADIUS * 2}px);
+	max-height: calc(100dvh - ${RADIUS * 2}px);
 	pointer-events: none;
 	overflow: hidden;
 `;
