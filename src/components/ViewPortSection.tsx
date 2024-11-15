@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode, useContext, useRef } from 'react';
+import { ReactElement, ReactNode, useContext, useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 
 import { NavThemeContext } from '@context/navTheme';
@@ -24,14 +24,17 @@ export const ViewPortSection = ({
 	const { initializeRef } = useContext(NavThemeContext);
 	const paddingTopRef = useRef<HTMLDivElement | null>(null);
 	const paddingBottomRef = useRef<HTMLDivElement | null>(null);
+	const [negativeMargin, setNegativeMargin] = useState(0)
 
 	const trackRefCallback = (instance: HTMLDivElement | null) => {
 		if (instance && mode === 'dark') initializeRef(id, { current: instance });
 	};
 
-	const negativeMargin =
+	useEffect(() => {
+		setNegativeMargin(
 		(paddingTopRef.current?.clientHeight ?? 0) +
-		(paddingBottomRef.current?.clientHeight ?? 0);
+		(paddingBottomRef.current?.clientHeight ?? 0));
+	}, [])
 
 	return (
 		<TrackWrapper className="track-wrapper" ref={trackRefCallback}>
