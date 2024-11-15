@@ -108,6 +108,7 @@ export const MCpage = (): ReactElement => {
 							<StatsChart committeeStats={COMMITTEE_STATS} />
 						</Div>
 					</GridSection>
+					<Spacer/>
 				</ViewPortSection>
 				<Banner type="notice">Topic Research coming soon</Banner>
 			</Container>
