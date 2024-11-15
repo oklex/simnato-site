@@ -6,6 +6,7 @@ import styled, { css, keyframes } from "styled-components";
 import { Header, Text, StyledText, Div } from "@ui-library";
 import { COLORS, GRADIENTS, PALETTE } from "@src/theme";
 import { popOut, popIn } from "@src/keyframeAnimations";
+import useScreenSize from "@src/stores/useScreenSize";
 
 type PortraitProps = {
   fullName?: string;
@@ -24,10 +25,15 @@ export const Portrait = ({
   width = "full",
   mode = "dark",
 }: PortraitProps): JSX.Element => {
+  const { isMobile } = useScreenSize();
   const clickable = !!link;
   const rootSize = { width: 568, height: 777 };
   const widthValue =
-    width === "full" ? rootSize.width : width === "medium" ? 175 : width;
+    width === "full"
+      ? rootSize.width
+      : width === "medium"
+      ? 175 - (isMobile ? 35 : 0)
+      : width;
   const heightValue = (() => widthValue * (rootSize.height / rootSize.width))();
 
   const portraitPath = `/portraits/${fullName.split(" ").join("_")}.png`;
