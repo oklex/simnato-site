@@ -25,6 +25,12 @@ import { Plus } from '@styled-icons/heroicons-solid/Plus';
 import { Minus } from '@styled-icons/boxicons-regular/Minus';
 import { Youtube } from '@styled-icons/bootstrap/Youtube';
 
+// availability icon
+import { CalendarCheck } from '@styled-icons/bootstrap/CalendarCheck';
+import { Check2Circle } from '@styled-icons/bootstrap/Check2Circle';
+import { CalendarCancel } from '@styled-icons/fluentui-system-regular/CalendarCancel';
+import { Schedule } from '@styled-icons/material/Schedule';
+
 import { Direction } from '@styled-icons/entypo/Direction';
 import { OpenBook } from '@styled-icons/entypo/OpenBook';
 
