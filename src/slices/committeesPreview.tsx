@@ -82,7 +82,7 @@ export const CommitteesPreview = (): ReactElement => {
 					</Header>
 					<Spacer />
 					<Div flex justifyContent="center">
-						<Button variant="primary" mode="gold">
+						<Button href='/registration' variant="primary" mode="gold">
 							<Header level={5}>Register Now</Header>
 						</Button>
 					</Div>
