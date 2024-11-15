@@ -39,12 +39,12 @@ export const RegistrationPage = (): ReactElement => {
 						</Header>
 
 						<Header center level={1} mode="dark">
-							<StyledText subtle>now open by referral*</StyledText>
+							<StyledText subtle>available by referral*</StyledText>
 						</Header>
 						<Spacer />
 						<Text mode="dark" align="center">
 							As a specialized experience for experienced delegates, we will be
-							restricting access to delegates who fit each committee and role’s
+							restricting early access to delegates who fit each committee and role’s
 							criteria. Successful applicants will be those who have mastered
 							the basics of conventional Model UN.
 						</Text>
