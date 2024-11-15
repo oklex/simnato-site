@@ -134,25 +134,32 @@ export const Div = styled.div.attrs<GenericDivProps>(({ id, className }) => ({
   }};
 `;
 
-export const GridSection = styled.div<{ columns: number; gap?: string }>`
+export const GridSection = styled.div<{
+  columns: number;
+  gap?: string;
+  preferSingleOnMedium?: boolean;
+}>`
   display: grid;
   grid-gap: ${({ gap }) => gap ?? "16px"};
 
   @media (max-width: ${BREAKPOINTS.sm}) {
     grid-template-columns: 1fr;
-    & > * {
-      width: 100%;
-    }
   }
 
   @media (min-width: ${BREAKPOINTS.sm}) and (max-width: ${BREAKPOINTS.md}) {
-    grid-template-columns: repeat(2, 1fr);
-    & > * {
-		width: 100%;
-    }
+    grid-template-columns: repeat(
+      ${({ preferSingleOnMedium }) => (preferSingleOnMedium ? 1 : 2)},
+      1fr
+    );
+  }
+  @media (min-width: ${BREAKPOINTS.md}) and (max-width: ${BREAKPOINTS.desktop}) {
+    grid-template-columns: repeat(
+      ${({ preferSingleOnMedium }) => (preferSingleOnMedium ? 1 : 2)},
+      1fr
+    );
   }
 
-  @media (min-width: ${BREAKPOINTS.md}) {
+  @media (min-width: ${BREAKPOINTS.desktop}) {
     grid-template-columns: repeat(
       ${({ columns }) => (columns > 2 ? columns : 2)},
       1fr

@@ -98,7 +98,7 @@ export const PartnersPage = (): ReactElement => {
 			<Container>
 				<ViewPortSection id="committee-info">
 					<Spacer />
-					<GridSection columns={2} gap="15px">
+					<GridSection columns={2} gap="15px" preferSingleOnMedium>
 						<Div padding="25px">
 							<Header level={6}>About</Header>
 							<Header level={3}>NATO Partners</Header>
