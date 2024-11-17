@@ -44,9 +44,9 @@ export const RegistrationPage = (): ReactElement => {
 						<Spacer />
 						<Text mode="dark" align="center">
 							As a specialized experience for experienced delegates, we will be
-							restricting early access to delegates who fit each committee and role’s
-							criteria. Successful applicants will be those who have mastered
-							the basics of conventional Model UN.
+							restricting early access to delegates who fit each committee and
+							role’s criteria. Successful applicants will be those who have
+							mastered the basics of conventional Model UN.
 						</Text>
 					</SubContainer>
 					<Spacer height={'35px'} />
@@ -164,6 +164,30 @@ export const RegistrationPage = (): ReactElement => {
 											referral.
 										</Text>
 									</>
+								),
+							},
+						]}
+					></Accordion>
+					<Spacer />
+					<Accordion
+						background="transparent"
+						mode="dark"
+						content={[
+							{
+								key: 'key',
+								label: (
+									<Div width="100%">
+										<Header level={6} mode="dark">
+											What do the awards look like?
+										</Header>
+									</Div>
+								),
+								content: (
+									<Text mode="dark">
+										we will be making an effort to aknowledge uniquely positive
+										contribution from indivdual delegates, however SimNATO will
+										not be having conventional Best Delegate awards!
+									</Text>
 								),
 							},
 						]}
