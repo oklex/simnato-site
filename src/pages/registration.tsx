@@ -51,7 +51,7 @@ export const RegistrationPage = (): ReactElement => {
 					</SubContainer>
 					<Spacer height={'35px'} />
 					<Text subtle mode="dark" align="center">
-						*By referral from Dec. 1st until Dec. 31st
+						*By referral until Dec. 31st
 					</Text>
 					<Text subtle mode="dark" align="center">
 						Open registration starting Jan 1st
