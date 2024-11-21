@@ -56,7 +56,7 @@ export const CommitteesPreview = (): ReactElement => {
 								Military Committee
 							</Header>
 						</CommitteeBox>
-						<CommitteeBox>
+						<CommitteeBox onClick={generateOnClick('/committees/espionage')}>
 							<Header center level={5} mode="light">
 								Intelligence & Espionage
 							</Header>

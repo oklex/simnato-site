@@ -343,7 +343,7 @@ const StatsLabel = styled.div<{
 const ContextDescription = styled(Div)`
 	position: absolute;
 	height: 0px;
-	bottom: -20px;
+	bottom: -30px;
 `;
 
 const SvgWrapper = styled(Div)`

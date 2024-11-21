@@ -39,7 +39,7 @@ export const Portrait = ({
   const portraitPath = `/portraits/${fullName.split(" ").join("_")}.png`;
 
   const showPortraitImage = () => {
-    if (fullName === "placeholder" || fullName.includes("Caitlin"))
+    if (fullName === "placeholder")
       return (
         <Image
           src="/portraits/placeholder.png"
