@@ -34,7 +34,7 @@ export const EspionagePage = (): ReactElement => {
           <StarMarker type="dark" />
         </Div>
         <Header center level={1} mode="dark">
-          Espionage & Intelligence
+           Intelligence and Espionage
         </Header>
         <Spacer />
       </NarrowContainer>
@@ -86,12 +86,12 @@ export const EspionagePage = (): ReactElement => {
           <GridSection columns={2} gap="15px" preferSingleOnMedium>
             <Div padding="25px">
               <Header level={6}>About</Header>
-              <Header level={3}>Espionage and Intelligence Committee</Header>
+              <Header level={3}>Intelligence and Espionage Committee</Header>
               <Spacer />
               <Spacer />
               <Text>
                 <StyledText subtle>
-                  The NATO Espionage and Intelligence Committee represents the
+                  The NATO Intelligence and Espionage Committee represents the
                   intelligence agencies of all NATO members and partners, aiming
                   to gather information to aid North Atlantic Council (NAC)
                   members. A blend between IPC, Ad Hoc, and something special,

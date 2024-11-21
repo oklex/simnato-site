@@ -88,13 +88,13 @@ export const StaffInfo = (): ReactElement => {
         <Portrait
           fullName="Sophie Xu"
           position="Director"
-          subtitle="Espionage & Intelligence"
+          subtitle="Intelligence & Espionage"
           width="medium"
         />
         <Portrait
           fullName="Caitlin Lim"
           position="Assistant Director"
-          subtitle="Espionage & Intelligence"
+          subtitle="Intelligence & Espionage"
           width="medium"
         />
         <Portrait fullName="Amber Yang" position={amberRole} width="medium" />
