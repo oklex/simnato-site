@@ -1,4 +1,5 @@
 import { ReactElement, useEffect } from 'react';
+import Link from 'next/link';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 
@@ -19,11 +20,6 @@ import useScreenSize from '@stores/useScreenSize';
 
 export const CommitteesPreview = (): ReactElement => {
 	const { isTablet } = useScreenSize();
-	const router = useRouter();
-
-	const generateOnClick = (link: string) => {
-		return (e: any) => router.push(link);
-	};
 
 	return (
 		<ViewPortSection id="committees-preview" gradientDirection="to left">
@@ -51,23 +47,23 @@ export const CommitteesPreview = (): ReactElement => {
 								North Atlantic Council
 							</Header>
 						</CommitteeBox>
-						<CommitteeBox onClick={generateOnClick('/committees/mc')}>
+						<CommitteeBox as={Link} href="/committees/nac">
 							<Header center level={5} mode="light">
 								Military Committee
 							</Header>
 						</CommitteeBox>
-						<CommitteeBox onClick={generateOnClick('/committees/espionage')}>
+						<CommitteeBox as={Link} href="/committees/espionage">
 							<Header center level={5} mode="light">
 								Intelligence & Espionage
 							</Header>
 						</CommitteeBox>
-						<CommitteeBox onClick={generateOnClick('/committees/partners')}>
+						<CommitteeBox as={Link} href="/committees/partners">
 							<Text align="center">NATO Partners</Text>
 							<Header center level={5} mode="light">
 								European Partners
 							</Header>
 						</CommitteeBox>
-						<CommitteeBox onClick={generateOnClick('/committees/partners')}>
+						<CommitteeBox as={Link} href="/committees/partners">
 							<Text align="center">NATO Partners</Text>
 							<Header center level={5} mode="light">
 								Asian Partners
@@ -133,18 +129,18 @@ const SixColumnGrid = styled.div`
 	}
 `;
 
-const CommitteeBox = styled.div`
+const CommitteeBox = styled.a`
 	cursor: pointer;
 	border: ${PALETTE.blue.dark} solid 1px;
 	min-height: 35px;
 	grid-column: span 2;
 	background-color: ${PALETTE.blue.main};
-
 	transition: background-color 0.1s ease-out;
 	padding: 1rem 0.1rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	text-decoration: none;
 
 	&:hover {
 		background-color: ${PALETTE.mono.dark};
