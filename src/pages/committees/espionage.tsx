@@ -68,12 +68,12 @@ export const EspionagePage = (): ReactElement => {
           <Div flex flexDirection="col" gap="15px" padding="10px">
             <Portrait
               fullName="Sophie Xu"
-              position="Director"
+              position="Co-Director"
               width="medium"
             />
             <Portrait
               fullName="Caitlin Lim"
-              position="Assistant Director"
+              position="Co-Director"
               width="medium"
             />
           </Div>

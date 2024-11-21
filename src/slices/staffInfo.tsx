@@ -87,13 +87,13 @@ export const StaffInfo = (): ReactElement => {
         />
         <Portrait
           fullName="Sophie Xu"
-          position="Director"
+          position="Co-Director"
           subtitle="Intelligence & Espionage"
           width="medium"
         />
         <Portrait
           fullName="Caitlin Lim"
-          position="Assistant Director"
+          position="Co-Director"
           subtitle="Intelligence & Espionage"
           width="medium"
         />
