@@ -47,7 +47,7 @@ export const CommitteesPreview = (): ReactElement => {
 								North Atlantic Council
 							</Header>
 						</CommitteeBox>
-						<CommitteeBox as={Link} href="/committees/nac">
+						<CommitteeBox as={Link} href="/committees/mc">
 							<Header center level={5} mode="light">
 								Military Committee
 							</Header>
