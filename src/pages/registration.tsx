@@ -57,7 +57,7 @@ export const RegistrationPage = (): ReactElement => {
           </Text>
           <Spacer height={"35px"} />
           {/* <Div flex justifyContent="center">
-            <Button variant="primary" mode="dark" href='/'>
+            <Button variant="primary" mode="dark" href='https://form.jotform.com/243296810966265'>
               <Div padding="0 2rem">
                 <Header center level={5}>
                   Apply now, pay later
