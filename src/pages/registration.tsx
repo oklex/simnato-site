@@ -193,9 +193,9 @@ export const RegistrationPage = (): ReactElement => {
                 ),
                 content: (
                   <Text mode="dark">
-                    we will be making an effort to aknowledge uniquely positive
+                    While we will be making an effort to aknowledge uniquely positive
                     contribution from indivdual delegates, however SimNATO will
-                    not be having conventional Best Delegate awards!
+                    not be having Delegate awards!
                   </Text>
                 ),
               },
