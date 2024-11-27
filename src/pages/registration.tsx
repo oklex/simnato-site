@@ -158,10 +158,13 @@ export const RegistrationPage = (): ReactElement => {
                 content: (
                   <>
                     <Text mode="dark">
-                      Number of conferences, is not the same as skill! If you
-                      have the experience and awards to suggest your competency,
-                      that's great. If not, we are open to learning more about
-                      you.
+                      Having been to large number of conferences, is no
+                      substitute for having developed your skills — and vice
+                      versa! If you have the experience and awards to suggest
+                      your competency, that's great. But taking gr.8 math 5
+                      times won't suddenly prepare you for AP Calculus, and so
+                      regardless of your experience we are open to learning more
+                      about you.
                     </Text>
                     <br />
                     <Text mode="dark">
@@ -193,9 +196,9 @@ export const RegistrationPage = (): ReactElement => {
                 ),
                 content: (
                   <Text mode="dark">
-                    While we will be making an effort to aknowledge uniquely positive
-                    contribution from indivdual delegates, however SimNATO will
-                    not be having Delegate awards!
+                    While we will be making an effort to aknowledge uniquely
+                    positive contribution from indivdual delegates, however
+                    SimNATO will not be having Delegate awards!
                   </Text>
                 ),
               },
