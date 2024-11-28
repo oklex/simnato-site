@@ -112,7 +112,7 @@ export const PartnersPage = (): ReactElement => {
 									delegates start just to feel something? If yes, then join the
 									Partners Committee! Working together to achieve a common goal
 									sounds a little cheesy, but it’s what we’re all about here.
-									Representing your country in a dual delegation situation means
+									Representing your country in a partnership means
 									communication and cooperation are key! Your actions as a
 									country will have real effects on other countries, so make
 									sure to think through and double check your ideas.
