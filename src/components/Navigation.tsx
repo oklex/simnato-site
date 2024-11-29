@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 import { NavThemeContext } from '@src/context/navTheme';
 import TextLogo from '@assets/textLogo';
-import { Text } from '@ui-library';
+import { Div, Icon, Text } from '@ui-library';
 
 import { PALETTE } from '../theme';
 import FullScreenModal from './FullScreenModal';
@@ -19,11 +19,12 @@ export const Navigation = ({ sticky }: { sticky?: boolean }): ReactElement => {
 
 	const openModal = () => setOpenNav(true);
 	const closeModal = () => setOpenNav(false);
+	const toggleModal = () => setOpenNav((prev) => !prev);
 
 	const showNav = () => (
 		<>
 			<NavigationWrapper sticky={!!sticky} id="registration-nav">
-				<StyledNav shouldBeTransparent={onLightBackground} onClick={openModal}>
+				<StyledNav shouldBeTransparent={onLightBackground}>
 					<NavContent>
 						<Link href="/">
 							<TextLogo
@@ -31,7 +32,13 @@ export const Navigation = ({ sticky }: { sticky?: boolean }): ReactElement => {
 								color={onLightBackground ? 'black' : 'white'}
 							/>
 						</Link>
-						<Link href="/registration">
+						<Div flex onClick={toggleModal}>
+							<Icon
+								icon={openNav ? 'x' : 'menu'}
+								mode={onLightBackground ? 'dark' : 'light'}
+							/>
+						</Div>
+						{/* <Link href="/registration">
 							<Text
 								mode={onLightBackground ? 'dark' : 'silver'}
 								size="md"
@@ -40,7 +47,7 @@ export const Navigation = ({ sticky }: { sticky?: boolean }): ReactElement => {
 							>
 								register
 							</Text>
-						</Link>
+						</Link> */}
 					</NavContent>
 				</StyledNav>
 			</NavigationWrapper>
