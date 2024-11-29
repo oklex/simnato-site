@@ -12,7 +12,7 @@ const FullScreenModal = ({ isOpen, onClose, children }) => {
 	if (!isMounted || !isOpen) return null; // Ensure the modal renders only on the client
   
 	return ReactDOM.createPortal(
-		<Overlay>
+		<Overlay className='glassy'>
 			<ModalContent>
 				{/* <CloseButton onClick={onClose}>×</CloseButton> */}
 				{children}
@@ -22,14 +22,14 @@ const FullScreenModal = ({ isOpen, onClose, children }) => {
 	);
 };
 
-// Styled-components
 const Overlay = styled.div`
+	width: 100vw;
+	border-radius: 0px;
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background: rgba(0, 0, 0, 0.9);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -40,7 +40,6 @@ const ModalContent = styled.div`
 	position: relative;
 	width: 100%;
 	height: 100%;
-	background: #fff;
 	overflow-y: auto;
 	padding: 20px;
 `;

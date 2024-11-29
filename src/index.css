@@ -89,3 +89,29 @@ html {
 ::-webkit-scrollbar-thumb:hover {
 	background-color: rgba(0, 0, 0, 0.7); /* Darker on hover */
 }
+
+/* global styles */
+.glassy {
+	background: rgba(255, 255, 255, 0.31); /* Semi-transparent white */
+	backdrop-filter: blur(15px); /* Frosted glass effect */
+	-webkit-backdrop-filter: blur(15px);
+	border: 1px solid rgba(255, 255, 255, 0.5);
+	border-radius: 15px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+	
+	opacity: 0; /* Start transparent */
+	animation: glassyAppear 0.2s ease-out forwards;
+  }
+
+@keyframes glassyAppear {
+	0% {
+	  opacity: 0; /* Invisible */
+	  backdrop-filter: blur(0px); /* No blur */
+	  -webkit-backdrop-filter: blur(0px);
+	}
+	100% {
+	  opacity: 1; /* Fully visible */
+	  backdrop-filter: blur(15px); /* Full blur */
+	  -webkit-backdrop-filter: blur(15px);
+	}
+  }
