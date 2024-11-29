@@ -1,10 +1,16 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
 const FullScreenModal = ({ isOpen, onClose, children }) => {
-	if (!isOpen) return null;
+	const [isMounted, setIsMounted] = useState(false);
 
+	useEffect(() => {
+	  setIsMounted(true);
+	}, []);
+  
+	if (!isMounted || !isOpen) return null; // Ensure the modal renders only on the client
+  
 	return ReactDOM.createPortal(
 		<Overlay>
 			<ModalContent>
