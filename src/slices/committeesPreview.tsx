@@ -26,7 +26,6 @@ export const CommitteesPreview = (): ReactElement => {
         <Spacer height="40px" />
         <Container>
           <SixColumnGrid>
-            {/* Proper integration with Link */}
             <Link href="/committees/nac" passHref>
               <CommitteeBox>
                 <Header center level={5} mode="light">North Atlantic Council</Header>
