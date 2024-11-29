@@ -100,7 +100,7 @@ html {
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 	
 	opacity: 0; /* Start transparent */
-	animation: glassyAppear 0.2s ease-out forwards;
+	animation: glassyAppear 0.15s ease-out forwards;
   }
 
 @keyframes glassyAppear {
