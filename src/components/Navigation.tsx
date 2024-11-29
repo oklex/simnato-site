@@ -133,6 +133,7 @@ const StyledNav = styled.button<{ shouldBeTransparent: boolean }>`
 
 const BigNavSpace = styled(Div)`
 	flex-grow: 1;
+	cursor: pointer;
 `
 
 
