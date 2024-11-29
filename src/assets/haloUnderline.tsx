@@ -28,8 +28,8 @@ const HaloUnderline: FC<SVGWrapperProps> = ({
         fill="none"
       >
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M746.5 76.9336C1133.93 76.9336 1448 62.0717 1448 30.6042C1448 14.0782 1309.54 5.32443 1149.16 0.737305C1367.2 4.30805 1494 13.8446 1494 39.0316C1494 77.122 1159.56 108 747 108C334.443 108 0 77.122 0 39.0316C0 15.4823 115.433 5.61438 308.727 1.51216C162.699 6.28611 45 14.9649 45 30.6042C45 62.0717 359.072 76.9336 746.5 76.9336Z"
           fill="url(#paint0_linear_452_289)"
         />
@@ -43,8 +43,8 @@ const HaloUnderline: FC<SVGWrapperProps> = ({
             gradientUnits="userSpaceOnUse"
           >
             <stop stop-color="#0B1957" />
-            <stop offset="0.33" stop-color="#0B1957" />
-            <stop offset="1" stop-color="#EEF0F5" />
+            <stop offset="0.33" stopColor="#0B1957" />
+            <stop offset="1" stopColor="#EEF0F5" />
           </linearGradient>
         </defs>
       </svg>
