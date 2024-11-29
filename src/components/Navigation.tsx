@@ -34,12 +34,12 @@ export const Navigation = ({ sticky }: { sticky?: boolean }): ReactElement => {
 								color={onLightBackground ? 'black' : 'white'}
 							/>
 						</Link>
-						<Div flex onClick={toggleModal}>
+						<BigNavSpace flex justifyContent='end' onClick={toggleModal}>
 							<Icon
 								icon={openNav ? 'x' : 'menu'}
 								mode={onLightBackground ? 'dark' : 'light'}
 							/>
-						</Div>
+						</BigNavSpace>
 						{/* <Link href="/registration">
 							<Text
 								mode={onLightBackground ? 'dark' : 'silver'}
@@ -133,3 +133,7 @@ const StyledNav = styled.button<{ shouldBeTransparent: boolean }>`
 		align-self: center;
 	}
 `;
+
+const BigNavSpace = styled(Div)`
+	flex-grow: 1;
+`
