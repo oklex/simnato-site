@@ -1,11 +1,22 @@
-import { ReactElement } from 'react';
-import Link from 'next/link';
-import styled from 'styled-components';
+import { ReactElement, useEffect } from "react";
+import Link from "next/link";
+import styled from "styled-components";
+import { useRouter } from "next/router";
 
-import { ViewPortSection } from '@components/ViewPortSection';
-import { Button, Container, Div, Header, NarrowContainer, Spacer, Text } from '@ui-library';
-import useScreenSize from '@stores/useScreenSize';
-import { PALETTE } from '@src/theme';
+import StarMarker from "@assets/starMarkers";
+import MapBackground from "@assets/mapBackground";
+import { ViewPortSection } from "@components/ViewPortSection";
+import {
+  Button,
+  Container,
+  Div,
+  Header,
+  NarrowContainer,
+  Spacer,
+  Text,
+} from "@ui-library";
+import { BREAKPOINTS, PALETTE } from "@src/theme";
+import useScreenSize from "@stores/useScreenSize";
 
 export const CommitteesPreview = (): ReactElement => {
   const { isTablet } = useScreenSize();
@@ -14,51 +25,57 @@ export const CommitteesPreview = (): ReactElement => {
     <ViewPortSection id="committees-preview" gradientDirection="to left">
       <div id="globeViz" />
       <SubContent>
-        <Spacer height={isTablet ? '100px' : '150px'} />
+        <Spacer height={isTablet ? "100px" : "150px"} />
         <Div flex justifyContent="center">
-          {/* StarMarker remains as is */}
+          <StarMarker type="blue" />
         </Div>
-        <Header center level={2}>The different faces of NATO</Header>
+        <Header center level={2}>
+          The different faces of NATO
+        </Header>
         <NarrowContainer size="sm">
           <Text align="center">
-            Reflecting the inner-workings of real-life NATO, our four committees all carry a unique set of power and limitations, guided by the NATO constitution and its member nations’ intention -- friendly or not.
+            Reflecting the inner-workings of real-life NATO, our four committees
+            all carry a unique set of power and limitations, guided by the NATO
+            constitution and it’s member nations’ intention -- friendly or not.
           </Text>
         </NarrowContainer>
-        <Spacer height="40px" />
+        <Spacer height={"40px"} />
         <Container>
           <SixColumnGrid>
-            <Link href="/committees/nac" passHref>
-              <CommitteeBox>
-                <Header center level={5} mode="light">North Atlantic Council</Header>
-              </CommitteeBox>
-            </Link>
-            <Link href="/committees/mc" passHref>
-              <CommitteeBox>
-                <Header center level={5} mode="light">Military Committee</Header>
-              </CommitteeBox>
-            </Link>
-            <Link href="/committees/espionage" passHref>
-              <CommitteeBox>
-                <Header center level={5} mode="light">Intelligence & Espionage</Header>
-              </CommitteeBox>
-            </Link>
-            <Link href="/committees/partners" passHref>
-              <CommitteeBox>
-                <Text align="center">NATO Partners</Text>
-                <Header center level={5} mode="light">European Partners</Header>
-              </CommitteeBox>
-            </Link>
-            <Link href="/committees/partners" passHref>
-              <CommitteeBox>
-                <Text align="center">NATO Partners</Text>
-                <Header center level={5} mode="light">Asian Partners</Header>
-              </CommitteeBox>
-            </Link>
+            <CommitteeBox>
+              <Header center level={5} mode="light">
+                North Atlantic Council
+              </Header>
+            </CommitteeBox>
+            <CommitteeBox as={Link} href="/committees/mc">
+              <Header center level={5} mode="light">
+                Military Committee
+              </Header>
+            </CommitteeBox>
+            <CommitteeBox as={Link} href="/committees/espionage">
+              <Header center level={5} mode="light">
+                Intelligence & Espionage
+              </Header>
+            </CommitteeBox>
+            <CommitteeBox as={Link} href="/committees/partners">
+              <Text align="center">NATO Partners</Text>
+              <Header center level={5} mode="light">
+                European Partners
+              </Header>
+            </CommitteeBox>
+            <CommitteeBox as={Link} href="/committees/partners">
+              <Text align="center">NATO Partners</Text>
+              <Header center level={5} mode="light">
+                Asian Partners
+              </Header>
+            </CommitteeBox>
           </SixColumnGrid>
         </Container>
-        <Spacer height="30vh" />
+        <Spacer height={"30vh"} />
         <Container>
-          <Header level={3} center>Ready for the next level?</Header>
+          <Header level={3} center>
+            Ready for the next level?
+          </Header>
           <Spacer />
           <Div flex justifyContent="center">
             <Button href="/registration" variant="primary" mode="gold">
@@ -66,6 +83,10 @@ export const CommitteesPreview = (): ReactElement => {
             </Button>
           </Div>
         </Container>
+        <Spacer height={"10vh"} />
+        <MapBackgroundWrapper>
+          <MapBackground width="150vw" />
+        </MapBackgroundWrapper>
       </SubContent>
     </ViewPortSection>
   );
@@ -75,7 +96,9 @@ const SixColumnGrid = styled.div`
   display: grid;
   grid-gap: 16px;
 
-  @media (min-width: 768px) {
+  /* Make each child span 2 columns */
+  @media (min-width: ${BREAKPOINTS.md}) {
+    /* Define the base grid with 6 columns */
     grid-template-columns: repeat(6, 1fr);
 
     & > *:nth-child(4) {
@@ -86,18 +109,29 @@ const SixColumnGrid = styled.div`
     }
   }
 
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(4, 1fr);
+  /* Adjust the number of columns at different breakpoints if needed */
+  @media (max-width: ${BREAKPOINTS.md}) {
+    grid-template-columns: repeat(4, 1fr); /* 4 columns on medium screens */
   }
 
-  @media (max-width: 576px) {
-    grid-template-columns: 1fr;
+  @media (max-width: ${BREAKPOINTS.sm}) {
+    grid-template-columns: 1fr; /* 2 columns on small screens */
+    & > * {
+      grid-column-start: auto !important;
+    }
+  }
+
+  @media (max-width: ${BREAKPOINTS.xs}) {
+    grid-template-columns: 1fr; /* 1 column on extra small screens */
+    & > * {
+      grid-column-start: auto !important;
+    }
   }
 `;
 
 const CommitteeBox = styled.a`
   cursor: pointer;
-  border: 1px solid ${PALETTE.blue.dark};
+  border: ${PALETTE.blue.dark} solid 1px;
   min-height: 35px;
   grid-column: span 2;
   background-color: ${PALETTE.blue.main};
@@ -107,7 +141,6 @@ const CommitteeBox = styled.a`
   flex-direction: column;
   justify-content: center;
   text-decoration: none;
-  border-radius: 15px;
 
   &:hover {
     background-color: ${PALETTE.mono.dark};
@@ -128,12 +161,21 @@ const CommitteeBox = styled.a`
       -webkit-text-fill-color: transparent;
     }
   }
+  border-radius: 15px;
 `;
 
 const SubContent = styled.div`
   position: relative;
-  z-index: 1;
+  z-index: 1; // Ensures content is above the globe background
   color: white;
   padding: 20px;
 `;
 
+const MapBackgroundWrapper = styled.div`
+  position: absolute;
+  z-index: -1;
+  bottom: -25vw;
+  left: -25vw;
+  display: flex;
+  justify-content: center;
+`;
