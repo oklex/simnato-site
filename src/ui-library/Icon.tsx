@@ -25,6 +25,9 @@ import { Plus } from '@styled-icons/heroicons-solid/Plus';
 import { Minus } from '@styled-icons/boxicons-regular/Minus';
 import { Youtube } from '@styled-icons/bootstrap/Youtube';
 
+import { Menu } from '@styled-icons/boxicons-regular/Menu';
+import { CloseOutline as X } from '@styled-icons/evaicons-outline/CloseOutline';
+
 // availability icon
 import { CalendarCheck } from '@styled-icons/bootstrap/CalendarCheck';
 import { Check2Circle } from '@styled-icons/bootstrap/Check2Circle';
@@ -56,12 +59,14 @@ export const ICONS = {
 	link: ExternalLinkOutline,
 	linkedin: Linkedin,
 	map: PinDrop,
+	menu: Menu,
 	minus: Minus,
 	money: CurrencyDollar,
 	openbook: OpenBook,
 	presenter: Presenter,
 	plus: Plus,
 	warning: ErrorAlt,
+	x: X,
 	youtube: Youtube,
 };
 export type IconKey = keyof typeof ICONS;
