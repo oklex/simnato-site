@@ -8,7 +8,7 @@ const FullScreenModal = ({ isOpen, onClose, children }) => {
 	return ReactDOM.createPortal(
 		<Overlay>
 			<ModalContent>
-				<CloseButton onClick={onClose}>×</CloseButton>
+				{/* <CloseButton onClick={onClose}>×</CloseButton> */}
 				{children}
 			</ModalContent>
 		</Overlay>,
