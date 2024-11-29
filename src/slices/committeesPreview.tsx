@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { ViewPortSection } from '@components/ViewPortSection';
 import { Button, Container, Div, Header, NarrowContainer, Spacer, Text } from '@ui-library';
 import useScreenSize from '@stores/useScreenSize';
+import { PALETTE } from '@src/theme';
 
 export const CommitteesPreview = (): ReactElement => {
   const { isTablet } = useScreenSize();
@@ -96,10 +97,10 @@ const SixColumnGrid = styled.div`
 
 const CommitteeBox = styled.a`
   cursor: pointer;
-  border: 1px solid ${({ theme }) => theme.colors.blue.dark};
+  border: 1px solid ${PALETTE.blue.dark};
   min-height: 35px;
   grid-column: span 2;
-  background-color: ${({ theme }) => theme.colors.blue.main};
+  background-color: ${PALETTE.blue.main};
   transition: background-color 0.1s ease-out;
   padding: 1rem 0.1rem;
   display: flex;
@@ -109,7 +110,7 @@ const CommitteeBox = styled.a`
   border-radius: 15px;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.mono.dark};
+    background-color: ${PALETTE.mono.dark};
     h4,
     h5,
     h6,
