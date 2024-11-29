@@ -3,9 +3,10 @@ import styled, { css } from 'styled-components';
 import { rgba } from 'polished';
 import Link from 'next/link';
 
-import { NavThemeContext } from '@src/context/navTheme';
+import { NavThemeContext } from '@context/navTheme';
 import TextLogo from '@assets/textLogo';
 import { Div, Icon, Text } from '@ui-library';
+import useScreenSize from '@stores/useScreenSize';
 
 import { PALETTE } from '../theme';
 import FullScreenModal from './FullScreenModal';
@@ -14,6 +15,7 @@ const RADIUS = 12;
 
 export const Navigation = ({ sticky }: { sticky?: boolean }): ReactElement => {
 	const { theme } = useContext(NavThemeContext);
+	const { isMobile } = useScreenSize()
 	const [openNav, setOpenNav] = useState(false);
 	const onLightBackground = theme === 'light' || openNav;
 
@@ -23,7 +25,7 @@ export const Navigation = ({ sticky }: { sticky?: boolean }): ReactElement => {
 
 	const showNav = () => (
 		<>
-			<NavigationWrapper sticky={!!sticky} id="registration-nav">
+			<NavigationWrapper sticky={!!sticky} isMobile={isMobile} id="registration-nav">
 				<StyledNav shouldBeTransparent={onLightBackground}>
 					<NavContent>
 						<Link href="/">
@@ -66,8 +68,8 @@ const NavContent = styled.div`
 	justify-content: space-between;
 `;
 
-const NavigationWrapper = styled.div<{ sticky: boolean }>`
-	width: 100%;
+const NavigationWrapper = styled.div<{ sticky: boolean, isMobile: boolean }>`
+	width: ${({ isMobile }) => isMobile ? '100%': 'calc(100% - 10px)'};
 	display: flex;
 	justify-content: center;
 

@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 
 import { Icon, Text, Div, NarrowContainer } from '@ui-library';
 import { PALETTE, GRADIENTS, COLORS, BREAKPOINTS } from '@src/theme';
+import useScreenSize from '@stores/useScreenSize';
 
 type BannerProps = {
 	type: 'neutral' | 'warning' | 'notice' | 'important'; // add more types later
@@ -17,11 +18,12 @@ export const Banner = ({
 	justifyContent,
 	children,
 }: BannerProps) => {
+	const { isMobile } = useScreenSize()
 	const mode = type === 'neutral' || type === 'notice' ? 'dark' : 'light';
 
 	return (
 		<NarrowContainer>
-			<StyledBanner noMargin={noMargin} color={type}>
+			<StyledBanner noMargin={noMargin} color={type} isMobile={isMobile}>
 				{type === 'warning' && (
 					<Icon mode={mode} icon={type} spaceAfter title={type} />
 				)}
@@ -53,11 +55,12 @@ export const Banner = ({
 const StyledBanner = styled.div<{
 	noMargin?: boolean;
 	color?: 'neutral' | 'warning' | 'notice' | 'important';
+	isMobile: boolean
 }>`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 100%;
+	width: ${({ isMobile }) => isMobile ? '100%': 'calc(100% - 10px)'};
 
 	${({ color }) => {
 		if (color === 'neutral') {
