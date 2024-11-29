@@ -42,7 +42,7 @@ const HaloUnderline: FC<SVGWrapperProps> = ({
             y2="0.737221"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#0B1957" />
+            <stop stopColor="#0B1957" />
             <stop offset="0.33" stopColor="#0B1957" />
             <stop offset="1" stopColor="#EEF0F5" />
           </linearGradient>

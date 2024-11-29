@@ -251,8 +251,8 @@ export const StatsChart = ({ committeeStats }: StatsProps): ReactElement => {
 							y2="449.794"
 							gradientUnits="userSpaceOnUse"
 						>
-							<stop stop-color="#B19967" />
-							<stop offset="1" stop-color="#D4C5A6" />
+							<stop stopColor="#B19967" />
+							<stop offset="1" stopColor="#D4C5A6" />
 						</linearGradient>
 						<clipPath id="clip0_460_429">
 							<rect width="350" height="350" fill="white" />
