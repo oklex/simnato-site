@@ -11,6 +11,7 @@ const FullScreenModal = ({ isOpen, onClose, children }) => {
   
 	if (!isMounted || !isOpen) return null; // Ensure the modal renders only on the client
   
+	// onClose should show up on the bottom; as a scroll button that transitions into a close button
 	return ReactDOM.createPortal(
 		<Overlay className='glassy'>
 			<ModalContent>
