@@ -8,6 +8,7 @@ function MyApp({ Component, pageProps }) {
 			<div id="portal-root" />
 			<NavThemeProvider>
 				<Navigation />
+				<div id="fullscreen-modal-root" />
 				<Component {...pageProps} />
 			</NavThemeProvider>
 		</div>
