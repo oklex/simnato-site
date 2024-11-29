@@ -195,7 +195,7 @@ export const StatsChart = ({ committeeStats }: StatsProps): ReactElement => {
 						height="247"
 						transform="rotate(-45 15.7071 190.494)"
 						stroke="#28317F"
-						fill-opacity="0.5"
+						fillOpacity="0.5"
 					/>
 					<rect
 						x="48.7071"
@@ -204,7 +204,7 @@ export const StatsChart = ({ committeeStats }: StatsProps): ReactElement => {
 						height="200.875"
 						transform="rotate(-45 48.7071 190.747)"
 						stroke="#28317F"
-						fill-opacity="0.5"
+						fillOpacity="0.5"
 					/>
 					<rect
 						x="83.7071"
@@ -213,7 +213,7 @@ export const StatsChart = ({ committeeStats }: StatsProps): ReactElement => {
 						height="149.793"
 						transform="rotate(-45 83.7071 190.627)"
 						stroke="#28317F"
-						fill-opacity="0.5"
+						fillOpacity="0.5"
 					/>
 					<rect
 						x="121.52"
@@ -222,7 +222,7 @@ export const StatsChart = ({ committeeStats }: StatsProps): ReactElement => {
 						height="98.3906"
 						transform="rotate(-45 121.52 191.187)"
 						stroke="#28317F"
-						fill-opacity="0.5"
+						fillOpacity="0.5"
 					/>
 					<rect
 						x="154.52"
@@ -231,12 +231,12 @@ export const StatsChart = ({ committeeStats }: StatsProps): ReactElement => {
 						height="51.3259"
 						transform="rotate(-45 154.52 191.187)"
 						stroke="#28317F"
-						fill-opacity="0.5"
+						fillOpacity="0.5"
 					/>
 					<path
 						d={statVectors}
 						fill="url(#paint0_linear_3524_419)"
-						fill-opacity="0.95"
+						fillOpacity="0.95"
 						className="no-pointers"
 					/>
 					{polygonCoordinates.map((coordinate, index) =>
