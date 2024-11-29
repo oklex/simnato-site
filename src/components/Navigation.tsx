@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 import { NavThemeContext } from '@context/navTheme';
 import TextLogo from '@assets/textLogo';
-import { Div, Icon, Text } from '@ui-library';
+import { Div, Header, Icon, NarrowContainer, Text } from '@ui-library';
 import useScreenSize from '@stores/useScreenSize';
 
 import { PALETTE } from '../theme';
@@ -52,7 +52,13 @@ export const Navigation = ({ sticky }: { sticky?: boolean }): ReactElement => {
 				</StyledNav>
 			</NavigationWrapper>
 			<FullScreenModal isOpen={openNav} onClose={toggleModal}>
-				<Text>hello world</Text>
+				<Div flex flexDirection='col' justifyContent='center' height='100%'>
+					<NarrowContainer >
+						<Div flex justifyContent='center'>
+							<Header level={2} mode='dark'>hello world</Header>
+						</Div>
+					</NarrowContainer>
+				</Div>
 			</FullScreenModal>
 		</>
 	);
