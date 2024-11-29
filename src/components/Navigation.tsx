@@ -1,4 +1,5 @@
-import React, { ReactElement, useContext, useState } from 'react';
+import React, { ReactElement, useContext, useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
 import styled, { css } from 'styled-components';
 import { rgba } from 'polished';
 import Link from 'next/link';
@@ -9,8 +10,6 @@ import { Div, Icon, Text } from '@ui-library';
 import useScreenSize from '@stores/useScreenSize';
 
 import { PALETTE } from '../theme';
-import FullScreenModal from './FullScreenModal';
-
 const RADIUS = 12;
 
 export const Navigation = ({ sticky }: { sticky?: boolean }): ReactElement => {
@@ -19,8 +18,6 @@ export const Navigation = ({ sticky }: { sticky?: boolean }): ReactElement => {
 	const [openNav, setOpenNav] = useState(false);
 	const onLightBackground = theme === 'light' || openNav;
 
-	const openModal = () => setOpenNav(true);
-	const closeModal = () => setOpenNav(false);
 	const toggleModal = () => setOpenNav((prev) => !prev);
 
 	const showNav = () => (
@@ -53,7 +50,7 @@ export const Navigation = ({ sticky }: { sticky?: boolean }): ReactElement => {
 					</NavContent>
 				</StyledNav>
 			</NavigationWrapper>
-			<FullScreenModal isOpen={openNav} onClose={closeModal}>
+			<FullScreenModal isOpen={openNav}>
 				<Text>hello world</Text>
 			</FullScreenModal>
 		</>
@@ -137,3 +134,46 @@ const StyledNav = styled.button<{ shouldBeTransparent: boolean }>`
 const BigNavSpace = styled(Div)`
 	flex-grow: 1;
 `
+
+
+const FullScreenModal = ({ isOpen, children }) => {
+	const [isMounted, setIsMounted] = useState(false);
+
+	useEffect(() => {
+	  setIsMounted(true);
+	}, []);
+  
+	if (!isMounted || !isOpen) return null; // Ensure the modal renders only on the client
+  
+	return ReactDOM.createPortal(
+		<Overlay className='glassy'>
+			<ModalContent>
+				{/* <CloseButton onClick={onClose}>×</CloseButton> */}
+				{children}
+			</ModalContent>
+		</Overlay>,
+		document.getElementById('navigation-modal-root') // Ensure this exists in your app
+	);
+};
+
+const Overlay = styled.div`
+	width: 100vw;
+	border-radius: 0px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 100;
+`;
+
+const ModalContent = styled.div`
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+	padding: 20px;
+`;
