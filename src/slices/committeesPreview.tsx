@@ -42,7 +42,7 @@ export const CommitteesPreview = (): ReactElement => {
         <Spacer height={"40px"} />
         <Container>
           <SixColumnGrid>
-            <CommitteeBox>
+            <CommitteeBox as={Link} href="/committees/nac">
               <Header center level={5} mode="light">
                 North Atlantic Council
               </Header>
