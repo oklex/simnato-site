@@ -25,7 +25,9 @@ export const Navigation = ({ sticky }: { sticky?: boolean }): ReactElement => {
   const toggleModal = () => setOpenNav((prev) => !prev);
 
   useEffect(() => {
-    setOpenNav(false);
+    setTimeout(() => {
+      setOpenNav(false);
+    }, 100);
   }, [pathname]);
 
   const showNav = () => (
