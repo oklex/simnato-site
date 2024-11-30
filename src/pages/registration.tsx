@@ -69,11 +69,11 @@ export const RegistrationPage = (): ReactElement => {
 									</Header>
 								</Div>
 							</Button>
-							{/* <Button variant="text" mode="light" onClick={() => setShowInfoModal(true)}>
+							<Button variant="text" mode="light" onClick={() => setShowInfoModal(true)}>
 								<Text align="center" mode="gold">
 									learn how it works
 								</Text>
-							</Button> */}
+							</Button>
 						</Div>
 					</Div>
 					<Spacer />
