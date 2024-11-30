@@ -73,7 +73,7 @@ export const Navigation = ({ sticky }: { sticky?: boolean }): ReactElement => {
             <Div flex justifyContent="start">
               <NavigationModalContent isMobile={isMobile}>
                 <NavLink label="Home" route="/" />
-                {/* <NavLink label="Conference" route="/" /> */}
+                <NavLink label="Conference" route="/conference" />
                 <Spacer height="calc(3vh + 12px)" />
                 <Div flex flexDirection="col" gap="8px" padding="4px 0px 0px">
                   <Text mode="gold" align={isMobile ? "left" : "center"}>

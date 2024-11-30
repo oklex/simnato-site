@@ -60,7 +60,7 @@ const StyledBanner = styled.div<{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: ${({ isMobile }) => isMobile ? '100%': 'calc(100% - 10px)'};
+	/* width: ${({ isMobile }) => isMobile ? '100%': 'calc(100% - 10px)'}; */
 
 	${({ color }) => {
 		if (color === 'neutral') {

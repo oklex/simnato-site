@@ -7,7 +7,7 @@ export { Header } from './Header';
 export { Icon } from './Icon';
 export { LinkText as Link } from './Link';
 export { Modal } from './Modal';
-export { Section } from './Section';
+export { Section, SubContainer, SplitScreen } from './Section';
 export { Spacer } from './Spacer';
 export { StyledText } from './StyledText';
 export { Text } from './Text';

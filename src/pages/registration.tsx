@@ -1,4 +1,7 @@
 import React, { ReactElement } from 'react';
+import styled from 'styled-components';
+import { useRouter } from 'next/router';
+
 import {
 	Accordion,
 	AccordionItemType,
@@ -12,11 +15,10 @@ import {
 	NarrowContainer,
 	Button,
 } from '@ui-library';
-import styled from 'styled-components';
-import StarMarker from '../assets/starMarkers';
-import { useRouter } from 'next/router';
+import StarMarker from '@assets/starMarkers';
 import useScreenSize from '@stores/useScreenSize';
 import { ViewPortSection } from '@src/components/ViewPortSection';
+import { SubContainer } from '@src/ui-library/Section';
 
 export const RegistrationPage = (): ReactElement => {
 	const { width, height, isMobile } = useScreenSize();
@@ -275,15 +277,6 @@ export const RegistrationPage = (): ReactElement => {
 		</div>
 	);
 };
-
-const SubContainer = styled.div`
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	max-width: 650px;
-	margin-left: auto;
-	margin-right: auto;
-`;
 
 const InfoRow = styled.div`
 	max-width: 850px;

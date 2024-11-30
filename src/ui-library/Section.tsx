@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from "react";
 import styled, { css } from "styled-components";
-import { MODES, PALETTE, GRADIENTS } from "../theme";
+import { MODES, PALETTE, GRADIENTS, BREAKPOINTS } from "../theme";
 import { GenericContainer } from "./Container";
 
 type SectionProps = {
@@ -72,4 +72,24 @@ const FullWidthSection = styled.section<Omit<SectionProps, "children">>`
       }
     );
   `}
+`;
+
+export const SubContainer = styled.div`
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	max-width: 650px;
+	margin-left: auto;
+	margin-right: auto;
+`;
+
+export const SplitScreen = styled.div`
+  @media (min-width: ${BREAKPOINTS.sm}) {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    & > div {
+      width: 50%;
+    }
+  }
 `;

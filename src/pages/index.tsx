@@ -8,11 +8,11 @@ import {
   Spacer,
   Text,
   NarrowContainer,
+  SplitScreen
 } from "@src/ui-library";
 import { StaffInfo } from "@src/slices/staffInfo";
 import { CommitteesPreview } from "@src/slices/committeesPreview";
 import RichmunWreath from "@src/assets/richmunWreath";
-import { BREAKPOINTS } from "@src/theme";
 
 export default function Home() {
   return (
@@ -65,14 +65,3 @@ export default function Home() {
     </div>
   );
 }
-
-const SplitScreen = styled.div`
-  @media (min-width: ${BREAKPOINTS.sm}) {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    & > div {
-      width: 50%;
-    }
-  }
-`;
