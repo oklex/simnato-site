@@ -120,9 +120,12 @@ const NavigationModalContent = styled.div<{ isMobile: boolean }>`
   h4,
   h5,
   h6 {
+    transition: color 0.1s ease-out, transform 0.1s ease-out;
+    transform: scale(1);
+
     &:hover {
-      transition: color 0.1s ease-out;
       color: ${PALETTE.blue.main} !important;
+      transform: scale(1.025);
     }
   }
 
