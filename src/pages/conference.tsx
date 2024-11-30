@@ -1,4 +1,5 @@
 import React, { ReactElement, ReactNode, useEffect } from 'react';
+import styled from 'styled-components';
 
 import {
 	Accordion,
@@ -16,35 +17,44 @@ import {
 	Button,
 } from '@ui-library';
 import { Banner } from '@src/components/Banner';
-import styled from 'styled-components';
 import dayjs from 'dayjs';
+import CountdownSlice from '@slices/countdownSlice';
+import StarMarker from '@assets/starMarkers';
 
 export const ConferencePage = (): ReactElement => {
 	return (
 		<div>
 			<Container center>
-				<Spacer height={'5.5rem'} />
-				{/* <Spacer height={'calc(5vh + 45px)'} /> */}]
-				<Header center mode="dark" level={1}>
-					Conference Info
-				</Header>
+				<Spacer height={'calc(10vh + 5rem)'} />
+				<Div flex justifyContent="center">
+					<StarMarker type="dark" />
+				</Div>
+				<CountdownSlice />
+				<Container>
+					<Div flex justifyContent="center" margin="24px 0px 0px">
+						<Button href="/registration" variant="primary" mode="gold">
+							<Header level={5}>Register Now</Header>
+						</Button>
+					</Div>
+				</Container>
+				<Spacer />
 				<NarrowContainer>
-						<Div padding="30px 0px" >
-							<Header level={6} mode="gold" center>
-								March 7th - 8th, 2025
-							</Header>
-							<Header level={4} mode="dark" center>
-								Wilson School of Design
-							</Header>
-							<Spacer height={'0.5rem'} />
-							<Text mode="dark" subtle align="center">
-								5600 Kwantlen St,
-								<br />
-								Richmond, BC V6X 3V8
-								<br />
-								March 7th - 8th, 2025
-							</Text>
-						</Div>
+					<Div padding="30px 0px">
+						<Header level={6} mode="gold" center>
+							March 7th - 8th, 2025
+						</Header>
+						<Header level={4} mode="dark" center>
+							Wilson School of Design
+						</Header>
+						<Spacer height={'0.5rem'} />
+						<Text mode="dark" subtle align="center">
+							5600 Kwantlen St,
+							<br />
+							Richmond, BC V6X 3V8
+							<br />
+							March 7th - 8th, 2025
+						</Text>
+					</Div>
 					<SplitScreen>
 						<Div padding="30px 0px">
 							<Header level={5} mode="dark" center>
