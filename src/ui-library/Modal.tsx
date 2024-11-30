@@ -5,14 +5,24 @@ import styled, { css, keyframes } from 'styled-components';
 import { COLORS, PALETTE } from '@src/theme';
 import { fadeIn, fadeOut, slideIn, slideOut } from '@src/keyframeAnimations';
 
+export const BREAKPOINTS = {
+	xs: '320px',
+	sm: '576px',
+	md: '720px',
+	desktop: '992px',
+	desktopLg: '1200px',
+};
+
+type ModalSize = 'xs' | 'sm' | 'md' | 'lg' | 'full';
+
 export const Modal = ({
 	isOpen,
-	fullscreen,
+	size = 'md',
 	onClose,
 	children,
 }: {
 	isOpen: boolean;
-	fullscreen?: boolean;
+	size?: ModalSize;
 	onClose: () => void;
 	children: ReactNode;
 }) => {
@@ -81,7 +91,7 @@ export const Modal = ({
 			onClick={onClickHandler}
 			isClosing={isClosing}
 		>
-			<ModalFrame fullscreen={!!fullscreen} isClosing={isClosing}>
+			<ModalFrame size={size} isClosing={isClosing}>
 				<CloseButton onClick={onClose}>×</CloseButton>
 				{children}
 			</ModalFrame>
@@ -90,10 +100,12 @@ export const Modal = ({
 	);
 };
 
+// Styled Components
+
 const CloseButton = styled.button`
-	position: sticky;
-	top: 0;
-	left: 100%;
+	position: absolute;
+	top: 15px;
+	right: 15px;
 	background: ${PALETTE.mono.light};
 	color: ${PALETTE.mono.dark};
 	border: none;
@@ -106,11 +118,8 @@ const CloseButton = styled.button`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	/* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); */
-	/* transition: background-color 0.3s ease, transform 0.3s ease; */
 
 	&:hover {
-		/* background-color: ${PALETTE.mono.near_white}; */
 		transform: scale(1.1);
 	}
 `;
@@ -124,16 +133,15 @@ const ModalBackground = styled.div<{ isClosing: boolean }>`
 	z-index: 9999;
 	width: 100%;
 	height: 100dvh;
-	border-radius: 0px;
-	/* background-color: ${rgba(PALETTE.mono.dark, 0.8)}; */
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	overflow: hidden;
 	animation: ${({ isClosing }) => (isClosing ? fadeOut : fadeIn)} 0.3s
 		ease-in-out forwards;
 `;
 
-const ModalFrame = styled.div<{ fullscreen: boolean; isClosing: boolean }>`
+const ModalFrame = styled.div<{ size: ModalSize; isClosing: boolean }>`
 	border: solid 1px ${rgba(PALETTE.mono.dark, 0.8)};
 	border-radius: 12px;
 	padding: 15px;
@@ -142,23 +150,38 @@ const ModalFrame = styled.div<{ fullscreen: boolean; isClosing: boolean }>`
 	animation: ${({ isClosing }) => (isClosing ? slideOut : slideIn)} 0.3s
 		ease-in-out forwards;
 
-	${({ fullscreen }) =>
-		fullscreen
-			? css`
-					width: 100%;
-					height: 100%;
-			  `
-			: css`
-					width: 640px;
-					max-height: calc(100% - 50px);
-			  `}
-	overflow-y: scroll;
+	/* Size scaling based on the size prop */
+	${({ size }) =>
+		size === 'xs' &&
+		css`
+			width: ${BREAKPOINTS.xs};
+		`}
+	${({ size }) =>
+		size === 'sm' &&
+		css`
+			width: ${BREAKPOINTS.sm};
+		`}
+  ${({ size }) =>
+		size === 'md' &&
+		css`
+			width: ${BREAKPOINTS.md};
+		`}
+  ${({ size }) =>
+		size === 'lg' &&
+		css`
+			width: ${BREAKPOINTS.desktop};
+		`}
+  ${({ size }) =>
+		size === 'full' &&
+		css`
+			width: calc(100% - 50px);
+			max-width: ${BREAKPOINTS.desktopLg};
+		`}
+  max-height: calc(100% - 50px);
+	overflow-y: auto;
 
-	/* Offset scrollbar to preserve border radius */
-	scrollbar-width: thin; /* Firefox */
-	/* clip sidebar */
-	clip-path: inset(0 round 10px);
-	-webkit-clip-path: inset(0 round 10px);
+	/* Scrollbar Styling */
+	scrollbar-width: thin;
 
 	&::-webkit-scrollbar {
 		width: 8px;
@@ -166,11 +189,11 @@ const ModalFrame = styled.div<{ fullscreen: boolean; isClosing: boolean }>`
 	}
 
 	&::-webkit-scrollbar-track {
-		background: transparent; /* Match background to hide track */
+		background: transparent;
 	}
 
 	&::-webkit-scrollbar-thumb {
-		background: ${PALETTE.mono.light}; /* Style the scrollbar */
+		background: ${PALETTE.mono.light};
 		border-radius: 12px;
 	}
 `;
