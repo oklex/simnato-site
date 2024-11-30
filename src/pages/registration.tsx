@@ -131,6 +131,37 @@ export const RegistrationPage = (): ReactElement => {
 								label: (
 									<Div width="100%">
 										<Header level={6} mode="dark">
+											When do we hear back on our application status?
+										</Header>
+									</Div>
+								),
+								content: (
+									<>
+										<Text mode="dark">
+											Offers will be sent out at the end of the referral period,
+											and then at the end of each month afterwards. Please allow
+											at least 3-4 weeks to review your application
+										</Text>
+										<br />
+										<Text mode="dark">
+											Once sent an offer, you will have 72 hours to accept your
+											role and pay.
+										</Text>
+									</>
+								),
+							},
+						]}
+					></Accordion>
+					<Spacer />
+					<Accordion
+						background="transparent"
+						mode="dark"
+						content={[
+							{
+								key: 'key',
+								label: (
+									<Div width="100%">
+										<Header level={6} mode="dark">
 											How is this different from regular MUN registration?
 										</Header>
 									</Div>
@@ -164,21 +195,21 @@ export const RegistrationPage = (): ReactElement => {
 								label: (
 									<Div width="100%">
 										<Header level={6} mode="dark">
-											When do we hear back on our application status?
+											Are position papers required?
 										</Header>
 									</Div>
 								),
 								content: (
 									<>
 										<Text mode="dark">
-											Offers will be sent out at the end of the referral period,
-											and then at the end of each month afterwards. Please allow
-											at least 3-4 weeks to review your application
+											All Delegates will be required to submit a position paper,
+											though the format will differ per Committee. Every
+											Committee will have their own version and format of
+											position paper that Delegates must follow.
 										</Text>
-										<br />
 										<Text mode="dark">
-											Once sent an offer, you will have 72 hours to accept your
-											role and pay.
+											Upon completion, all Position Papers will be shared will
+											all other Delegates prior to the start of SimNATO.
 										</Text>
 									</>
 								),
