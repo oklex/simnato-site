@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 
@@ -19,11 +19,13 @@ import StarMarker from '@assets/starMarkers';
 import useScreenSize from '@stores/useScreenSize';
 import { ViewPortSection } from '@src/components/ViewPortSection';
 import { SubContainer } from '@src/ui-library/Section';
+import FullScreenModal from '@src/components/FullScreenModal';
 
 export const RegistrationPage = (): ReactElement => {
 	const { width, height, isMobile } = useScreenSize();
-	const router = useRouter();
-	const { query } = router;
+	const { query } = useRouter();
+	const [showInfoModal, setShowInfoModal] = useState(false);
+
 	const accordionKey = query['ackey']
 		? query['ackey'].toLocaleString().toLocaleLowerCase()
 		: undefined;
@@ -53,20 +55,33 @@ export const RegistrationPage = (): ReactElement => {
 						</Text>
 					</SubContainer>
 					<Spacer height={'1rem'} />
-					{/* <Div flex justifyContent="center">
-						<Button
-							variant="primary"
-							mode="dark"
-							href="https://form.jotform.com/243296810966265"
-						>
-							<Div padding="0 2rem">
-								<Header center level={5}>
-									Apply now, pay later
-								</Header>
-							</Div>
-						</Button>
+					<Div flex justifyContent="center">
+						<Div flex flexDirection="col" gap="12px">
+							<Button
+								variant="primary"
+								mode="dark"
+								disabled
+								href="https://form.jotform.com/243296810966265"
+							>
+								<Div padding="0 2rem">
+									<Header center level={5}>
+										{/* Apply now, pay later */} Opening soon
+									</Header>
+								</Div>
+							</Button>
+
+							<Button
+								variant="text"
+								mode="light"
+								onClick={() => setShowInfoModal(true)}
+							>
+								<Text align="center" mode="gold">
+									learn how it works
+								</Text>
+							</Button>
+						</Div>
 					</Div>
-					<Spacer /> */}
+					<Spacer />
 
 					<Text subtle mode="dark" align="center">
 						*By referral until Dec. 31st <br />
@@ -256,8 +271,9 @@ export const RegistrationPage = (): ReactElement => {
 									<Text mode="dark">
 										Delegates may request a refund for extenuating
 										circumstances, to be determined at the discretion of the
-										SimNATO logistics team. Eligible refunds may to cover up to 50% of their
-										registration fee, which will be payable after March 8th.
+										SimNATO logistics team. Eligible refunds may to cover up to
+										50% of their registration fee, which will be payable after
+										March 8th.
 									</Text>
 								),
 							},
@@ -266,14 +282,14 @@ export const RegistrationPage = (): ReactElement => {
 				</ViewPortSection>
 			</NarrowContainer>
 
-			{/* <NarrowContainer>
-				<Accordion
-					mode="dark"
-					background="glassy"
-					content={GetAccordionItems(isMobile)}
-					initialOpenedKey={accordionKey}
-				/>
-			</NarrowContainer> */}
+			<FullScreenModal
+				isOpen={showInfoModal}
+				onClose={() => setShowInfoModal(false)}
+			>
+				<Header level={4} mode="dark">
+					Register
+				</Header>
+			</FullScreenModal>
 		</div>
 	);
 };
@@ -308,68 +324,3 @@ const DottedLine = styled.div`
 `;
 
 export default RegistrationPage;
-
-const GetAccordionItems = (isMobile: boolean): AccordionItemType[] => [
-	{
-		key: 'club',
-		label: (
-			<Div
-				flex
-				flexDirection={isMobile ? 'col' : 'row'}
-				width="100%"
-				justifyContent="between"
-			>
-				<div>
-					<Header level={6} mode="dark">
-						<StyledText bold>Club Registration</StyledText>{' '}
-						<StyledText size="md" subtle>
-							(sponsor teachers optional)
-						</StyledText>
-					</Header>
-				</div>
-				<Text mode="dark">Opening Soon</Text>
-			</Div>
-		),
-		content: <Text mode="dark">lorem ipsum</Text>,
-	},
-	{
-		key: 'priority',
-		label: (
-			<Div
-				flex
-				flexDirection={isMobile ? 'col' : 'row'}
-				width="100%"
-				justifyContent="between"
-			>
-				<div>
-					<Header level={6} mode="dark">
-						<StyledText bold>Priority Registration</StyledText>{' '}
-						<StyledText subtle>for registered clubs</StyledText>
-					</Header>
-				</div>
-				<Text mode="dark">Oct. 28th</Text>
-			</Div>
-		),
-		content: <Text mode="dark">lorem ipsum</Text>,
-	},
-	{
-		key: 'independent',
-		label: (
-			<Div
-				flex
-				flexDirection={isMobile ? 'col' : 'row'}
-				width="100%"
-				justifyContent="between"
-			>
-				<div>
-					<Header level={6} mode="dark">
-						<StyledText bold>Independent Registration</StyledText>{' '}
-						<StyledText subtle>for any and all delegates</StyledText>
-					</Header>
-				</div>
-				<Text mode="dark">Dec. 1st</Text>
-			</Div>
-		),
-		content: <Text mode="dark">lorem ipsum</Text>,
-	},
-];
