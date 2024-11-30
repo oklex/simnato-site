@@ -29,16 +29,15 @@ export const ConferencePage = (): ReactElement => {
 					Conference Info
 				</Header>
 				<NarrowContainer>
-					<SplitScreen>
-						<Div padding="30px 0px">
-							<Header level={6} mode="gold">
+						<Div padding="30px 0px" >
+							<Header level={6} mode="gold" center>
 								March 7th - 8th, 2025
 							</Header>
-							<Header level={4} mode="dark">
+							<Header level={4} mode="dark" center>
 								Wilson School of Design
 							</Header>
 							<Spacer height={'0.5rem'} />
-							<Text mode="dark" subtle align="left">
+							<Text mode="dark" subtle align="center">
 								5600 Kwantlen St,
 								<br />
 								Richmond, BC V6X 3V8
@@ -46,11 +45,6 @@ export const ConferencePage = (): ReactElement => {
 								March 7th - 8th, 2025
 							</Text>
 						</Div>
-						<Div />
-					</SplitScreen>
-					<Div width="100%">
-						<Banner type="neutral">Some details are prone to change</Banner>
-					</Div>
 					<SplitScreen>
 						<Div padding="30px 0px">
 							<Header level={5} mode="dark" center>
@@ -115,6 +109,9 @@ export const ConferencePage = (): ReactElement => {
 							</Text>
 						</Div>
 					</SplitScreen>
+					<Div width="100%">
+						<Banner type="neutral">Some details are prone to change</Banner>
+					</Div>
 				</NarrowContainer>
 			</Container>
 		</div>
