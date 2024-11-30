@@ -285,7 +285,7 @@ export const RegistrationPage = (): ReactElement => {
 			<Modal
 				isOpen={showInfoModal}
 				onClose={() => setShowInfoModal(false)}
-				size='lg'
+				size='md'
 			>
 				<Spacer height="60vh" />
 				<Header level={4} mode="dark">
