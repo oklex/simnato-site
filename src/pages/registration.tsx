@@ -284,11 +284,13 @@ export const RegistrationPage = (): ReactElement => {
 			<FullScreenModal
 				isOpen={showInfoModal}
 				onClose={() => setShowInfoModal(false)}
-				options={{ glassy: true }}
 			>
+				<Spacer height="60vh" />
 				<Header level={4} mode="dark">
 					Register
 				</Header>
+				<Spacer height="60vh" />
+				<Spacer height="60vh" />
 			</FullScreenModal>
 		</div>
 	);
