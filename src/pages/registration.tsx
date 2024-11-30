@@ -101,8 +101,8 @@ export const RegistrationPage = (): ReactElement => {
 									<>
 										<Text mode="dark">
 											All accepted Delegates will be charged a flat $125. This
-											does not include rooming acoomodations. This fee will not
-											change for Early or Late applicants.
+											does not include overnight acoomodations. This fee will
+											not change for Early or Late applicants.
 										</Text>
 									</>
 								),
@@ -160,7 +160,7 @@ export const RegistrationPage = (): ReactElement => {
 									<>
 										<Text mode="dark">
 											Offers will be sent out at the end of the referral period,
-											and then at the end of each month afterwards.Please allow
+											and then at the end of each month afterwards. Please allow
 											at least 3-4 weeks to review your application
 										</Text>
 										<br />
@@ -231,6 +231,31 @@ export const RegistrationPage = (): ReactElement => {
 										While we will be making an effort to aknowledge uniquely
 										positive contribution from indivdual delegates, however
 										SimNATO will not be having Delegate awards!
+									</Text>
+								),
+							},
+						]}
+					></Accordion>
+					<Spacer />
+					<Accordion
+						background="transparent"
+						mode="dark"
+						content={[
+							{
+								key: 'key',
+								label: (
+									<Div width="100%">
+										<Header level={6} mode="dark">
+											What is the refund policy?
+										</Header>
+									</Div>
+								),
+								content: (
+									<Text mode="dark">
+										Delegates may request a refund for extenuating
+										circumstances, to be determined at the discretion of the
+										SimNATO logistics team. Eligible refunds may to cover up to 50% of their
+										registration fee, which will be payable after March 8th.
 									</Text>
 								),
 							},
