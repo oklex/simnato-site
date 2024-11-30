@@ -69,7 +69,11 @@ export const RegistrationPage = (): ReactElement => {
 									</Header>
 								</Div>
 							</Button>
-							<Button variant="text" mode="light" onClick={() => setShowInfoModal(true)}>
+							<Button
+								variant="text"
+								mode="light"
+								onClick={() => setShowInfoModal(true)}
+							>
 								<Text align="center" mode="gold">
 									learn how it works
 								</Text>
@@ -280,6 +284,7 @@ export const RegistrationPage = (): ReactElement => {
 			<FullScreenModal
 				isOpen={showInfoModal}
 				onClose={() => setShowInfoModal(false)}
+				options={{ glassy: true }}
 			>
 				<Header level={4} mode="dark">
 					Register
