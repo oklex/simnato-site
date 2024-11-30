@@ -13,6 +13,7 @@ type HeaderProps = {
 	center?: boolean;
 	margin?: string;
 	uppercase?: boolean;
+	as?: React.ElementType;
 };
 
 // Utility function to determine the heading level (h1, h2, etc.)
@@ -140,12 +141,13 @@ export const Header: FC<HeaderProps> = ({
 	center = false,
 	margin = '0',
 	uppercase,
+	as, // Accepts the "as" prop
 }) => {
 	const HeadingTag = getHeadingTag(level); // Determine the heading tag (h1, h2, etc.)
 
 	return (
 		<StyledHeader
-			as={HeadingTag}
+		as={as || HeadingTag} // Default to HeadingTag if "as" is not provided
 			mode={mode}
 			sizeRemOverride={sizeRemOverride}
 			bold={bold}
