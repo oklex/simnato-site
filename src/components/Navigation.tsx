@@ -1,6 +1,7 @@
 import React, { ReactElement, useContext, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import styled, { css } from "styled-components";
+import { useRouter } from "next/router";
 import { rgba } from "polished";
 import Link from "next/link";
 
@@ -8,6 +9,7 @@ import { NavThemeContext } from "@context/navTheme";
 import TextLogo from "@assets/textLogo";
 import { Div, Header, Icon, NarrowContainer, Spacer, Text } from "@ui-library";
 import useScreenSize from "@stores/useScreenSize";
+import StarMarker from "@assets/starMarkers";
 
 import { PALETTE } from "../theme";
 import FullScreenModal from "./FullScreenModal";
@@ -16,10 +18,15 @@ const RADIUS = 12;
 export const Navigation = ({ sticky }: { sticky?: boolean }): ReactElement => {
   const { theme } = useContext(NavThemeContext);
   const { isMobile } = useScreenSize();
+  const { pathname } = useRouter();
   const [openNav, setOpenNav] = useState(false);
   const onLightBackground = theme === "light" || openNav;
 
   const toggleModal = () => setOpenNav((prev) => !prev);
+
+  useEffect(() => {
+    setOpenNav(false);
+  }, [pathname]);
 
   const showNav = () => (
     <>
@@ -63,34 +70,36 @@ export const Navigation = ({ sticky }: { sticky?: boolean }): ReactElement => {
           <NarrowContainer>
             <Div flex justifyContent="start">
               <NavigationModalContent isMobile={isMobile}>
-                <Header level={1} mode="dark">
-                  Home
-                </Header>
-                <Header level={1} mode="dark">
-                  Conference
-                </Header>
+                <NavLink label="Home" route="/" />
+                <NavLink label="Conference" route="/" />
                 <Spacer height="calc(3vh + 12px)" />
                 <Div flex flexDirection="col" gap="8px" padding="4px 0px 0px">
                   <Text mode="gold" align={isMobile ? "left" : "center"}>
                     Committees
                   </Text>
-                  <Header level={isMobile ? 3 : 2} mode="dark">
-                    North Atlantic Council
-                  </Header>
-                  <Header level={isMobile ? 3 : 2} mode="dark">
-                    Miltary Committee
-                  </Header>
-                  <Header level={isMobile ? 3 : 2} mode="dark">
-                    NATO Partners
-                  </Header>
-                  <Header level={isMobile ? 3 : 2} mode="dark">
-                    Intelligence & Espionage
-                  </Header>
+                  <NavLink
+                    label="North Atlantic Council"
+                    route="/committees/nac"
+                    variant="secondary"
+                  />
+                  <NavLink
+                    label="Miltary Committee"
+                    route="/committees/mc"
+                    variant="secondary"
+                  />
+                  <NavLink
+                    label="NATO Partners"
+                    route="/committees/partners"
+                    variant="secondary"
+                  />
+                  <NavLink
+                    label="Intelligence & Espionage"
+                    route="/committees/espionage"
+                    variant="secondary"
+                  />
                 </Div>
                 <Spacer height="calc(3vh + 12px)" />
-                <Header level={1} mode="dark">
-                  Register
-                </Header>
+                <NavLink label="Register" route="/registration" />
               </NavigationModalContent>
             </Div>
           </NarrowContainer>
@@ -100,6 +109,35 @@ export const Navigation = ({ sticky }: { sticky?: boolean }): ReactElement => {
   );
 
   return showNav();
+};
+
+interface TextLinkProps {
+  label: string;
+  route: string;
+  variant?: "primary" | "secondary"; // New prop for link styling
+}
+const NavLink = ({
+  label,
+  route,
+  variant = "primary",
+}: TextLinkProps): ReactElement => {
+  const { isMobile } = useScreenSize();
+  const { pathname } = useRouter();
+  const selected = pathname.endsWith(route);
+
+  return (
+    <Div flex justifyContent={isMobile ? "start" : "center"}>
+      {/* {selected && <StarMarker type="blue" height='2em' padding='0px 15px'/>} */}
+      <Link href={route}>
+        <Header
+          level={variant === "primary" ? 1 : isMobile ? 3 : 2}
+          mode="dark"
+        >
+          {label}
+        </Header>
+      </Link>
+    </Div>
+  );
 };
 
 const NavContent = styled.div`
