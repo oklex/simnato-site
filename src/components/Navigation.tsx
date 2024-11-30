@@ -128,14 +128,23 @@ const NavLink = ({
   return (
     <Div flex justifyContent={isMobile ? "start" : "center"}>
       {/* {selected && <StarMarker type="blue" height='2em' padding='0px 15px'/>} */}
-      <Link href={route}>
+      {selected ? (
         <Header
           level={variant === "primary" ? 1 : isMobile ? 3 : 2}
-          mode="dark"
+          mode="silver"
         >
           {label}
         </Header>
-      </Link>
+      ) : (
+        <Link href={route}>
+          <Header
+            level={variant === "primary" ? 1 : isMobile ? 3 : 2}
+            mode="dark"
+          >
+            {label}
+          </Header>
+        </Link>
+      )}
     </Div>
   );
 };
@@ -152,18 +161,20 @@ const NavigationModalContent = styled.div<{ isMobile: boolean }>`
   flex-direction: column;
   justify-content: center;
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    transition: color 0.1s ease-out, transform 0.1s ease-out;
-    transform: scale(1);
+  a {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      transition: color 0.1s ease-out, transform 0.1s ease-out;
+      transform: scale(1);
 
-    &:hover {
-      color: ${PALETTE.blue.main} !important;
-      transform: scale(1.025);
+      &:hover {
+        color: ${PALETTE.blue.main} !important;
+        transform: scale(1.025);
+      }
     }
   }
 
