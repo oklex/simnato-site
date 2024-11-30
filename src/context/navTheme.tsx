@@ -23,7 +23,7 @@ const NavThemeContext = createContext<NavTheme>(defaultNavTheme);
 
 const NavThemeProvider = ({ children }) => {
   const router = useRouter(); // Use Next.js router
-  const [theme, setTheme] = useState<ThemeType>("light");
+  const [theme, setTheme] = useState<ThemeType>(router.pathname === '/' ? "dark" : "light"); // default expect dark on homepage
   const [isClient, setIsClient] = useState(false); // Ensure client-side rendering
   const themeRef = useRef("light");
   const refsDirectory = useRef<Record<string, Ref<HTMLDivElement>>>({});
