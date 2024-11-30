@@ -74,16 +74,16 @@ export const Navigation = ({ sticky }: { sticky?: boolean }): ReactElement => {
                   <Text mode="gold" align={isMobile ? "left" : "center"}>
                     Committees
                   </Text>
-                  <Header level={isMobile ? 3: 2} mode="dark">
+                  <Header level={isMobile ? 3 : 2} mode="dark">
                     North Atlantic Council
                   </Header>
-                  <Header level={isMobile ? 3: 2} mode="dark">
+                  <Header level={isMobile ? 3 : 2} mode="dark">
                     Miltary Committee
                   </Header>
-                  <Header level={isMobile ? 3: 2} mode="dark">
+                  <Header level={isMobile ? 3 : 2} mode="dark">
                     NATO Partners
                   </Header>
-                  <Header level={isMobile ? 3: 2} mode="dark">
+                  <Header level={isMobile ? 3 : 2} mode="dark">
                     Intelligence & Espionage
                   </Header>
                 </Div>
@@ -113,6 +113,18 @@ const NavigationModalContent = styled.div<{ isMobile: boolean }>`
   width: 100%;
   flex-direction: column;
   justify-content: center;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    &:hover {
+      transition: color 0.1s ease-out;
+      color: ${PALETTE.blue.main} !important;
+    }
+  }
 
   ${({ isMobile }) =>
     isMobile
