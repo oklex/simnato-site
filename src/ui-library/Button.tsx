@@ -8,6 +8,7 @@ type ButtonProps = {
 	mode: MODES;
 	variant?: 'primary' | 'outline' | 'light' | 'text';
 	href?: string;
+	disabled?: boolean;
 	onClick?: (e: any) => void;
 };
 
@@ -16,12 +17,13 @@ export const Button: React.FC<ButtonProps> = ({
 	mode,
 	variant = 'light',
 	href,
+	disabled = false,
 	onClick,
 }) => {
-	if (href) {
+	if (href && !disabled) {
 		return (
 			<Link href={href} passHref>
-				<StyledButton mode={mode} variant={variant} as="a">
+				<StyledButton disabled={disabled} mode={mode} variant={variant} as="a">
 					{children ?? ''}
 				</StyledButton>
 			</Link>
@@ -29,7 +31,12 @@ export const Button: React.FC<ButtonProps> = ({
 	}
 
 	return (
-		<StyledButton mode={mode} variant={variant} onClick={onClick}>
+		<StyledButton
+		disabled={disabled}
+			mode={mode}
+			variant={variant}
+			onClick={!disabled ? onClick : undefined}
+		>
 			{children && children}
 		</StyledButton>
 	);
@@ -38,6 +45,7 @@ export const Button: React.FC<ButtonProps> = ({
 const StyledButton = styled.button<{
 	mode: MODES;
 	variant: 'primary' | 'outline' | 'light' | 'text';
+	disabled?: boolean;
 }>`
 	padding: 0.5rem 1.2rem;
 	border-radius: 5px;
@@ -47,79 +55,87 @@ const StyledButton = styled.button<{
 	transition: all 0.15s ease-in-out;
 	display: inline-block;
 
-	transform: scale(1);
-
-	&:hover {
-		transform: scale(1.05);
-	}
+	${({ disabled }) => {
+		if (!disabled)
+			return css`
+				transform: scale(1);
+				&:hover {
+					transform: scale(1.05);
+				}
+			`;
+	}}
 
 	${(props) => {
-		switch (props.variant) {
-			case 'primary':
-				return css`
-					background-color: ${props.mode === 'light' || props.mode === 'gold'
-						? PALETTE.gold.main
-						: PALETTE.blue.main};
-					color: ${PALETTE.mono.near_white};
-					border: none;
-
-					&:hover {
-						background-color: ${props.mode === 'light' || props.mode === 'gold'
-							? PALETTE.gold.dark
-							: PALETTE.blue.dark};
-					}
-				`;
-			case 'outline':
-				return css`
-					background-color: transparent;
-					color: ${props.mode === 'light' || props.mode === 'gold'
-						? PALETTE.gold.main
-						: PALETTE.blue.main};
-					border: 2px solid
-						${props.mode === 'light' || props.mode === 'gold'
-							? PALETTE.gold.main
-							: PALETTE.blue.main};
-
-					&:hover {
+		if (!props.disabled)
+			switch (props.variant) {
+				case 'primary':
+					return css`
 						background-color: ${props.mode === 'light' || props.mode === 'gold'
 							? PALETTE.gold.main
 							: PALETTE.blue.main};
 						color: ${PALETTE.mono.near_white};
-					}
-				`;
-			case 'light':
-				return css`
-					background-color: ${props.mode === 'light' || props.mode === 'gold'
-						? PALETTE.gold.light
-						: PALETTE.blue.light};
-					color: ${props.mode === 'light' || props.mode === 'gold'
-						? PALETTE.gold.dark
-						: PALETTE.blue.main};
-					border: none;
+						border: none;
 
-					&:hover {
-						background-color: ${props.mode === 'light' || props.mode === 'gold'
+						&:hover {
+							background-color: ${props.mode === 'light' ||
+							props.mode === 'gold'
+								? PALETTE.gold.dark
+								: PALETTE.blue.dark};
+						}
+					`;
+				case 'outline':
+					return css`
+						background-color: transparent;
+						color: ${props.mode === 'light' || props.mode === 'gold'
 							? PALETTE.gold.main
 							: PALETTE.blue.main};
-						color: ${PALETTE.mono.near_white};
-					}
-				`;
-			case 'text':
-				return css`
-					background-color: transparent;
-					color: ${props.mode === 'light' || props.mode === 'gold'
-						? PALETTE.gold.main
-						: PALETTE.blue.main};
-					border: none;
-					padding: 0; /* No padding for text buttons */
+						border: 2px solid
+							${props.mode === 'light' || props.mode === 'gold'
+								? PALETTE.gold.main
+								: PALETTE.blue.main};
 
-					&:hover {
+						&:hover {
+							background-color: ${props.mode === 'light' ||
+							props.mode === 'gold'
+								? PALETTE.gold.main
+								: PALETTE.blue.main};
+							color: ${PALETTE.mono.near_white};
+						}
+					`;
+				case 'light':
+					return css`
+						background-color: ${props.mode === 'light' || props.mode === 'gold'
+							? PALETTE.gold.light
+							: PALETTE.blue.light};
 						color: ${props.mode === 'light' || props.mode === 'gold'
 							? PALETTE.gold.dark
-							: PALETTE.blue.dark};
-						text-decoration: underline; /* Text button hover effect */
-					}
-				`;
-		}
+							: PALETTE.blue.main};
+						border: none;
+
+						&:hover {
+							background-color: ${props.mode === 'light' ||
+							props.mode === 'gold'
+								? PALETTE.gold.main
+								: PALETTE.blue.main};
+							color: ${PALETTE.mono.near_white};
+						}
+					`;
+				case 'text':
+					return css`
+						background-color: transparent;
+						color: ${props.mode === 'light' || props.mode === 'gold'
+							? PALETTE.gold.main
+							: PALETTE.blue.main};
+						border: none;
+						padding: 0; /* No padding for text buttons */
+
+						&:hover {
+							color: ${props.mode === 'light' || props.mode === 'gold'
+								? PALETTE.gold.dark
+								: PALETTE.blue.dark};
+							text-decoration: underline; /* Text button hover effect */
+						}
+					`;
+			}
 	}}
 `;
