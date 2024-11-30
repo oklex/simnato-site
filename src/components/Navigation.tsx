@@ -24,15 +24,15 @@ export const Navigation = ({ sticky }: { sticky?: boolean }): ReactElement => {
 	const showNav = () => (
 		<>
 			<NavigationWrapper sticky={!!sticky} isMobile={isMobile} id="registration-nav">
-				<StyledNav shouldBeTransparent={onLightBackground}>
+				<StyledNav shouldBeTransparent={onLightBackground} onClick={toggleModal}>
 					<NavContent>
-						<Link href="/">
+						<Link href="/" onClick={e => e.stopPropagation()}>
 							<TextLogo
 								height="1.4rem"
 								color={onLightBackground ? 'black' : 'white'}
 							/>
 						</Link>
-						<BigNavSpace flex justifyContent='end' onClick={toggleModal}>
+						<BigNavSpace flex justifyContent='end'>
 							<Icon
 								icon={openNav ? 'x' : 'menu'}
 								mode={onLightBackground ? 'dark' : 'light'}
@@ -84,6 +84,7 @@ const NavigationWrapper = styled.div<{ sticky: boolean, isMobile: boolean }>`
 `;
 
 const StyledNav = styled.button<{ shouldBeTransparent: boolean }>`
+	cursor: pointer;
 	padding: 0.6rem 1rem;
 	width: calc(100% - 50px);
 
