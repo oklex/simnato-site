@@ -1,6 +1,5 @@
 import { createContext, Ref, useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
-import { Navigation } from "@src/components/Navigation";
 
 interface NavTheme {
   theme: "light" | "dark";
@@ -25,13 +24,22 @@ const NavThemeContext = createContext<NavTheme>(defaultNavTheme);
 const NavThemeProvider = ({ children }) => {
   const router = useRouter(); // Use Next.js router
   const [theme, setTheme] = useState<ThemeType>("light");
+  const [isClient, setIsClient] = useState(false); // Ensure client-side rendering
   const themeRef = useRef("light");
   const refsDirectory = useRef<Record<string, Ref<HTMLDivElement>>>({});
 
   useEffect(() => {
+    // Mark as client-side rendering
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) return; // Skip during SSR
+
     const handleRouteChange = () => {
       refsDirectory.current = {};
     };
+
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const navbarHeight = 70; // Example navbar height in pixels
@@ -62,7 +70,7 @@ const NavThemeProvider = ({ children }) => {
       window.removeEventListener("scroll", handleScroll);
       router.events.off("routeChangeStart", handleRouteChange);
     };
-  }, [router]);
+  }, [router, isClient]);
 
   const calculate = (): SectionsPositionType => {
     const refKeys = Object.keys(refsDirectory.current);
@@ -89,6 +97,15 @@ const NavThemeProvider = ({ children }) => {
   const initializeRef = (key: string, ref: Ref<HTMLDivElement>) => {
     refsDirectory.current[key] = ref;
   };
+
+  if (!isClient) {
+    // Prevent mismatch during hydration
+    return (
+      <NavThemeContext.Provider value={defaultNavTheme}>
+        {children}
+      </NavThemeContext.Provider>
+    );
+  }
 
   return (
     <NavThemeContext.Provider

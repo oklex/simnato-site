@@ -43,9 +43,9 @@ export const StarMarker: FC<ResizableSVGProps> = ({
               gradientUnits="userSpaceOnUse"
               gradientTransform="translate(41.4997 0.244141) rotate(90) scale(79.5078 82.3022)"
             >
-              <stop stop-color="#28317F" />
-              <stop offset="0.495" stop-color="#0B1957" />
-              <stop offset="1" stop-color="#030B2E" />
+              <stop stopColor="#28317F" />
+              <stop offset="0.495" stopColor="#0B1957" />
+              <stop offset="1" stopColor="#030B2E" />
             </radialGradient>
           </defs>
         </svg>
@@ -75,9 +75,9 @@ export const StarMarker: FC<ResizableSVGProps> = ({
               gradientUnits="userSpaceOnUse"
               gradientTransform="translate(41.4997 0.244141) rotate(90) scale(79.5078 82.3022)"
             >
-              <stop stop-color="#E2E7FD" />
-              <stop offset="0.5" stop-color="#B4BFEF" />
-              <stop offset="1" stop-color="#28317F" />
+              <stop stopColor="#E2E7FD" />
+              <stop offset="0.5" stopColor="#B4BFEF" />
+              <stop offset="1" stopColor="#28317F" />
             </radialGradient>
           </defs>
         </svg>
@@ -107,9 +107,9 @@ export const StarMarker: FC<ResizableSVGProps> = ({
               gradientUnits="userSpaceOnUse"
               gradientTransform="translate(41.4997 0.244141) rotate(90) scale(79.5078 82.3022)"
             >
-              <stop stop-color="#F2EBDD" />
-              <stop offset="0.5" stop-color="#D4C5A6" />
-              <stop offset="1" stop-color="#9F7622" />
+              <stop stopColor="#F2EBDD" />
+              <stop offset="0.5" stopColor="#D4C5A6" />
+              <stop offset="1" stopColor="#9F7622" />
             </radialGradient>
           </defs>
         </svg>

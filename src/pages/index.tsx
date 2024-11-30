@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 import { HomepageHero } from "@slices/homepageHero";
 import {
   Div,
   Header,
-  Section,
   Spacer,
   Text,
   NarrowContainer,
-  Modal,
 } from "@src/ui-library";
 import { StaffInfo } from "@src/slices/staffInfo";
 import { CommitteesPreview } from "@src/slices/committeesPreview";

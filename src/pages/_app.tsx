@@ -6,8 +6,10 @@ function MyApp({ Component, pageProps }) {
 	return (
 		<div style={{ position: 'relative' }}>
 			<div id="portal-root" />
+			<div id="fullscreen-modal-root" />
 			<NavThemeProvider>
 				<Navigation />
+				<div id="navigation-modal-root" />
 				<Component {...pageProps} />
 			</NavThemeProvider>
 		</div>

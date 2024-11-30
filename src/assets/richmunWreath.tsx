@@ -48,8 +48,8 @@ export const RichmunWreath: FC<ResizableSVGProps> = ({
             y2="91.538"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#0DB08C" />
-            <stop offset="1" stop-color="#4B969B" />
+            <stop stopColor="#0DB08C" />
+            <stop offset="1" stopColor="#4B969B" />
           </linearGradient>
           <linearGradient
             id="paint1_linear_4068_122"
@@ -59,9 +59,9 @@ export const RichmunWreath: FC<ResizableSVGProps> = ({
             y2="121.226"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#0DB08C" />
-            <stop offset="0.9999" stop-color="#367476" />
-            <stop offset="1" stop-color="#377376" stop-opacity="0" />
+            <stop stopColor="#0DB08C" />
+            <stop offset="0.9999" stopColor="#367476" />
+            <stop offset="1" stopColor="#377376" stop-opacity="0" />
           </linearGradient>
         </defs>
       </svg>
