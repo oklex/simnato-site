@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import styled, { keyframes } from "styled-components";
 
-const FullScreenModal = ({ isOpen, onClose, children }) => {
+const FullScreenModal = ({ isOpen, onClose, children, glassy = false }) => {
   const { isMobile } = useScreenSize();
   const [shouldRender, setShouldRender] = useState(isOpen);
 
@@ -25,6 +25,7 @@ const FullScreenModal = ({ isOpen, onClose, children }) => {
     <Overlay
       isOpen={isOpen}
       isMobile={isMobile}
+      className={glassy && "glassy"}
       onAnimationEnd={() => !isOpen && setShouldRender(false)}
     >
       <ModalContent>{children}</ModalContent>
@@ -61,7 +62,7 @@ const FadeOut = keyframes`
 `;
 
 const Overlay = styled.div<{ isOpen: boolean; isMobile: boolean }>`
-  width: ${({ isMobile }) => (isMobile ? `100vw`: `calc(100vw + 20px)`)};
+  width: ${({ isMobile }) => (isMobile ? `100vw` : `calc(100vw + 20px)`)};
   height: 100vh;
   border-radius: 0px;
   background-color: white;
