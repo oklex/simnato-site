@@ -14,6 +14,7 @@ import {
 	Div,
 	NarrowContainer,
 	Button,
+	Modal,
 } from '@ui-library';
 import StarMarker from '@assets/starMarkers';
 import useScreenSize from '@stores/useScreenSize';
@@ -281,7 +282,7 @@ export const RegistrationPage = (): ReactElement => {
 				</ViewPortSection>
 			</NarrowContainer>
 
-			<FullScreenModal
+			<Modal
 				isOpen={showInfoModal}
 				onClose={() => setShowInfoModal(false)}
 			>
@@ -291,7 +292,7 @@ export const RegistrationPage = (): ReactElement => {
 				</Header>
 				<Spacer height="60vh" />
 				<Spacer height="60vh" />
-			</FullScreenModal>
+			</Modal>
 		</div>
 	);
 };
