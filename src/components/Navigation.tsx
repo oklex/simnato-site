@@ -42,12 +42,12 @@ export const Navigation = ({ sticky }: { sticky?: boolean }): ReactElement => {
           onClick={toggleModal}
         >
           <NavContent>
-            <Link href="/" onClick={(e) => e.stopPropagation()}>
+            {/* <Link href="/" onClick={(e) => e.stopPropagation()}> */}
               <TextLogo
                 height="1.4rem"
                 color={onLightBackground ? "black" : "white"}
               />
-            </Link>
+            {/* </Link> */}
             <BigNavSpace flex justifyContent="end">
               <Icon
                 icon={openNav ? "x" : "menu"}
