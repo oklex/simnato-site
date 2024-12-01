@@ -126,7 +126,7 @@ const CloseButton = styled.button`
 
 const ModalBackground = styled.div<{ isClosing: boolean }>`
 	position: fixed;
-	top: 0;
+	top: -15px;
 	left: 0;
 	right: 0;
 	bottom: 0;
@@ -144,7 +144,7 @@ const ModalBackground = styled.div<{ isClosing: boolean }>`
 const ModalFrame = styled.div<{ size: ModalSize; isClosing: boolean }>`
 	border: solid 1px ${rgba(PALETTE.mono.dark, 0.8)};
 	border-radius: 12px;
-	padding: 15px;
+	padding: 32px;
 	background-color: ${COLORS.background};
 	margin: 25px auto;
 	animation: ${({ isClosing }) => (isClosing ? slideOut : slideIn)} 0.3s

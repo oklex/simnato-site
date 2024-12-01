@@ -287,16 +287,42 @@ export const RegistrationPage = (): ReactElement => {
 				onClose={() => setShowInfoModal(false)}
 				size='md'
 			>
-				<Spacer height="60vh" />
 				<Header level={4} mode="dark">
-					Register
+					How our registration works
 				</Header>
-				<Spacer height="60vh" />
-				<Spacer height="60vh" />
+				<Spacer/>
+				<Spacer/>
+				<Step n={1} title='Complete your Application' desc='You will be able to pick your top 2 Committees, so pick wisely!'/>
+				<Step n={2} title='Pay when you recieve your Assignment' desc='Allow us 4-6 weeks to get back to you.'/>
+				<Step n={2} title='Research and Write your Position paper' desc='Every Committee will have their own position paper format. Note that all position papers are required and will be shared with everyone else in your Committee.'/>
 			</Modal>
 		</div>
 	);
 };
+
+const Step = ({n : number, title, desc: description}: { n: number, title: string, desc: string})=> {
+	return <HowStep>
+		<Header mode='dark' level={2}>{number}.</Header>
+		<Div margin='10px 0px 0px'>
+			<Header level={5}  mode='dark'>{title}</Header>
+			<Text mode='dark'><StyledText subtle> {description}</StyledText></Text>
+		</Div>
+	</HowStep>
+}
+
+const HowStep = styled.div`
+	display: flex;
+	gap: 12px;
+	&:first-child {
+		width:2em;
+	}
+	&:nth-child(2) {
+		flex-grow: 1;
+	}
+	& + & {
+		margin-top: 12px;
+	}
+`
 
 const InfoRow = styled.div`
 	max-width: 850px;
