@@ -65,7 +65,7 @@ export const RegistrationPage = (): ReactElement => {
 							>
 								<Div padding="0 2rem">
 									<Header center level={5}>
-										{/* Apply now, pay later */} Opening soon
+										Apply now, pay later
 									</Header>
 								</Div>
 							</Button>
