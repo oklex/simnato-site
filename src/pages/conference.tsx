@@ -20,6 +20,7 @@ import { Banner } from '@src/components/Banner';
 import dayjs from 'dayjs';
 import CountdownSlice from '@slices/countdownSlice';
 import StarMarker from '@assets/starMarkers';
+import Footer from '@src/components/Footer';
 
 export const ConferencePage = (): ReactElement => {
 	return (
@@ -124,6 +125,8 @@ export const ConferencePage = (): ReactElement => {
 					</Div>
 				</NarrowContainer>
 			</Container>
+
+			<Footer />
 		</div>
 	);
 };

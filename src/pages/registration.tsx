@@ -22,6 +22,7 @@ import useScreenSize from '@stores/useScreenSize';
 import { ViewPortSection } from '@src/components/ViewPortSection';
 import { SubContainer } from '@src/ui-library/Section';
 import FullScreenModal from '@src/components/FullScreenModal';
+import Footer from '@src/components/Footer';
 
 export const RegistrationPage = (): ReactElement => {
 	const { width, height, isMobile } = useScreenSize();
@@ -310,6 +311,7 @@ export const RegistrationPage = (): ReactElement => {
 				<Step n={2} title='Pay when you recieve your Assignment' desc='Allow us 4-6 weeks to get back to you.'/>
 				<Step n={2} title='Research and Write your Position paper' desc='Every Committee will have their own position paper format. Note that all position papers are required and will be shared with everyone else in your Committee.'/>
 			</Modal>
+			<Footer />
 		</div>
 	);
 };

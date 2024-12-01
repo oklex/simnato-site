@@ -17,6 +17,7 @@ import { BREAKPOINTS } from "@src/theme";
 import StarMarker from "@assets/starMarkers";
 import { CommitteeStatsTypes, StatsChart } from "@src/components/StatsChart";
 import { Banner } from "@components/Banner";
+import Footer from "@src/components/Footer";
 
 const COMMITTEE_STATS: CommitteeStatsTypes = {
   knowledge: 1,
@@ -121,6 +122,7 @@ export const EspionagePage = (): ReactElement => {
         </ViewPortSection>
         <Banner type="notice">Topic Research coming soon</Banner>
       </Container>
+			<Footer />
     </div>
   );
 };

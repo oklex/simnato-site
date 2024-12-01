@@ -17,6 +17,7 @@ import { BREAKPOINTS } from '@src/theme';
 import StarMarker from '@assets/starMarkers';
 import { CommitteeStatsTypes, StatsChart } from '@components/StatsChart';
 import { Banner } from '@components/Banner';
+import Footer from '@src/components/Footer';
 
 const COMMITTEE_STATS: CommitteeStatsTypes = {
 	knowledge: 4,
@@ -112,16 +113,16 @@ export const PartnersPage = (): ReactElement => {
 									delegates start just to feel something? If yes, then join the
 									Partners Committee! Working together to achieve a common goal
 									sounds a little cheesy, but it’s what we’re all about here.
-									Representing your country in a partnership means
-									communication and cooperation are key! Your actions as a
-									country will have real effects on other countries, so make
-									sure to think through and double check your ideas.
+									Representing your country in a partnership means communication
+									and cooperation are key! Your actions as a country will have
+									real effects on other countries, so make sure to think through
+									and double check your ideas.
 								</StyledText>
 							</Text>
 							<Spacer />
 							<Text>
 								<StyledText bold> Position Paper format:</StyledText> TBA
-								<br/>
+								<br />
 								<StyledText bold> Position Paper deadline:</StyledText> TBA
 							</Text>
 						</Div>
@@ -129,10 +130,11 @@ export const PartnersPage = (): ReactElement => {
 							<StatsChart committeeStats={COMMITTEE_STATS} />
 						</Div>
 					</GridSection>
-					<Spacer/>
+					<Spacer />
 				</ViewPortSection>
 				<Banner type="notice">Topic Research coming soon</Banner>
 			</Container>
+			<Footer />
 		</div>
 	);
 };

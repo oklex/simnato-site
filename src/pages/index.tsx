@@ -13,6 +13,7 @@ import {
 import { StaffInfo } from "@src/slices/staffInfo";
 import { CommitteesPreview } from "@src/slices/committeesPreview";
 import RichmunWreath from "@src/assets/richmunWreath";
+import Footer from "@src/components/Footer";
 
 export default function Home() {
   return (
@@ -62,6 +63,7 @@ export default function Home() {
       <StaffInfo />
       <Spacer height={"75px"} />
       <CommitteesPreview />
+      <Footer />
     </div>
   );
 }
