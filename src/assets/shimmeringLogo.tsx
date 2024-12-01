@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from "react";
+import React, { FC, useState } from "react";
 import styled, { css, keyframes } from "styled-components";
 import SilverBrandLogo from "./silverLogo";
 import GoldBrandLogo from "./goldLogo";
@@ -8,10 +8,19 @@ interface ResizableSVGProps {
   center?: boolean;
   padding?: string;
 }
+
 interface ShimmeringLogoProps extends ResizableSVGProps {
   duration?: number;
-  gap?: number;
 }
+
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
 
 const fadeOut = keyframes`
   0% {
@@ -27,7 +36,6 @@ const OverlayContainer = styled.div<ResizableSVGProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
   height: ${({ scale }) => scale};
   ${({ padding }) =>
     padding &&
@@ -36,7 +44,11 @@ const OverlayContainer = styled.div<ResizableSVGProps>`
     `}
 `;
 
-const OverlayItem = styled.div<{ fade?: boolean; duration?: number }>`
+const OverlayItem = styled.div<{
+  fade?: boolean;
+  isVisible: boolean;
+  duration: number;
+}>`
   position: absolute;
   top: 0;
   left: 0;
@@ -46,24 +58,45 @@ const OverlayItem = styled.div<{ fade?: boolean; duration?: number }>`
   justify-content: center;
   align-items: center;
 
-  ${({ fade, duration }) =>
-    fade &&
-    css`
-      animation: ${fadeOut} ${duration}s ease forwards;
-    `}
+  ${({ fade, isVisible, duration }) => {
+    if (!fade) return ``;
+    return isVisible
+      ? css`
+          animation: ${fadeIn} ${duration}s ease forwards;
+        `
+      : css`
+          animation: ${fadeOut} ${duration}s ease forwards;
+        `;
+  }}
 `;
 
 export const ShimmeringLogo: FC<ShimmeringLogoProps> = ({
-  duration = 2,
-  gap = 4,
+  duration = 1,
   ...props
 }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const [delayedState, setDelayedState] = useState(false);
+
   return (
-    <OverlayContainer {...props}>
-      <OverlayItem>
+    <OverlayContainer
+      {...props}
+      onMouseEnter={() => {
+        setIsHovered(true);
+        setDelayedState(true);
+      }}
+      onMouseLeave={() => {
+        setIsHovered(false);
+        setTimeout(() => setDelayedState(false), duration * 1000); // Wait for fade-out to complete
+      }}
+    >
+      <OverlayItem
+        fade={false}
+        isVisible={!isHovered && delayedState}
+        duration={duration}
+      >
         <SilverBrandLogo {...props} />
       </OverlayItem>
-      <OverlayItem fade={true} duration={duration}>
+      <OverlayItem fade={true} isVisible={isHovered} duration={duration}>
         <GoldBrandLogo {...props} />
       </OverlayItem>
     </OverlayContainer>
