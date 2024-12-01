@@ -35,6 +35,8 @@ const Footer: FC = () => {
 						<br />
 						SimNATO offers student model united nations events. All registration
 						fees are handled in CAD.
+						<br/>
+						logistics@simnato.ca
 					</StyledText>
 				</Text>
 			</FadedContent>
