@@ -24,20 +24,27 @@ const Countdown = () => {
 	}, []);
 
 	function calculateRemainingTime() {
-		const today = dayjs();
-		const diff = dayjs.duration(targetDate.diff(today));
-
-		return {
-			months: diff.months(),
-			days: diff.days(),
-		};
-	}
-
-	function calculateRegistrationDays() {
-		const today = dayjs();
-		const diff = registrationDate.diff(today, 'day');
-		return diff > 0 ? diff : 0; // Show 0 days if registration is already open
-	}
+		const today = dayjs().startOf("day");
+		let months = 0;
+		let current = today;
+	
+		// Calculate months remaining
+		while (current.add(1, "month").isBefore(targetDate)) {
+		  months++;
+		  current = current.add(1, "month");
+		}
+	
+		// Calculate remaining days after subtracting months
+		const days = targetDate.diff(current, "day");
+	
+		return { months, days };
+	  }
+	
+	  function calculateRegistrationDays() {
+		const today = dayjs().startOf("day");
+		const diff = registrationDate.diff(today, "day");
+		return Math.max(diff, 0); // Show 0 days if registration is already open
+	  }
 
 	const { months, days } = remainingTime;
 	const showCountdown = months > 0 || days > 0;
