@@ -14,6 +14,7 @@ import {
 	Div,
 	NarrowContainer,
 	Button,
+	Modal,
 } from '@ui-library';
 import StarMarker from '@assets/starMarkers';
 import useScreenSize from '@stores/useScreenSize';
@@ -60,19 +61,24 @@ export const RegistrationPage = (): ReactElement => {
 							<Button
 								variant="primary"
 								mode="dark"
+								disabled
 								href="https://form.jotform.com/243296810966265"
 							>
 								<Div padding="0 2rem">
-									<Header center level={5}>
-										Apply now, pay later
+									<Header center level={5} mode='dark'>
+										{/* Apply now, pay later */} Opening soon
 									</Header>
 								</Div>
 							</Button>
-							{/* <Button variant="text" mode="light" onClick={() => setShowInfoModal(true)}>
+							<Button
+								variant="text"
+								mode="light"
+								onClick={() => setShowInfoModal(true)}
+							>
 								<Text align="center" mode="gold">
 									learn how it works
 								</Text>
-							</Button> */}
+							</Button>
 						</Div>
 					</Div>
 					<Spacer />
@@ -130,37 +136,6 @@ export const RegistrationPage = (): ReactElement => {
 								label: (
 									<Div width="100%">
 										<Header level={6} mode="dark">
-											When do we hear back on our application status?
-										</Header>
-									</Div>
-								),
-								content: (
-									<>
-										<Text mode="dark">
-											Offers will be sent out at the end of the referral period,
-											and then at the end of each month afterwards. Please allow
-											at least 3-4 weeks to review your application
-										</Text>
-										<br />
-										<Text mode="dark">
-											Once sent an offer, you will have 72 hours to accept your
-											role and pay.
-										</Text>
-									</>
-								),
-							},
-						]}
-					></Accordion>
-					<Spacer />
-					<Accordion
-						background="transparent"
-						mode="dark"
-						content={[
-							{
-								key: 'key',
-								label: (
-									<Div width="100%">
-										<Header level={6} mode="dark">
 											How is this different from regular MUN registration?
 										</Header>
 									</Div>
@@ -194,21 +169,21 @@ export const RegistrationPage = (): ReactElement => {
 								label: (
 									<Div width="100%">
 										<Header level={6} mode="dark">
-											Are position papers required?
+											When do we hear back on our application status?
 										</Header>
 									</Div>
 								),
 								content: (
 									<>
 										<Text mode="dark">
-											All Delegates will be required to submit a position paper,
-											though the format will differ per Committee. Every
-											Committee will have their own version and format of
-											position paper that Delegates must follow.
+											Offers will be sent out at the end of the referral period,
+											and then at the end of each month afterwards. Please allow
+											at least 3-4 weeks to review your application
 										</Text>
+										<br />
 										<Text mode="dark">
-											Upon completion, all Position Papers will be shared will
-											all other Delegates prior to the start of SimNATO.
+											Once sent an offer, you will have 72 hours to accept your
+											role and pay.
 										</Text>
 									</>
 								),
@@ -307,17 +282,47 @@ export const RegistrationPage = (): ReactElement => {
 				</ViewPortSection>
 			</NarrowContainer>
 
-			<FullScreenModal
+			<Modal
 				isOpen={showInfoModal}
 				onClose={() => setShowInfoModal(false)}
+				size='md'
 			>
 				<Header level={4} mode="dark">
-					Register
+					How our registration works
 				</Header>
-			</FullScreenModal>
+				<Spacer/>
+				<Spacer/>
+				<Step n={1} title='Complete your Application' desc='You will be able to pick your top 2 Committees, so pick wisely!'/>
+				<Step n={2} title='Pay when you recieve your Assignment' desc='Allow us 4-6 weeks to get back to you.'/>
+				<Step n={2} title='Research and Write your Position paper' desc='Every Committee will have their own position paper format. Note that all position papers are required and will be shared with everyone else in your Committee.'/>
+			</Modal>
 		</div>
 	);
 };
+
+const Step = ({n : number, title, desc: description}: { n: number, title: string, desc: string})=> {
+	return <HowStep>
+		<Header mode='dark' level={2}>{number}.</Header>
+		<Div margin='10px 0px 0px'>
+			<Header level={5}  mode='dark'>{title}</Header>
+			<Text mode='dark'><StyledText subtle> {description}</StyledText></Text>
+		</Div>
+	</HowStep>
+}
+
+const HowStep = styled.div`
+	display: flex;
+	gap: 12px;
+	&:first-child {
+		width:2em;
+	}
+	&:nth-child(2) {
+		flex-grow: 1;
+	}
+	& + & {
+		margin-top: 12px;
+	}
+`
 
 const InfoRow = styled.div`
 	max-width: 850px;
