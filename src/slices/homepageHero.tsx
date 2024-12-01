@@ -2,8 +2,9 @@ import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 import { Header, Spacer, Text } from '@ui-library';
 import { PALETTE } from '../theme';
-import useScreenSize from '../stores/useScreenSize';
-import SilverBrandLogo from '../assets/silverLogo';
+import useScreenSize from '@stores/useScreenSize';
+import SilverBrandLogo from '@assets/silverLogo';
+import GoldBrandLogo from '@src/assets/goldLogo';
 import { ViewPortSection } from '@src/components/ViewPortSection';
 
 export const HomepageHero = (): ReactElement => {
@@ -16,7 +17,7 @@ export const HomepageHero = (): ReactElement => {
 			</CornerLabel>
 			<ViewPortSection id="hero">
 				<Spacer height={isMobile ? '5vh' : '5vh'} />
-				<SilverBrandLogo scale="13rem" center padding="25px 25px 15px" />
+				<GoldBrandLogo scale="13rem" center padding="25px 25px 15px" />
 				<Spacer height={isMobile ? '5px' : 0} />
 				<Header level={1} mode="silver" center bold>
 					{isMobile ? 'SimNATO' : 'Simulation NATO'}

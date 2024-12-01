@@ -31,7 +31,7 @@ export const PartnersPage = (): ReactElement => {
 			<NarrowContainer>
 				<Spacer height={'15vh'} />
 				<Div flex justifyContent="center">
-					<StarMarker type="gold" />
+					<StarMarker type="blue" />
 				</Div>
 				<Header center level={1} mode="dark">
 					NATO Partners

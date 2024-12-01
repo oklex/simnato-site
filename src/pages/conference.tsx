@@ -27,7 +27,7 @@ export const ConferencePage = (): ReactElement => {
 			<Container center>
 				<Spacer height={'calc(10vh + 5rem)'} />
 				<Div flex justifyContent="center">
-					<StarMarker type="dark" />
+					<StarMarker type="gold" />
 				</Div>
 				<CountdownSlice />
 				<Container>

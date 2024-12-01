@@ -27,7 +27,7 @@ export const CommitteesPreview = (): ReactElement => {
       <SubContent>
         <Spacer height={isTablet ? "100px" : "150px"} />
         <Div flex justifyContent="center">
-          <StarMarker type="blue" />
+          <StarMarker type="gold" />
         </Div>
         <Header center level={2}>
           The different faces of NATO
