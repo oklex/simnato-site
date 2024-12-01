@@ -53,7 +53,7 @@ export const FONT_SIZES = {
 	xs: '0.6rem',
 	sm: '0.85rem',
 	md: '1rem',
-	lg: '1.8rem',
+	lg: '1.2rem',
 };
 export type FontSizeType = keyof typeof FONT_SIZES;
 
