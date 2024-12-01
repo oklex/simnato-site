@@ -132,7 +132,7 @@ export const RegistrationPage = (): ReactElement => {
 								content: (
 									<>
 										<Text mode="dark">
-											All accepted Delegates will be charged a flat $125. This
+											All accepted Delegates will be charged a flat $150. This
 											does not include overnight acoomodations. This fee will
 											not change for Early or Late applicants.
 										</Text>
