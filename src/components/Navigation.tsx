@@ -113,10 +113,10 @@ export const Navigation = ({ sticky }: { sticky?: boolean }): ReactElement => {
                 </Div>
                 <Spacer height="calc(3vh + 12px)" />
                 <Div>
-                  <Header level={1} mode="silver">
+                  <Header level={isMobile ? 3 : 1} mode="silver">
                     Research Guides
                     <TbaTag>
-                      <StyledText mode="gold" size="lg">
+                      <StyledText mode="gold" size={isMobile ? 'md' : "lg"}>
                         coming soon
                       </StyledText>
                     </TbaTag>
