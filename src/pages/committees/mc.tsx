@@ -102,6 +102,12 @@ export const MCpage = (): ReactElement => {
 									decisions are vital for the success of the committee and
 									global security.
 								</StyledText>
+							<Spacer />
+							<Text>
+								<StyledText bold> Position Paper format:</StyledText> TBA
+								<br/>
+								<StyledText bold> Position Paper deadline:</StyledText> TBA
+							</Text>
 							</Text>
 						</Div>
 						<Div padding="15px 0px 0px">

@@ -118,6 +118,12 @@ export const PartnersPage = (): ReactElement => {
 									sure to think through and double check your ideas.
 								</StyledText>
 							</Text>
+							<Spacer />
+							<Text>
+								<StyledText bold> Position Paper format:</StyledText> TBA
+								<br/>
+								<StyledText bold> Position Paper deadline:</StyledText> TBA
+							</Text>
 						</Div>
 						<Div padding="15px 0px 0px">
 							<StatsChart committeeStats={COMMITTEE_STATS} />

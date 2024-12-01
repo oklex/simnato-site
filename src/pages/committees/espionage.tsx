@@ -106,6 +106,12 @@ export const EspionagePage = (): ReactElement => {
                   the Espionage Committee embraces chaos and creativity.
                 </StyledText>
               </Text>
+							<Spacer />
+							<Text>
+                <StyledText bold> Position Paper format:</StyledText> TBA
+                <br/>
+                <StyledText bold> Position Paper deadline:</StyledText> TBA
+              </Text>
             </Div>
             <Div padding="15px 0px 0px">
               <StatsChart committeeStats={COMMITTEE_STATS} />
