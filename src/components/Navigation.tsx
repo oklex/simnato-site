@@ -35,7 +35,7 @@ export const Navigation = ({ sticky }: { sticky?: boolean }): ReactElement => {
 	useEffect(() => {
 		setTimeout(() => {
 			setOpenNav(false);
-		}, 100);
+		}, 0);
 	}, [pathname]);
 
 	const showNav = () => (
