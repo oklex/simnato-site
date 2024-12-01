@@ -1,4 +1,5 @@
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement, useMemo, useState } from 'react';
+import dayjs from 'dayjs';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 
@@ -26,6 +27,19 @@ export const RegistrationPage = (): ReactElement => {
 	const { width, height, isMobile } = useScreenSize();
 	const { query } = useRouter();
 	const [showInfoModal, setShowInfoModal] = useState(false);
+	const registrationPeriodLabel = useMemo<
+		'opening Friday' | 'available by referral' | 'open now' | 'closing soon'
+	>(() => {
+		const referralPhaseDate = '2024-12-06';
+		const openPhaseDate = '2025-01-01';
+		const closeDate = '2025-03-01';
+		const now = dayjs();
+		if (now.isBefore(referralPhaseDate)) return 'opening Friday';
+		if (now.isBefore(openPhaseDate)) return 'available by referral';
+		if (now.isAfter(openPhaseDate) && now.isBefore(closeDate))
+			return 'open now';
+		return 'closing soon';
+	}, []);
 
 	const accordionKey = query['ackey']
 		? query['ackey'].toLocaleString().toLocaleLowerCase()
@@ -45,7 +59,7 @@ export const RegistrationPage = (): ReactElement => {
 						</Header>
 
 						<Header center level={1} mode="dark">
-							<StyledText subtle>available by referral*</StyledText>
+							<StyledText subtle>{registrationPeriodLabel}*</StyledText>
 						</Header>
 						<Spacer />
 						<Text mode="dark" align="center">
