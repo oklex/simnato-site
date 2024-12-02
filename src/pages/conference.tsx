@@ -42,7 +42,7 @@ export const ConferencePage = (): ReactElement => {
 				<NarrowContainer>
 					<Div padding="30px 0px">
 						<Header level={6} mode="gold" center>
-							March 7th - 8th, 2025
+							March 8th - 9th, 2025
 						</Header>
 						<Header level={4} mode="dark" center>
 							Wilson School of Design
@@ -53,13 +53,13 @@ export const ConferencePage = (): ReactElement => {
 							<br />
 							Richmond, BC V6X 3V8
 							<br />
-							March 7th - 8th, 2025
+							March 8th - 9th, 2025
 						</Text>
 					</Div>
 					<SplitScreen>
 						<Div padding="30px 0px">
 							<Header level={5} mode="dark" center>
-								Saturday March 7th
+								Saturday March 8th
 							</Header>
 							<Spacer />
 							<Text mode="dark" subtle align="center">
@@ -92,7 +92,7 @@ export const ConferencePage = (): ReactElement => {
 						</Div>
 						<Div padding="30px 0px">
 							<Header level={5} mode="dark" center>
-								Sunday March 8th
+								Sunday March 9th
 							</Header>
 							<Spacer />
 							<Text mode="dark" subtle align="center">

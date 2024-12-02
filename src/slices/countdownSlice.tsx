@@ -8,7 +8,7 @@ import Link from 'next/link';
 dayjs.extend(duration);
 
 const Countdown = () => {
-	const targetDate = dayjs('2025-03-07');
+	const targetDate = dayjs('2025-03-08');
 	const registrationDate = dayjs('2025-01-01');
 	const [remainingTime, setRemainingTime] = useState(calculateRemainingTime);
 	const [registrationDays, setRegistrationDays] = useState(

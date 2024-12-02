@@ -29,7 +29,7 @@ export const HomepageHero = (): ReactElement => {
 				</Header>
 				<Spacer height="15px" />
 				<Text subtle align="center">
-					March 7th - 8th, 2025 | Richmond, BC
+					March 8th - 9th, 2025 | Richmond, BC
 				</Text>
 				<Spacer height={isMobile ? '5vh' : '5vh'} />
 			</ViewPortSection>
