@@ -75,18 +75,21 @@ export const NACpage = (): ReactElement => {
             </Text>
             <Text mode="dark">
               If there are any questions, please don’t hesitate to contact me at
-              ___
+              nac@simnato.ca
             </Text>
 
-            <Text mode="dark">
-              With best regards,
-              <br />
+            <Text mode="dark">With best regards,</Text>
+            <Spacer />
+            <Spacer />
+            <Header level={6} mode="dark">
               Rachel Yu
+            </Header>
+            <Text mode="dark" subtle>
+              Director, North Atlantic Council
               <br />
-              Director of the North Atlantic Council
+              Simulation NATO
               <br />
-              SimNATO
-              <br />
+              nac@simnato.ca
             </Text>
           </Letter>
 
@@ -121,12 +124,12 @@ export const NACpage = (): ReactElement => {
                   a NATO ambassador truly.
                 </StyledText>
               </Text>
-							<Spacer />
-							<Text>
-								<StyledText bold> Position Paper format:</StyledText> TBA
-								<br/>
-								<StyledText bold> Position Paper deadline:</StyledText> TBA
-							</Text>
+              <Spacer />
+              <Text>
+                <StyledText bold> Position Paper format:</StyledText> TBA
+                <br />
+                <StyledText bold> Position Paper deadline:</StyledText> TBA
+              </Text>
             </Div>
             <Div padding="15px 0px 0px">
               <StatsChart committeeStats={COMMITTEE_STATS} />
@@ -136,7 +139,7 @@ export const NACpage = (): ReactElement => {
         </ViewPortSection>
         <Banner type="notice">Topic Research coming soon</Banner>
       </Container>
-			<Footer />
+      <Footer />
     </div>
   );
 };

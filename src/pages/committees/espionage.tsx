@@ -35,7 +35,7 @@ export const EspionagePage = (): ReactElement => {
           <StarMarker type="dark" />
         </Div>
         <Header center level={1} mode="dark">
-           Intelligence and Espionage
+          Intelligence and Espionage
         </Header>
         <Spacer />
       </NarrowContainer>
@@ -64,6 +64,18 @@ export const EspionagePage = (): ReactElement => {
               tread lightly and act quick.
             </Text>
             <Text mode="dark">Good luck. </Text>
+            <Spacer />
+            <Spacer />
+            <Header level={6} mode="dark">
+              Sophie Xu & Caitlin Lim
+            </Header>
+            <Text mode="dark" subtle>
+              Co-Directors, Intelligence and Espionage
+              <br />
+              Simulation NATO
+              <br />
+              espionage@simnato.ca
+            </Text>
             <Spacer height={"2rem"} />
           </Letter>
           <Div flex flexDirection="col" gap="15px" padding="10px">
@@ -107,10 +119,10 @@ export const EspionagePage = (): ReactElement => {
                   the Espionage Committee embraces chaos and creativity.
                 </StyledText>
               </Text>
-							<Spacer />
-							<Text>
+              <Spacer />
+              <Text>
                 <StyledText bold> Position Paper format:</StyledText> TBA
-                <br/>
+                <br />
                 <StyledText bold> Position Paper deadline:</StyledText> TBA
               </Text>
             </Div>
@@ -122,7 +134,7 @@ export const EspionagePage = (): ReactElement => {
         </ViewPortSection>
         <Banner type="notice">Topic Research coming soon</Banner>
       </Container>
-			<Footer />
+      <Footer />
     </div>
   );
 };
