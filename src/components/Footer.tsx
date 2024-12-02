@@ -47,7 +47,7 @@ const Footer: FC = () => {
 const FooterContainer = styled.footer`
 	background-color: ${COLORS.background};
 	padding: 4rem 20px 2rem;
-	width: 100%;
+	/* width: 100%; */
 	text-align: center;
 `;
 
