@@ -79,7 +79,7 @@ export const RegistrationPage = (): ReactElement => {
 								href="https://form.jotform.com/243296810966265"
 							>
 								<Div padding="0 2rem">
-									<Header center level={5} mode="dark">
+									<Header center level={5} mode="light">
 										Apply now, pay later
 									</Header>
 								</Div>
