@@ -158,7 +158,7 @@ const NavLink = ({
       {selected ? (
         <Header
           level={variant === "primary" ? 1 : isMobile ? 3 : 2}
-          mode="silver"
+          mode="gold"
         >
           {label}
         </Header>
