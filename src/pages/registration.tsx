@@ -244,35 +244,6 @@ export const RegistrationPage = (): ReactElement => {
 						]}
 					></Accordion>
 					<Spacer />
-					<Accordion
-						background="transparent"
-						mode="dark"
-						content={[
-							{
-								key: 'key',
-								label: (
-									<Div width="100%">
-										<Header level={6} mode="dark">
-											What do the awards look like?
-										</Header>
-									</Div>
-								),
-								content: (
-									<>
-										<Text mode="dark">
-											While we will be making an effort to aknowledge uniquely
-											positive contribution from indivdual delegates, however
-											SimNATO will not be having (conventional) Delegate awards.
-										</Text>
-										<Text mode="dark">
-											Instead, we will be having a different awards format that we will
-											be sharing when we're ready. :)
-										</Text>
-									</>
-								),
-							},
-						]}
-					></Accordion>
 					<Spacer />
 					<Accordion
 						background="transparent"
